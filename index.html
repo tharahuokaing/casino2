@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casino Royale - Slots</title>
+    <title>Imperial Cyber Casino - 5 Game Deck</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +12,16 @@
             <h1>🎰 CASINO ROYALE 🎰</h1>
         </header>
 
+        <!-- Dynamic Game Scroller Navigation -->
+        <div class="game-nav">
+            <button class="nav-btn active" id="tab-slots">Slots</button>
+            <button class="nav-btn" id="tab-coin">Coin Flip</button>
+            <button class="nav-btn" id="tab-crash">Crash</button>
+            <button class="nav-btn" id="tab-roulette">Roulette</button>
+            <button class="nav-btn" id="tab-rps">RPS</button>
+        </div>
+
+        <!-- Master Statistics Dashboard -->
         <div class="dashboard">
             <div class="display-box">
                 <span class="label">Balance</span>
@@ -27,24 +37,84 @@
             </div>
         </div>
 
-        <div class="slot-machine">
-            <div class="reel-container">
-                <div class="reel" id="reel1">🍒</div>
-                <div class="reel" id="reel2">🍋</div>
-                <div class="reel" id="reel3">🍊</div>
+        <!-- GAME CONTAINER REGIONS -->
+        
+        <!-- GAME 1: Slots Engine Layout -->
+        <div id="slots-arena" class="game-window">
+            <div class="game-card">
+                <div class="arena-display-box">
+                    <div class="reel" id="reel1">🍒</div>
+                    <div class="reel" id="reel2">🍋</div>
+                    <div class="reel" id="reel3">🍊</div>
+                </div>
             </div>
         </div>
 
-        <div class="message-container">
-            <p id="system-message">Place your bet and spin the reels!</p>
+        <!-- GAME 2: Coin Flip Engine Layout -->
+        <div id="coin-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box">
+                    <div class="coin-graphic" id="coin-element">🪙</div>
+                </div>
+                <div class="input-selection-group">
+                    <label class="radio-label"><input type="radio" name="coin-choice" value="Heads" checked> Heads</label>
+                    <label class="radio-label"><input type="radio" name="coin-choice" value="Tails"> Tails</label>
+                </div>
+            </div>
         </div>
 
+        <!-- GAME 3: Crash Multiplier Engine Layout -->
+        <div id="crash-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box matrix-bg">
+                    <div id="crash-multiplier-output">1.00x</div>
+                </div>
+                <div class="input-selection-group">
+                    <button class="btn btn-danger hidden" id="btn-crash-cashout">CASH OUT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 4: Roulette Engine Layout -->
+        <div id="roulette-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box wheel-bg">
+                    <div id="roulette-ball-output">00</div>
+                </div>
+                <div class="input-selection-group">
+                    <span class="text-label-inline">Pick Target Number (0-36):</span>
+                    <input type="number" id="roulette-target-input" min="0" max="36" value="7">
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 5: Rock Paper Scissors Engine Layout -->
+        <div id="rps-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box split-display">
+                    <div>🧑 <span id="rps-player-node">?</span></div>
+                    <div>🤖 <span id="rps-computer-node">?</span></div>
+                </div>
+                <div class="input-selection-group">
+                    <label class="radio-label"><input type="radio" name="rps-choice" value="Rock" checked> ✊ Rock</label>
+                    <label class="radio-label"><input type="radio" name="rps-choice" value="Paper"> 🫱 Paper</label>
+                    <label class="radio-label"><input type="radio" name="rps-choice" value="Scissors"> ✌️ Scissors</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Message Box Display -->
+        <div class="message-container">
+            <p id="system-message">Select a gaming layout and enter your parameters...</p>
+        </div>
+
+        <!-- Global Operational Mechanics Controls -->
         <div class="controls">
             <div class="bet-adjusters">
                 <button class="btn btn-secondary" id="btn-decrease-bet">- Decrease</button>
                 <button class="btn btn-secondary" id="btn-increase-bet">+ Increase</button>
             </div>
-            <button class="btn btn-primary" id="btn-spin">SPIN</button>
+            <button class="btn btn-primary" id="btn-action">SPIN REELS</button>
         </div>
     </div>
 
