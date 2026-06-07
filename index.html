@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imperial Cyber Casino - 5 Game Deck</title>
+    <title>Imperial Cyber Casino - 10 Game Deck</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,16 +19,11 @@
             <button class="nav-btn" id="tab-crash">Crash</button>
             <button class="nav-btn" id="tab-roulette">Roulette</button>
             <button class="nav-btn" id="tab-rps">RPS</button>
-            <button class="nav-btn" id="tab-rps">slots</button>
-            <button class="nav-btn" id="tab-rps">coin</button>
-            <button class="nav-btn" id="tab-rps">crash</button>
-            <button class="nav-btn" id="tab-rps">roulette</button>
-            <button class="nav-btn" id="tab-rps">rps</button>
-            <button class="nav-btn" id="tab-rps">mines</button>
-            <button class="nav-btn" id="tab-rps">blackjack</button>
-            <button class="nav-btn" id="tab-rps">dice</button>
-            <button class="nav-btn" id="tab-rps">wheel</button>
-            <button class="nav-btn" id="tab-rps">plinko</button>
+            <button class="nav-btn" id="tab-mines">Mines</button>
+            <button class="nav-btn" id="tab-blackjack">Blackjack</button>
+            <button class="nav-btn" id="tab-dice">Dice</button>
+            <button class="nav-btn" id="tab-wheel">Wheel</button>
+            <button class="nav-btn" id="tab-plinko">Plinko</button>
         </div>
 
         <!-- Master Statistics Dashboard -->
@@ -113,71 +108,7 @@
             </div>
         </div>
 
-        <!-- GAME 6: Slots -->
-        <div id="slots-arena" class="game-window">
-            <div class="game-card">
-                <div class="arena-display-box">
-                    <div class="reel" id="reel1">🍒</div>
-                    <div class="reel" id="reel2">🍋</div>
-                    <div class="reel" id="reel3">🍊</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- GAME 7: Coin Flip -->
-        <div id="coin-arena" class="game-window hidden">
-            <div class="game-card">
-                <div class="arena-display-box">
-                    <div class="coin-graphic" id="coin-element">🪙</div>
-                </div>
-                <div class="input-selection-group">
-                    <label class="radio-label"><input type="radio" name="coin-choice" value="Heads" checked> Heads</label>
-                    <label class="radio-label"><input type="radio" name="coin-choice" value="Tails"> Tails</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- GAME 8: Crash -->
-        <div id="crash-arena" class="game-window hidden">
-            <div class="game-card">
-                <div class="arena-display-box matrix-bg">
-                    <div id="crash-multiplier-output">1.00x</div>
-                </div>
-                <div class="input-selection-group">
-                    <button class="btn btn-danger hidden" id="btn-crash-cashout">CASH OUT</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- GAME 9: Roulette -->
-        <div id="roulette-arena" class="game-window hidden">
-            <div class="game-card">
-                <div class="arena-display-box wheel-bg">
-                    <div id="roulette-ball-output">00</div>
-                </div>
-                <div class="input-selection-group">
-                    <span class="text-label-inline">Number (0-36):</span>
-                    <input type="number" id="roulette-target-input" min="0" max="36" value="7">
-                </div>
-            </div>
-        </div>
-
-        <!-- GAME 10: RPS -->
-        <div id="rps-arena" class="game-window hidden">
-            <div class="game-card">
-                <div class="arena-display-box split-display">
-                    <div>🧑 <span id="rps-player-node">?</span></div>
-                    <div>🤖 <span id="rps-computer-node">?</span></div>
-                </div>
-                <div class="input-selection-group">
-                    <label class="radio-label"><input type="radio" name="rps-choice" value="Rock" checked> ✊</label>
-                    <label class="radio-label"><input type="radio" name="rps-choice" value="Paper"> 🫱</label>
-                    <label class="radio-label"><input type="radio" name="rps-choice" value="Scissors"> ✌️</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- NEW GAME 11: Mines Grid Engine Layout -->
+        <!-- GAME 6: Mines Grid Engine Layout -->
         <div id="mines-arena" class="game-window hidden">
             <div class="game-card">
                 <div class="mines-grid" id="mines-board">
@@ -189,7 +120,7 @@
             </div>
         </div>
 
-        <!-- NEW GAME 12: Simplified Blackjack Deck Layout -->
+        <!-- GAME 7: Simplified Blackjack Deck Layout -->
         <div id="blackjack-arena" class="game-window hidden">
             <div class="game-card">
                 <div class="bj-display">
@@ -203,7 +134,7 @@
             </div>
         </div>
 
-        <!-- NEW GAME 13: High-Low Math Dice Roller Layout -->
+        <!-- GAME 8: High-Low Math Dice Roller Layout -->
         <div id="dice-arena" class="game-window hidden">
             <div class="game-card">
                 <div class="arena-display-box matrix-bg">
@@ -216,7 +147,7 @@
             </div>
         </div>
 
-        <!-- NEW GAME 14: Multi-Multiplier Risk Wheel Layout -->
+        <!-- GAME 9: Multi-Multiplier Risk Wheel Layout -->
         <div id="wheel-arena" class="game-window hidden">
             <div class="game-card">
                 <div class="arena-display-box wheel-bg pointer-indicator">
@@ -225,7 +156,7 @@
             </div>
         </div>
 
-        <!-- NEW GAME 15: Horizontal Cascade Plinko Layout -->
+        <!-- GAME 10: Horizontal Cascade Plinko Layout -->
         <div id="plinko-arena" class="game-window hidden">
             <div class="game-card">
                 <div class="plinko-pyramid" id="plinko-display-board">
