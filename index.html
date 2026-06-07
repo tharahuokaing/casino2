@@ -103,6 +103,128 @@
             </div>
         </div>
 
+        <!-- GAME 6: Slots -->
+        <div id="slots-arena" class="game-window">
+            <div class="game-card">
+                <div class="arena-display-box">
+                    <div class="reel" id="reel1">🍒</div>
+                    <div class="reel" id="reel2">🍋</div>
+                    <div class="reel" id="reel3">🍊</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 7: Coin Flip -->
+        <div id="coin-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box">
+                    <div class="coin-graphic" id="coin-element">🪙</div>
+                </div>
+                <div class="input-selection-group">
+                    <label class="radio-label"><input type="radio" name="coin-choice" value="Heads" checked> Heads</label>
+                    <label class="radio-label"><input type="radio" name="coin-choice" value="Tails"> Tails</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 8: Crash -->
+        <div id="crash-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box matrix-bg">
+                    <div id="crash-multiplier-output">1.00x</div>
+                </div>
+                <div class="input-selection-group">
+                    <button class="btn btn-danger hidden" id="btn-crash-cashout">CASH OUT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 9: Roulette -->
+        <div id="roulette-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box wheel-bg">
+                    <div id="roulette-ball-output">00</div>
+                </div>
+                <div class="input-selection-group">
+                    <span class="text-label-inline">Number (0-36):</span>
+                    <input type="number" id="roulette-target-input" min="0" max="36" value="7">
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 10: RPS -->
+        <div id="rps-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box split-display">
+                    <div>🧑 <span id="rps-player-node">?</span></div>
+                    <div>🤖 <span id="rps-computer-node">?</span></div>
+                </div>
+                <div class="input-selection-group">
+                    <label class="radio-label"><input type="radio" name="rps-choice" value="Rock" checked> ✊</label>
+                    <label class="radio-label"><input type="radio" name="rps-choice" value="Paper"> 🫱</label>
+                    <label class="radio-label"><input type="radio" name="rps-choice" value="Scissors"> ✌️</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW GAME 11: Mines Grid Engine Layout -->
+        <div id="mines-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="mines-grid" id="mines-board">
+                    <!-- Javascript builds dynamically (3x3 tactical space) -->
+                </div>
+                <div class="input-selection-group">
+                    <button class="btn btn-danger hidden" id="btn-mines-cashout">CASH OUT MINES</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW GAME 12: Simplified Blackjack Deck Layout -->
+        <div id="blackjack-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="bj-display">
+                    <div class="bj-row">🤖 Dealer: <span id="bj-dealer-score">0</span> <div class="card-row" id="bj-dealer-cards"></div></div>
+                    <div class="bj-row">🧑 Player: <span id="bj-player-score">0</span> <div class="card-row" id="bj-player-cards"></div></div>
+                </div>
+                <div class="input-selection-group hidden" id="bj-action-group">
+                    <button class="btn btn-secondary" id="btn-bj-hit">HIT</button>
+                    <button class="btn btn-secondary" id="btn-bj-stand">STAND</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW GAME 13: High-Low Math Dice Roller Layout -->
+        <div id="dice-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box matrix-bg">
+                    <div id="dice-result-output">--</div>
+                </div>
+                <div class="input-selection-group">
+                    <label class="radio-label"><input type="radio" name="dice-choice" value="Over" checked> Roll Over 50</label>
+                    <label class="radio-label"><input type="radio" name="dice-choice" value="Under"> Roll Under 50</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW GAME 14: Multi-Multiplier Risk Wheel Layout -->
+        <div id="wheel-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="arena-display-box wheel-bg pointer-indicator">
+                    <div id="wheel-spinner-output" style="transition: transform 1.5s cubic-bezier(0.1, 0.8, 0.1, 1);">🎡</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW GAME 15: Horizontal Cascade Plinko Layout -->
+        <div id="plinko-arena" class="game-window hidden">
+            <div class="game-card">
+                <div class="plinko-pyramid" id="plinko-display-board">
+                    <!-- Drop simulation rows -->
+                    <div class="plinko-node">●</div>
+                </div>
+            </div>
+        </div>
+        
         <!-- System Message Box Display -->
         <div class="message-container">
             <p id="system-message">Select a gaming layout and enter your parameters...</p>
