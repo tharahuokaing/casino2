@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Royale - Slots</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="casino-container">
+        <header>
+            <h1>🎰 CASINO ROYALE 🎰</h1>
+        </header>
+
+        <div class="dashboard">
+            <div class="display-box">
+                <span class="label">Balance</span>
+                <span id="balance-display">$1,000</span>
+            </div>
+            <div class="display-box">
+                <span class="label">Current Bet</span>
+                <span id="bet-display">$10</span>
+            </div>
+            <div class="display-box">
+                <span class="label">Last Win</span>
+                <span id="win-display">$0</span>
+            </div>
+        </div>
+
+        <div class="slot-machine">
+            <div class="reel-container">
+                <div class="reel" id="reel1">🍒</div>
+                <div class="reel" id="reel2">🍋</div>
+                <div class="reel" id="reel3">🍊</div>
+            </div>
+        </div>
+
+        <div class="message-container">
+            <p id="system-message">Place your bet and spin the reels!</p>
+        </div>
+
+        <div class="controls">
+            <div class="bet-adjusters">
+                <button class="btn btn-secondary" id="btn-decrease-bet">- Decrease</button>
+                <button class="btn btn-secondary" id="btn-increase-bet">+ Increase</button>
+            </div>
+            <button class="btn btn-primary" id="btn-spin">SPIN</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
