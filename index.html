@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imperial Cyber Casino - 10 Game Deck</title>
+    <title>Imperial Cyber Casino - 11 Game Deck</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,6 +21,7 @@
             <button class="nav-btn" id="tab-rps">RPS</button>
             <button class="nav-btn" id="tab-mines">Mines</button>
             <button class="nav-btn" id="tab-blackjack">Blackjack</button>
+            <button class="nav-btn" id="tab-baccarat">Baccarat</button>
             <button class="nav-btn" id="tab-dice">Dice</button>
             <button class="nav-btn" id="tab-wheel">Wheel</button>
             <button class="nav-btn" id="tab-plinko">Plinko</button>
@@ -43,30 +44,30 @@
         </div>
 
         <!-- SYSTEM AUDIO HARDWARE MODULE -->
-<div class="audio-hardware-controller">
-    <div class="audio-track-info">
-        <div class="audio-spectrometer">
-            <span class="spectro-bar"></span>
-            <span class="spectro-bar"></span>
-            <span class="spectro-bar"></span>
-            <span class="spectro-bar"></span>
+        <div class="audio-hardware-controller">
+            <div class="audio-track-info">
+                <div class="audio-spectrometer">
+                    <span class="spectro-bar"></span>
+                    <span class="spectro-bar"></span>
+                    <span class="spectro-bar"></span>
+                    <span class="spectro-bar"></span>
+                </div>
+                <span id="current-track-title">CC_V7_AMBIENT.MP3</span>
+            </div>
+            
+            <div class="audio-controls-group">
+                <!-- Hidden audio element for background looping -->
+                <audio id="core-bg-sound" loop src="assets/audio/ambient_matrix.mp3"></audio>
+                
+                <button id="btn-audio-toggle" class="audio-node-btn" onclick="toggleSystemAudio()">
+                    <span class="audio-icon">▶</span>
+                </button>
+                
+                <div class="volume-slider-container">
+                    <input type="range" id="sys-volume" min="0" max="100" value="50" oninput="adjustSystemVolume(this.value)">
+                </div>
+            </div>
         </div>
-        <span id="current-track-title">CC_V7_AMBIENT.MP3</span>
-    </div>
-    
-    <div class="audio-controls-group">
-        <!-- Hidden audio element for background looping -->
-        <audio id="core-bg-sound" loop src="assets/audio/ambient_matrix.mp3"></audio>
-        
-        <button id="btn-audio-toggle" class="audio-node-btn" onclick="toggleSystemAudio()">
-            <span class="audio-icon">▶</span>
-        </button>
-        
-        <div class="volume-slider-container">
-            <input type="range" id="sys-volume" min="0" max="100" value="50" oninput="adjustSystemVolume(this.value)">
-        </div>
-    </div>
-</div>
 
         <!-- GAME CONTAINER REGIONS -->
         
@@ -160,6 +161,70 @@
             </div>
         </div>
 
+        <!-- GAME 11: NEO-BACCARAT CYBER-SUITE -->
+        <div id="baccarat-arena" class="game-window hidden">
+            <div class="game-card">
+                <!-- Mini Status Header -->
+                <div class="bj-row" style="margin-bottom: 12px; display: flex; justify-content: space-between;">
+                    <span>TABLE #07 // DECK-MATRIX: 8</span>
+                    <div class="status-indicator"></div>
+                </div>
+
+                <!-- Baccarat Table Arena Grid -->
+                <div class="arena-display-box baccarat-table">
+                    <!-- Player Sector -->
+                    <div class="baccarat-sector player-sector">
+                        <div class="sector-label">PLAYER <span id="bac-player-score" class="score-badge">0</span></div>
+                        <div id="bac-player-cards" class="card-row">
+                            <div class="bj-card-element">?</div>
+                        </div>
+                    </div>
+
+                    <!-- Center Divider Laser Vector -->
+                    <div class="table-vector-line"></div>
+
+                    <!-- Banker Sector -->
+                    <div class="baccarat-sector banker-sector">
+                        <div class="sector-label">BANKER <span id="bac-banker-score" class="score-badge">0</span></div>
+                        <div id="bac-banker-cards" class="card-row">
+                            <div class="bj-card-element">?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Trend Analytics (Big Road Emulation Matrix) -->
+                <div class="baccarat-trend-bar">
+                    <span class="label">TREND LOGGER:</span>
+                    <div id="bac-trend-history" class="trend-grid">
+                        <span class="trend-dot player">P</span>
+                        <span class="trend-dot banker">B</span>
+                        <span class="trend-dot tie">T</span>
+                    </div>
+                </div>
+
+                <!-- Tactical Target Allocation Selection Group -->
+                <div class="input-selection-group baccarat-bet-zones">
+                    <input type="radio" id="bac-bet-player" name="bac-target" value="PLAYER" checked hidden>
+                    <label for="bac-bet-player" class="bet-zone-btn player-zone">
+                        <span class="zone-name">PLAYER</span>
+                        <span class="payout-ratio">1 : 1</span>
+                    </label>
+
+                    <input type="radio" id="bac-bet-tie" name="bac-target" value="TIE" hidden>
+                    <label for="bac-bet-tie" class="bet-zone-btn tie-zone">
+                        <span class="zone-name">TIE</span>
+                        <span class="payout-ratio">8 : 1</span>
+                    </label>
+
+                    <input type="radio" id="bac-bet-banker" name="bac-target" value="BANKER" hidden>
+                    <label for="bac-bet-banker" class="bet-zone-btn banker-zone">
+                        <span class="zone-name">BANKER</span>
+                        <span class="payout-ratio">0.95 : 1</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <!-- GAME 8: High-Low Math Dice Roller Layout -->
         <div id="dice-arena" class="game-window hidden">
             <div class="game-card">
@@ -192,69 +257,6 @@
             </div>
         </div>
 
-        <!-- GAME 11: NEO-BACCARAT CYBER-SUITE -->
-<div id="game-baccarat-card" class="game-card hidden">
-    <!-- Mini Status Header -->
-    <div class="bj-row" style="margin-bottom: 12px; display: flex; justify-content: space-between;">
-        <span>TABLE #07 // DECK-MATRIX: 8</span>
-        <div class="status-indicator"></div>
-    </div>
-
-    <!-- Baccarat Table Arena Grid -->
-    <div class="arena-display-box baccarat-table">
-        <!-- Player Sector -->
-        <div class="baccarat-sector player-sector">
-            <div class="sector-label">PLAYER <span id="bac-player-score" class="score-badge">0</span></div>
-            <div id="bac-player-cards" class="card-row">
-                <!-- Cards render dynamically via js engine -->
-                <div class="bj-card-element">?</div>
-            </div>
-        </div>
-
-        <!-- Center Divider Laser Vector -->
-        <div class="table-vector-line"></div>
-
-        <!-- Banker Sector -->
-        <div class="baccarat-sector banker-sector">
-            <div class="sector-label">BANKER <span id="bac-banker-score" class="score-badge">0</span></div>
-            <div id="bac-banker-cards" class="card-row">
-                <!-- Cards render dynamically via js engine -->
-                <div class="bj-card-element">?</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dynamic Trend Analytics (Big Road Emulation Matrix) -->
-    <div class="baccarat-trend-bar">
-        <span class="label">TREND LOGGER:</span>
-        <div id="bac-trend-history" class="trend-grid">
-            <span class="trend-dot player">P</span>
-            <span class="trend-dot banker">B</span>
-            <span class="trend-dot tie">T</span>
-        </div>
-    </div>
-
-    <!-- Tactical Target Allocation Selection Group -->
-    <div class="input-selection-group baccarat-bet-zones">
-        <input type="radio" id="bac-bet-player" name="bac-target" value="PLAYER" checked hidden>
-        <label for="bac-bet-player" class="bet-zone-btn player-zone">
-            <span class="zone-name">PLAYER</span>
-            <span class="payout-ratio">1 : 1</span>
-        </label>
-
-        <input type="radio" id="bac-bet-tie" name="bac-target" value="TIE" hidden>
-        <label for="bac-bet-tie" class="bet-zone-btn tie-zone">
-            <span class="zone-name">TIE</span>
-            <span class="payout-ratio">8 : 1</span>
-        </label>
-
-        <input type="radio" id="bac-bet-banker" name="bac-target" value="BANKER" hidden>
-        <label for="bac-bet-banker" class="bet-zone-btn banker-zone">
-            <span class="zone-name">BANKER</span>
-            <span class="payout-ratio">0.95 : 1</span>
-        </label>
-    </div>
-</div>
         <!-- System Message Box Display -->
         <div class="message-container">
             <p id="system-message">Select a gaming layout and enter your parameters...</p>
