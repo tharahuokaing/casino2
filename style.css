@@ -857,4 +857,136 @@ This module introduces structural framing tweaks, high-visibility winning alerts
     opacity: 0.7;
 }
 
-```
+/* ==========================================================================
+   11. SYSTEM AUDIO HARDWARE MODULE STYLES
+   ========================================================================== */
+.audio-hardware-controller {
+    background: #030508;
+    border: 1px solid var(--border-grey);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.audio-track-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#current-track-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Audio Dynamic Spectrometer Modification */
+.audio-spectrometer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px;
+    width: 16px;
+}
+
+.spectro-bar {
+    width: 2px;
+    background-color: var(--text-muted);
+    border-radius: 1px;
+    height: 3px;
+    transition: height 0.1s ease;
+}
+
+/* Active State Engine Hooks triggered by JavaScript class injection */
+.audio-active #current-track-title {
+    color: var(--neon-green);
+    text-shadow: 0 0 6px var(--green-glow);
+}
+
+.audio-active .spectro-bar {
+    background-color: var(--neon-green);
+    animation: barBounce 0.5s ease-in-out infinite alternate;
+}
+.audio-active .spectro-bar:nth-child(2) { animation-delay: 0.1s; animation-duration: 0.3s; }
+.audio-active .spectro-bar:nth-child(3) { animation-delay: 0.2s; animation-duration: 0.6s; }
+.audio-active .spectro-bar:nth-child(4) { animation-delay: 0.05s; animation-duration: 0.4s; }
+
+@keyframes barBounce {
+    0% { height: 2px; }
+    100% { height: 12px; box-shadow: 0 0 4px var(--neon-green); }
+}
+
+/* Interface Node Controller Buttons */
+.audio-controls-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.audio-node-btn {
+    background: #141b24;
+    border: 1px solid var(--border-grey);
+    color: var(--gold);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    transition: all 0.15s ease;
+}
+
+.audio-node-btn:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 8px var(--gold-glow);
+}
+
+.audio-active .audio-node-btn {
+    background: rgba(0, 255, 204, 0.1);
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    box-shadow: 0 0 8px var(--green-glow);
+}
+
+/* Linear Volumetric Sliders */
+.volume-slider-container {
+    display: flex;
+    align-items: center;
+}
+
+#sys-volume {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 60px;
+    height: 3px;
+    background: var(--border-grey);
+    border-radius: 2px;
+    outline: none;
+}
+
+#sys-volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    box-shadow: 0 0 4px var(--gold-glow);
+    transition: transform 0.1s ease;
+}
+
+#sys-volume::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: var(--neon-green);
+}
