@@ -42,6 +42,32 @@
             </div>
         </div>
 
+        <!-- SYSTEM AUDIO HARDWARE MODULE -->
+<div class="audio-hardware-controller">
+    <div class="audio-track-info">
+        <div class="audio-spectrometer">
+            <span class="spectro-bar"></span>
+            <span class="spectro-bar"></span>
+            <span class="spectro-bar"></span>
+            <span class="spectro-bar"></span>
+        </div>
+        <span id="current-track-title">CC_V7_AMBIENT.MP3</span>
+    </div>
+    
+    <div class="audio-controls-group">
+        <!-- Hidden audio element for background looping -->
+        <audio id="core-bg-sound" loop src="assets/audio/ambient_matrix.mp3"></audio>
+        
+        <button id="btn-audio-toggle" class="audio-node-btn" onclick="toggleSystemAudio()">
+            <span class="audio-icon">▶</span>
+        </button>
+        
+        <div class="volume-slider-container">
+            <input type="range" id="sys-volume" min="0" max="100" value="50" oninput="adjustSystemVolume(this.value)">
+        </div>
+    </div>
+</div>
+
         <!-- GAME CONTAINER REGIONS -->
         
         <!-- GAME 1: Slots Engine Layout -->
