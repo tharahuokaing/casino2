@@ -235,3 +235,257 @@ header h1 {
 
 .btn-secondary { background-color: #1f2833; color: #fff; border: 1px solid #45a29e; }
 .btn-danger { background-color: var(--matrix-red); color: white; box-shadow: 0 0 10px var(--matrix-red); }
+
+:root {
+    --bg-color: #0c0f12;
+    --card-bg: #171d24;
+    --gold: #dfb15b;
+    --neon-green: #00ffcc;
+    --text-light: #ffffff;
+    --text-muted: #8f96a3;
+    --matrix-red: #ff3860;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.casino-container {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(223, 177, 91, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    width: 480px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    margin-top: 0;
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+
+/* 10-Game Navigation Grid Matrix */
+.game-nav-matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    background-color: rgba(0,0,0,0.3);
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.nav-row {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-btn {
+    background: #232b35;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex: 1;
+    transition: 0.1s ease;
+}
+
+.nav-btn.active {
+    background-color: var(--gold);
+    color: #000;
+}
+
+.hidden { display: none !important; }
+
+/* Dashboard Core Layout */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 6px;
+}
+
+.display-box {
+    background: #090d12;
+    border-radius: 6px;
+    padding: 8px;
+    flex: 1;
+    text-align: center;
+}
+
+.display-box .label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.display-box span:not(.label) {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--neon-green);
+}
+
+/* Master Engine Shared Layout Cards */
+.game-card {
+    background: #090d12;
+    border: 1px solid #232b35;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.arena-display-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #020406;
+    padding: 16px;
+    border-radius: 6px;
+    min-height: 70px;
+}
+
+.input-selection-group {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+}
+
+/* Internal Mechanics Assets Elements Layout */
+.reel {
+    background-color: #fff;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 4px;
+    color: #000;
+}
+
+.coin-graphic { font-size: 3rem; }
+.matrix-bg { color: var(--neon-green); font-size: 2rem; font-weight: bold; }
+.matrix-bg.crashed { color: var(--matrix-red) !important; }
+
+.wheel-bg {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: radial-gradient(circle, #222 30%, #000 70%);
+    text-align: center;
+}
+
+.split-display { font-size: 1.3rem; font-weight: bold; }
+#roulette-target-input {
+    width: 50px; background: #000; border: 1px solid var(--gold);
+    color: var(--neon-green); padding: 4px; text-align: center; border-radius: 4px;
+}
+
+/* Game 6: Mines Tactical Layout Grid Grid */
+.mines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.mine-tile {
+    background: #232b35;
+    height: 60px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+
+.mine-tile.revealed-safe { background: rgba(0, 255, 204, 0.1); border-color: var(--neon-green); color: var(--neon-green); }
+.mine-tile.revealed-mine { background: rgba(255, 56, 96, 0.1); border-color: var(--matrix-red); }
+
+/* Game 7: Blackjack Element Engine Layout */
+.bj-display {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 5px;
+}
+
+.bj-row {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+.bj-row span { color: #fff; }
+.card-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    min-height: 45px;
+}
+
+.bj-card-element {
+    background: #fff;
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Game 10: Plinko Component Structures Layout */
+.plinko-pyramid {
+    text-align: center;
+    padding: 10px;
+    background: #020406;
+    border-radius: 6px;
+}
+
+.plinko-node { font-size: 1.5rem; color: var(--gold); }
+.plinko-path-display { font-size: 1rem; letter-spacing: 4px; color: var(--text-muted); margin: 8px 0; }
+.plinko-bins { display: flex; justify-content: center; gap: 4px; font-weight: bold; font-size: 0.8rem; }
+.plinko-bin { background: #232b35; padding: 4px 6px; border-radius: 3px; color: var(--neon-green); }
+
+/* Master Platform Execution Configurations Layout */
+.message-container { height: 36px; margin-bottom: 12px; text-align: center; }
+#system-message { color: var(--gold); font-weight: 600; margin: 0; font-size: 0.85rem; }
+.controls { display: flex; flex-direction: column; gap: 8px; }
+.bet-adjusters { display: flex; gap: 6px; }
+
+.btn {
+    border: none; padding: 10px; font-size: 0.85rem; font-weight: bold;
+    border-radius: 4px; cursor: pointer; font-family: inherit; flex: 1;
+}
+
+.btn-primary { background-color: var(--gold); color: #000; font-size: 1rem; }
+.btn-primary:disabled { background-color: #232b35; color: #555; cursor: not-allowed; }
+.btn-secondary { background-color: #171d24; color: #fff; border: 1px solid #232b35; }
+.btn-danger { background-color: var(--matrix-red); color: white; }
