@@ -990,3 +990,129 @@ This module introduces structural framing tweaks, high-visibility winning alerts
     transform: scale(1.2);
     background: var(--neon-green);
 }
+
+/* ==========================================================================
+   12. NEO-BACCARAT CORE UI ENGINE STYLES
+   ========================================================================== */
+.baccarat-table {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    padding: 14px 10px !important;
+}
+
+.baccarat-sector {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sector-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.score-badge {
+    background: #141b24;
+    border: 1px solid var(--border-grey);
+    color: var(--neon-green) !important;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem !important;
+}
+
+.table-vector-line {
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--border-grey), transparent);
+    margin: 0 10px;
+}
+
+/* Big Road Trend Analytics Track */
+.baccarat-trend-bar {
+    margin-top: 12px;
+    background: #030508;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.baccarat-trend-bar .label {
+    font-size: 0.58rem;
+    color: var(--text-muted);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.trend-grid {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+}
+
+.trend-dot {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.65rem;
+    font-weight: 900;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    border-radius: 50%;
+}
+.trend-dot.player { background: rgba(0, 153, 255, 0.15); color: var(--cyber-blue); border: 1px solid var(--cyber-blue); }
+.trend-dot.banker { background: rgba(223, 177, 91, 0.15); color: var(--gold); border: 1px solid var(--gold); }
+.trend-dot.tie    { background: rgba(0, 255, 204, 0.15); color: var(--neon-green); border: 1px solid var(--neon-green); }
+
+/* Interactive Bet Zone Allocation Matrix */
+.baccarat-bet-zones {
+    display: flex;
+    width: 100%;
+    gap: 6px !important;
+    margin-top: 14px;
+}
+
+.bet-zone-btn {
+    flex: 1;
+    background: #121820;
+    border: 1px solid var(--border-grey) !important;
+    border-radius: 6px !important;
+    padding: 10px 4px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bet-zone-btn .zone-name {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+}
+
+.bet-zone-btn .payout-ratio {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.62rem;
+    color: var(--text-muted);
+}
+
+/* Input Checked Glow Targets Trigger States */
+#bac-bet-player:checked + .player-zone { border-color: var(--cyber-blue) !important; background: rgba(0, 153, 255, 0.04); box-shadow: 0 0 10px rgba(0, 153, 255, 0.15); }
+#bac-bet-tie:checked + .tie-zone       { border-color: var(--neon-green) !important; background: rgba(0, 255, 204, 0.04); box-shadow: 0 0 10px rgba(0, 255, 204, 0.15); }
+#bac-bet-banker:checked + .banker-zone { border-color: var(--gold) !important; background: rgba(223, 177, 91, 0.04); box-shadow: 0 0 10px rgba(223, 177, 91, 0.15); }
+
+#bac-bet-player:checked + .player-zone .zone-name { color: var(--cyber-blue); }
+#bac-bet-tie:checked + .tie-zone .zone-name       { color: var(--neon-green); }
+#bac-bet-banker:checked + .banker-zone .zone-name { color: var(--gold); }
