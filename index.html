@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Imperial Cyber Casino - 11 Game Deck with Slots, Coin Flip, Crash, Roulette, and more">
     <title>Imperial Cyber Casino - 11 Game Deck</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,22 +14,22 @@
         </header>
 
         <!-- Dynamic Game Scroller Navigation -->
-        <div class="game-nav">
-            <button class="nav-btn active" id="tab-slots">Slots</button>
-            <button class="nav-btn" id="tab-coin">Coin Flip</button>
-            <button class="nav-btn" id="tab-crash">Crash</button>
-            <button class="nav-btn" id="tab-roulette">Roulette</button>
-            <button class="nav-btn" id="tab-rps">RPS</button>
-            <button class="nav-btn" id="tab-mines">Mines</button>
-            <button class="nav-btn" id="tab-blackjack">Blackjack</button>
-            <button class="nav-btn" id="tab-baccarat">Baccarat</button>
-            <button class="nav-btn" id="tab-dice">Dice</button>
-            <button class="nav-btn" id="tab-wheel">Wheel</button>
-            <button class="nav-btn" id="tab-plinko">Plinko</button>
-        </div>
+        <nav class="game-nav" role="tablist">
+            <button class="nav-btn active" id="tab-slots" role="tab" aria-selected="true" aria-controls="slots-arena">Slots</button>
+            <button class="nav-btn" id="tab-coin" role="tab" aria-selected="false" aria-controls="coin-arena">Coin Flip</button>
+            <button class="nav-btn" id="tab-crash" role="tab" aria-selected="false" aria-controls="crash-arena">Crash</button>
+            <button class="nav-btn" id="tab-roulette" role="tab" aria-selected="false" aria-controls="roulette-arena">Roulette</button>
+            <button class="nav-btn" id="tab-rps" role="tab" aria-selected="false" aria-controls="rps-arena">RPS</button>
+            <button class="nav-btn" id="tab-mines" role="tab" aria-selected="false" aria-controls="mines-arena">Mines</button>
+            <button class="nav-btn" id="tab-blackjack" role="tab" aria-selected="false" aria-controls="blackjack-arena">Blackjack</button>
+            <button class="nav-btn" id="tab-baccarat" role="tab" aria-selected="false" aria-controls="baccarat-arena">Baccarat</button>
+            <button class="nav-btn" id="tab-dice" role="tab" aria-selected="false" aria-controls="dice-arena">Dice</button>
+            <button class="nav-btn" id="tab-wheel" role="tab" aria-selected="false" aria-controls="wheel-arena">Wheel</button>
+            <button class="nav-btn" id="tab-plinko" role="tab" aria-selected="false" aria-controls="plinko-arena">Plinko</button>
+        </nav>
 
         <!-- Master Statistics Dashboard -->
-        <div class="dashboard">
+        <div class="dashboard" role="region" aria-label="Game Statistics">
             <div class="display-box">
                 <span class="label">Balance</span>
                 <span id="balance-display">$1,000</span>
@@ -44,7 +45,7 @@
         </div>
 
         <!-- SYSTEM AUDIO HARDWARE MODULE -->
-        <div class="audio-hardware-controller">
+        <div class="audio-hardware-controller" role="region" aria-label="Audio Controls">
             <div class="audio-track-info">
                 <div class="audio-spectrometer">
                     <span class="spectro-bar"></span>
@@ -52,19 +53,18 @@
                     <span class="spectro-bar"></span>
                     <span class="spectro-bar"></span>
                 </div>
-                <span id="current-track-title">song.mp3</span>
+                <span id="current-track-title">Ambient Matrix</span>
             </div>
             
             <div class="audio-controls-group">
-                <!-- Hidden audio element for background looping -->
-                <audio id="core-bg-sound" loop src="assets/audio/ambient_matrix.mp3"></audio>
+                <audio id="core-bg-sound" loop src="assets/audio/ambient_matrix.mp3" aria-label="Background music"></audio>
                 
-                <button id="btn-audio-toggle" class="audio-node-btn" onclick="toggleSystemAudio()">
+                <button id="btn-audio-toggle" class="audio-node-btn" aria-label="Toggle audio" aria-pressed="true">
                     <span class="audio-icon">▶</span>
                 </button>
                 
                 <div class="volume-slider-container">
-                    <input type="range" id="sys-volume" min="0" max="100" value="50" oninput="adjustSystemVolume(this.value)">
+                    <input type="range" id="sys-volume" min="0" max="100" value="50" aria-label="Volume control">
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
         <!-- GAME CONTAINER REGIONS -->
         
         <!-- GAME 1: Slots Engine Layout -->
-        <div id="slots-arena" class="game-window">
+        <div id="slots-arena" class="game-window" role="tabpanel" aria-labelledby="tab-slots">
             <div class="game-card">
                 <div class="arena-display-box">
                     <div class="reel" id="reel1">🍒</div>
@@ -83,7 +83,7 @@
         </div>
 
         <!-- GAME 2: Coin Flip Engine Layout -->
-        <div id="coin-arena" class="game-window hidden">
+        <div id="coin-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-coin">
             <div class="game-card">
                 <div class="arena-display-box">
                     <div class="coin-graphic" id="coin-element">🪙</div>
@@ -96,7 +96,7 @@
         </div>
 
         <!-- GAME 3: Crash Multiplier Engine Layout -->
-        <div id="crash-arena" class="game-window hidden">
+        <div id="crash-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-crash">
             <div class="game-card">
                 <div class="arena-display-box matrix-bg">
                     <div id="crash-multiplier-output">1.00x</div>
@@ -108,20 +108,20 @@
         </div>
 
         <!-- GAME 4: Roulette Engine Layout -->
-        <div id="roulette-arena" class="game-window hidden">
+        <div id="roulette-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-roulette">
             <div class="game-card">
                 <div class="arena-display-box wheel-bg">
                     <div id="roulette-ball-output">00</div>
                 </div>
                 <div class="input-selection-group">
                     <span class="text-label-inline">Pick Target Number (0-36):</span>
-                    <input type="number" id="roulette-target-input" min="0" max="36" value="7">
+                    <input type="number" id="roulette-target-input" min="0" max="36" value="7" aria-label="Roulette target number">
                 </div>
             </div>
         </div>
 
         <!-- GAME 5: Rock Paper Scissors Engine Layout -->
-        <div id="rps-arena" class="game-window hidden">
+        <div id="rps-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-rps">
             <div class="game-card">
                 <div class="arena-display-box split-display">
                     <div>🧑 <span id="rps-player-node">?</span></div>
@@ -136,10 +136,10 @@
         </div>
 
         <!-- GAME 6: Mines Grid Engine Layout -->
-        <div id="mines-arena" class="game-window hidden">
+        <div id="mines-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-mines">
             <div class="game-card">
-                <div class="mines-grid" id="mines-board">
-                    <!-- Javascript builds dynamically (3x3 tactical space) -->
+                <div class="mines-grid" id="mines-board" aria-label="Mines game grid">
+                    <!-- JavaScript builds dynamically (3x3 tactical space) -->
                 </div>
                 <div class="input-selection-group">
                     <button class="btn btn-danger hidden" id="btn-mines-cashout">CASH OUT MINES</button>
@@ -148,7 +148,7 @@
         </div>
 
         <!-- GAME 7: Simplified Blackjack Deck Layout -->
-        <div id="blackjack-arena" class="game-window hidden">
+        <div id="blackjack-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-blackjack">
             <div class="game-card">
                 <div class="bj-display">
                     <div class="bj-row">🤖 Dealer: <span id="bj-dealer-score">0</span> <div class="card-row" id="bj-dealer-cards"></div></div>
@@ -161,8 +161,8 @@
             </div>
         </div>
 
-        <!-- GAME 11: NEO-BACCARAT CYBER-SUITE -->
-        <div id="baccarat-arena" class="game-window hidden">
+        <!-- GAME 8: NEO-BACCARAT CYBER-SUITE -->
+        <div id="baccarat-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-baccarat">
             <div class="game-card">
                 <!-- Mini Status Header -->
                 <div class="bj-row" style="margin-bottom: 12px; display: flex; justify-content: space-between;">
@@ -225,8 +225,8 @@
             </div>
         </div>
 
-        <!-- GAME 8: High-Low Math Dice Roller Layout -->
-        <div id="dice-arena" class="game-window hidden">
+        <!-- GAME 9: High-Low Math Dice Roller Layout -->
+        <div id="dice-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-dice">
             <div class="game-card">
                 <div class="arena-display-box matrix-bg">
                     <div id="dice-result-output">--</div>
@@ -238,8 +238,8 @@
             </div>
         </div>
 
-        <!-- GAME 9: Multi-Multiplier Risk Wheel Layout -->
-        <div id="wheel-arena" class="game-window hidden">
+        <!-- GAME 10: Multi-Multiplier Risk Wheel Layout -->
+        <div id="wheel-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-wheel">
             <div class="game-card">
                 <div class="arena-display-box wheel-bg pointer-indicator">
                     <div id="wheel-spinner-output" style="transition: transform 1.5s cubic-bezier(0.1, 0.8, 0.1, 1);">🎡</div>
@@ -247,10 +247,10 @@
             </div>
         </div>
 
-        <!-- GAME 10: Horizontal Cascade Plinko Layout -->
-        <div id="plinko-arena" class="game-window hidden">
+        <!-- GAME 11: Horizontal Cascade Plinko Layout -->
+        <div id="plinko-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-plinko">
             <div class="game-card">
-                <div class="plinko-pyramid" id="plinko-display-board">
+                <div class="plinko-pyramid" id="plinko-display-board" aria-label="Plinko game board">
                     <!-- Drop simulation rows -->
                     <div class="plinko-node">●</div>
                 </div>
@@ -258,24 +258,21 @@
         </div>
 
         <!-- System Message Box Display -->
-        <div class="message-container">
+        <div class="message-container" role="status" aria-live="polite">
             <p id="system-message">Select a gaming layout and enter your parameters...</p>
         </div>
 
         <!-- Global Operational Mechanics Controls -->
-        <div class="controls">
+        <div class="controls" role="region" aria-label="Game Controls">
             <div class="bet-adjusters">
-                <button class="btn btn-secondary" id="btn-decrease-bet">- Decrease</button>
-                <button class="btn btn-secondary" id="btn-increase-bet">+ Increase</button>
+                <button class="btn btn-secondary" id="btn-decrease-bet" aria-label="Decrease bet">- Decrease</button>
+                <button class="btn btn-secondary" id="btn-increase-bet" aria-label="Increase bet">+ Increase</button>
             </div>
             <button class="btn btn-primary" id="btn-action">SPIN REELS</button>
         </div>
     </div>
 
+    <!-- Consolidated and modular JavaScript -->
     <script src="script.js"></script>
-    <script src="script1.js"></script>
-    <script src="script2.js"></script>
-    <script src="script3.js"></script>
-    <script src="script4.js"></script>
 </body>
 </html>
