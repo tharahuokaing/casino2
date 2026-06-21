@@ -65,7 +65,6 @@ Plinko:       Variable (6 multipliers)
 ## 🤝 Credits
 
 **Developer:** Thara Huokaing  
-**Location:** Phnom Penh, Cambodia  
 **Project:** Imperial Cyber Casino  
 **Version:** 1.0.0  
 **Date:** June 22, 2026
