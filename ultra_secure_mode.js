@@ -1,31 +1,35 @@
-// 🛡️ LIMITED SECURE MODE - Block Inspect & View Source only
-(function() {
-  // Block specific keyboard shortcuts
-  document.addEventListener('keydown', e => {
-    const blocked =
-      e.key === 'F12' || // Inspect
-      (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') || // Inspect
-      (e.ctrlKey && e.key.toLowerCase() === 'u'); // View Source
+// 🛡️ ULTRA SECURE MODE - BLOCK ALL DEV TOOLS
+    (function() {
+      // Block right-click
+      document.addEventListener('contextmenu', e => {
+        e.preventDefault(); e.stopImmediatePropagation();
+        document.body.innerHTML = '<div style="background:black;color:#f00;font-family:monospace;text-align:center;padding-top:30vh;font-size:2em;">🚫 ACCESS DENIED</div>';
+        return false;
+      });
 
-    if (blocked) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      document.title = '🚫 INSPECT / VIEW SOURCE BLOCKED';
-      document.body.innerHTML =
-        '<div style="background:#000;color:#f00;font-family:monospace;text-align:center;padding-top:30vh;font-size:2em;">🚫 ACTION BLOCKED</div>';
-      return false;
-    }
-  }, true);
+      // Block ALL dev shortcuts
+      document.addEventListener('keydown', e => {
+        const blocked = ['F12', 'F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11',
+                        'KeyI', 'KeyU', 'KeyS', 'KeyC'].includes(e.code) ||
+                       (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) ||
+                       (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'));
+        if (blocked) {
+          e.preventDefault(); e.stopImmediatePropagation();
+          document.title = '🚫 SECURE MODE ACTIVE';
+          return false;
+        }
+      }, true);
 
-  // Allow right-click normally, but block if target is the page background
-  document.addEventListener('contextmenu', e => {
-    if (e.target === document.body) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      document.body.innerHTML =
-        '<div style="background:#000;color:#f00;font-family:monospace;text-align:center;padding-top:30vh;font-size:2em;">🚫 INSPECT BLOCKED</div>';
-      return false;
-    }
-    // Otherwise allow normal right-click menus
-  });
-})();
+      // DevTools detection loop
+      setInterval(() => {
+        if (window.outerHeight - window.innerHeight > 200 || 
+            window.outerWidth - window.innerWidth > 200 ||
+            (window.console && window.console.profiles)) {
+          document.body.innerHTML = '<div style="background:#000;color:#f00;font-family:monospace;text-align:center;padding-top:30vh;font-size:3em;">🕵️ DEVELOPER TOOLS DETECTED<br>DATA TERMINATED</div>';
+        }
+      }, 500);
+
+      // Disable text selection
+      document.addEventListener('selectstart', e => e.preventDefault());
+      document.addEventListener('dragstart', e => e.preventDefault());
+    })();
