@@ -3,8 +3,8 @@
 // ============================================
 
 // Global State
-let balance = 1000;
-let currentBet = 10;
+let balance = 1000000;
+let currentBet = 1000000;
 let lastWin = 0;
 let activeGame = 'slots';
 
