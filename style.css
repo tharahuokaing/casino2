@@ -1037,3 +1037,85 @@ input:focus,
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
 }
+
+/* ==========================================================================
+   12. ACTIVE STATE RETENTION & REFRESH BLOCKS
+   ========================================================================== */
+
+/* Structural Layout Preservations */
+.game-card, .arena-display-box {
+    will-change: transform, opacity;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Flash Glow Fixes for Dynamic Balance Value Mutations */
+#balance-display, #win-display, #bet-display {
+    transition: color 0.15s ease-in-out;
+}
+
+/* Persistent Decryption State Fixes for Video Poker Selection Matrix */
+.poker-card {
+    background: #05080c;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    width: 62px;
+    height: 84px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    margin: 0 3px;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.poker-card.held-lock {
+    border-color: var(--gold) !important;
+    background: rgba(223, 177, 91, 0.05) !important;
+    box-shadow: 0 0 12px rgba(223, 177, 91, 0.2);
+    transform: translateY(-4px);
+}
+
+.poker-card.held-lock::after {
+    content: 'HELD';
+    position: absolute;
+    bottom: 2px;
+    font-size: 0.5rem;
+    letter-spacing: 0.5px;
+    color: var(--gold);
+    font-weight: 900;
+}
+
+/* Action Lock States for Ongoing Async Rounds (Crash/Mines/Poker) */
+.btn:disabled {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:disabled::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.03), 
+        transparent
+    );
+    animation: loadingSweep 1.5s infinite linear;
+}
+
+@keyframes loadingSweep {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+       }
+                                               
