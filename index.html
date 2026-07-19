@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Imperial Cyber Casino - 11 Game Deck with Slots, Coin Flip, Crash, Roulette, and more">
+    <meta name="description" content="Imperial Cyber Casino - 15 Game Deck with Slots, Crash, Baccarat, Football Telemetry, and more">
     <title>HUOKAING THARA Casino 2</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,7 +14,7 @@
         </header>
 
         <!-- Dynamic Game Scroller Navigation -->
-        <nav class="game-nav" role="tablist">
+        <nav class="game-nav" role="tablist" aria-label="Casino Game Selection">
             <button class="nav-btn active" id="tab-slots" role="tab" aria-selected="true" aria-controls="slots-arena">Slots</button>
             <button class="nav-btn" id="tab-coin" role="tab" aria-selected="false" aria-controls="coin-arena">Coin Flip</button>
             <button class="nav-btn" id="tab-crash" role="tab" aria-selected="false" aria-controls="crash-arena">Crash</button>
@@ -26,6 +26,10 @@
             <button class="nav-btn" id="tab-dice" role="tab" aria-selected="false" aria-controls="dice-arena">Dice</button>
             <button class="nav-btn" id="tab-wheel" role="tab" aria-selected="false" aria-controls="wheel-arena">Wheel</button>
             <button class="nav-btn" id="tab-plinko" role="tab" aria-selected="false" aria-controls="plinko-arena">Plinko</button>
+            <button class="nav-btn" id="tab-football" role="tab" aria-selected="false" aria-controls="football-arena">Football Sim</button>
+            <button class="nav-btn" id="tab-keno" role="tab" aria-selected="false" aria-controls="keno-arena">Cyber Keno</button>
+            <button class="nav-btn" id="tab-fishing" role="tab" aria-selected="false" aria-controls="fishing-arena">Sonar Fishing</button>
+            <button class="nav-btn" id="tab-live-baccarat" role="tab" aria-selected="false" aria-controls="live-baccarat-arena">Live Baccarat</button>
         </nav>
 
         <!-- Master Statistics Dashboard -->
@@ -192,7 +196,7 @@
                     </div>
                 </div>
 
-                <!-- Dynamic Trend Analytics (Big Road Emulation Matrix) -->
+                <!-- Dynamic Trend Analytics -->
                 <div class="baccarat-trend-bar">
                     <span class="label">TREND LOGGER:</span>
                     <div id="bac-trend-history" class="trend-grid">
@@ -257,6 +261,265 @@
             </div>
         </div>
 
+        <!-- GAME 12: SOCCER SIMULATION & WORLD CUP TELEMETRY ARENA -->
+        <div id="football-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-football">
+            <div class="game-card">
+                <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener noreferrer" class="wc26-banner-link">
+                    <div class="wc26-telemetry-header">
+                        <div class="live-pulse-container">
+                            <span class="pulse-dot"></span>
+                            <span class="pulse-label">LIVE DATA LINK</span>
+                        </div>
+                        <span class="wc-route-text">FIFA WORLD CUP 2026™ // PORTAL ↗</span>
+                    </div>
+                    <div class="wc26-graphic-frame">
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=480&q=80" alt="FIFA World Cup 2026 Terminal Graphic" class="wc26-asset-img" loading="lazy">
+                        <div class="hologram-overlay-grid"></div>
+                    </div>
+                </a>
+
+                <div class="arena-display-box matrix-bg split-display football-pitch-simulation">
+                    <div class="team-sector Home">
+                        <span class="team-node">HOME</span>
+                        <span id="football-score-home" class="football-score-digit">0</span>
+                    </div>
+                    <div class="vs-divider-node">:</div>
+                    <div class="team-sector Away">
+                        <span class="team-node">AWAY</span>
+                        <span id="football-score-away" class="football-score-digit">0</span>
+                    </div>
+                </div>
+
+                <div class="baccarat-bet-zones football-bet-zones">
+                    <input type="radio" name="football-choice" id="fb-bet-home" value="Home" checked class="hidden">
+                    <label for="fb-bet-home" class="bet-zone-btn player-zone">
+                        <span class="zone-name">HOME WIN</span>
+                        <span class="payout-ratio">1.90x</span>
+                    </label>
+
+                    <input type="radio" name="football-choice" id="fb-bet-draw" value="Draw" class="hidden">
+                    <label for="fb-bet-draw" class="bet-zone-btn tie-zone">
+                        <span class="zone-name">DRAW LINK</span>
+                        <span class="payout-ratio">3.40x</span>
+                    </label>
+
+                    <input type="radio" name="football-choice" id="fb-bet-away" value="Away" class="hidden">
+                    <label for="fb-bet-away" class="bet-zone-btn banker-zone">
+                        <span class="zone-name">AWAY WIN</span>
+                        <span class="payout-ratio">2.10x</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 13: CYBER-KENO MATRIX ENGINE -->
+        <div id="keno-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-keno">
+            <div class="game-card">
+                <div class="audio-hardware-controller" style="margin-bottom: 10px;">
+                    <div class="audio-track-info">
+                        <span class="pulse-dot" style="background-color: var(--cyber-blue); box-shadow: 0 0 8px var(--cyber-blue);"></span>
+                        <span id="keno-selection-status" class="pulse-label">MATRIX INITIALIZED // 0 / 5 NODES ARMED</span>
+                    </div>
+                    <button id="btn-keno-clear" class="audio-node-btn" style="color: var(--alert-red); font-weight: bold; text-transform: uppercase;">[WIPE ARRAY]</button>
+                </div>
+
+                <div class="keno-matrix-grid">
+                    <div class="keno-node" data-value="1">01</div>
+                    <div class="keno-node" data-value="2">02</div>
+                    <div class="keno-node" data-value="3">03</div>
+                    <div class="keno-node" data-value="4">04</div>
+                    <div class="keno-node" data-value="5">05</div>
+                    <div class="keno-node" data-value="6">06</div>
+                    <div class="keno-node" data-value="7">07</div>
+                    <div class="keno-node" data-value="8">08</div>
+                    <div class="keno-node" data-value="9">09</div>
+                    <div class="keno-node" data-value="10">10</div>
+                    <div class="keno-node" data-value="11">11</div>
+                    <div class="keno-node" data-value="12">12</div>
+                    <div class="keno-node" data-value="13">13</div>
+                    <div class="keno-node" data-value="14">14</div>
+                    <div class="keno-node" data-value="15">15</div>
+                    <div class="keno-node" data-value="16">16</div>
+                    <div class="keno-node" data-value="17">17</div>
+                    <div class="keno-node" data-value="18">18</div>
+                    <div class="keno-node" data-value="19">19</div>
+                    <div class="keno-node" data-value="20">20</div>
+                </div>
+
+                <div class="baccarat-trend-bar" style="margin-top: 10px; justify-content: space-between;">
+                    <span class="label">HIT VECTOR MULTIPLIERS:</span>
+                    <div class="trend-grid keno-payout-manifest">
+                        <span class="trend-dot tie" style="width: auto; padding: 0 4px; border-radius: 4px;">1H: 2x</span>
+                        <span class="trend-dot player" style="width: auto; padding: 0 4px; border-radius: 4px;">2H: 5x</span>
+                        <span class="trend-dot banker" style="width: auto; padding: 0 4px; border-radius: 4px;">3H: 15x</span>
+                        <span class="trend-dot" style="width: auto; padding: 0 4px; border-radius: 4px; border: 1px solid var(--text-light); color: var(--text-light)">4H: 50x</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 14: CYBER-SONAR FISHING ARENA -->
+        <div id="fishing-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-fishing">
+            <div class="game-card">
+                <div class="audio-hardware-controller" style="margin-bottom: 10px;">
+                    <div class="audio-track-info">
+                        <span class="pulse-dot" style="background-color: var(--neon-green); box-shadow: 0 0 8px var(--neon-green);"></span>
+                        <span id="sonar-depth-telemetry" class="pulse-label">SONAR ACTIVE // DEPTH: 450M // ECO-SCAN IN PROGRESS</span>
+                    </div>
+                    <span class="wc-route-text" style="color: var(--gold);">REEL INTENSITY: LEVEL 3</span>
+                </div>
+
+                <div class="arena-display-box matrix-bg sonar-viewport-frame">
+                    <div class="sonar-sweep-line"></div>
+                    <div class="sonar-ping-target target-alpha" style="top: 25%; left: 40%;"></div>
+                    <div class="sonar-ping-target target-beta" style="top: 60%; left: 70%;"></div>
+                    <div class="sonar-ping-target target-gamma" style="top: 45%; left: 20%;"></div>
+                    
+                    <div class="sonar-readout-overlay">
+                        <span id="fishing-status-line">DEPLOY LINE TO INITIALIZE DATA STREAM</span>
+                        <div id="fishing-catch-display" class="hidden">
+                            <span class="fish-name-label">NEO-MARLIN</span>
+                            <span class="fish-weight-label">14.2 KG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="baccarat-bet-zones fishing-depth-selectors" style="margin-top: 10px; margin-bottom: 12px;">
+                    <input type="radio" name="fishing-depth" id="fish-zone-shallow" value="Shallow" checked class="hidden">
+                    <label for="fish-zone-shallow" class="bet-zone-btn player-zone">
+                        <span class="zone-name">SHALLOW WATER</span>
+                        <span class="payout-ratio">1.50x Payout</span>
+                    </label>
+
+                    <input type="radio" name="fishing-depth" id="fish-zone-reef" value="Reef" class="hidden">
+                    <label for="fish-zone-reef" class="bet-zone-btn tie-zone">
+                        <span class="zone-name">CORAL REEF</span>
+                        <span class="payout-ratio">2.80x Payout</span>
+                    </label>
+
+                    <input type="radio" name="fishing-depth" id="fish-zone-abyss" value="Abyss" class="hidden">
+                    <label for="fish-zone-abyss" class="bet-zone-btn banker-zone">
+                        <span class="zone-name">THE ABYSS</span>
+                        <span class="payout-ratio">8.50x Payout</span>
+                    </label>
+                </div>
+
+                <div class="fishing-manifest-container">
+                    <table class="fishing-spec-table">
+                        <thead>
+                            <tr>
+                                <th>TARGET SPECIES</th>
+                                <th>BIOME ZONE</th>
+                                <th>EST. WEIGHT</th>
+                                <th>MAX MULTIPLIER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row-shallow">
+                                <td class="spec-name">Cyber-Mackerel</td>
+                                <td>Shallow Water</td>
+                                <td>1.2 - 3.5 kg</td>
+                                <td class="mult-val text-cyan">2.2x</td>
+                            </tr>
+                            <tr class="row-reef">
+                                <td class="spec-name">Neon Anemone Fin</td>
+                                <td>Coral Reef</td>
+                                <td>4.0 - 12.8 kg</td>
+                                <td class="mult-val text-green">5.0x</td>
+                            </tr>
+                            <tr class="row-reef">
+                                <td class="spec-name">Prismatic Ray</td>
+                                <td>Coral Reef</td>
+                                <td>15.1 - 30.0 kg</td>
+                                <td class="mult-val text-green">12.0x</td>
+                            </tr>
+                            <tr class="row-abyss">
+                                <td class="spec-name">Hadopelagic Kraken</td>
+                                <td>The Abyss</td>
+                                <td>85.5 - 250+ kg</td>
+                                <td class="mult-val text-gold">75.0x</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME 15: LIVE CASINO BACCARAT ARENA WITH STUDIO DEALER -->
+        <div id="live-baccarat-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-live-baccarat">
+            <div class="game-card live-studio-card">
+                <div class="live-stream-viewport">
+                    <img src="https://luckystreaklive.com/wp-content/uploads/2023/06/Baccarat-dealer-female-jpg-1024x682.jpg" alt="Live Baccarat Studio Female Dealer" class="live-video-frame" loading="eager">
+                    <div class="stream-hologram-overlay"></div>
+                    <div class="stream-status-badge">
+                        <span class="live-pulse-dot"></span>
+                        <span class="telemetry-txt">STREAM HD // VIP TABLE #4 // DEALER: VALERIA</span>
+                    </div>
+                    <div class="audio-mic-level">
+                        <div class="mic-bar green"></div>
+                        <div class="mic-bar green"></div>
+                        <div class="mic-bar yellow"></div>
+                    </div>
+                </div>
+
+                <div class="arena-display-box matrix-bg baccarat-card-table">
+                    <div class="baccarat-side player-side">
+                        <div class="side-title">PLAYER</div>
+                        <div id="live-player-cards" class="card-node-holder">
+                            <div class="mini-card-face">♣ 8</div>
+                            <div class="mini-card-face">♠ A</div>
+                        </div>
+                        <div id="live-player-total" class="side-score-badge">9</div>
+                    </div>
+                    
+                    <div class="table-center-divider"></div>
+                    
+                    <div class="baccarat-side banker-side">
+                        <div class="side-title">BANKER</div>
+                        <div id="live-banker-cards" class="card-node-holder">
+                            <div class="mini-card-face">♥ 9</div>
+                            <div class="mini-card-face">♦ J</div>
+                        </div>
+                        <div id="live-banker-total" class="side-score-badge">9</div>
+                    </div>
+                </div>
+
+                <div class="baccarat-bet-zones real-baccarat-board">
+                    <input type="radio" name="live-bac-choice" id="l-bac-player" value="Player" checked class="hidden">
+                    <label for="l-bac-player" class="bet-zone-btn player-zone">
+                        <span class="zone-name">PLAYER</span>
+                        <span class="payout-ratio">PAYS 1:1</span>
+                    </label>
+
+                    <input type="radio" name="live-bac-choice" id="l-bac-tie" value="Tie" class="hidden">
+                    <label for="l-bac-tie" class="bet-zone-btn tie-zone">
+                        <span class="zone-name">TIE MATRIX</span>
+                        <span class="payout-ratio">PAYS 8:1</span>
+                    </label>
+
+                    <input type="radio" name="live-bac-choice" id="l-bac-banker" value="Banker" class="hidden">
+                    <label for="l-bac-banker" class="bet-zone-btn banker-zone">
+                        <span class="zone-name">BANKER</span>
+                        <span class="payout-ratio">PAYS 0.95:1</span>
+                    </label>
+                </div>
+
+                <div class="casino-chip-tray">
+                    <input type="radio" name="selected-chip-value" id="chip-1000000" value="1000000" checked class="hidden">
+                    <label for="chip-1000000" class="bet-chip token-blue">1000000</label>
+
+                    <input type="radio" name="selected-chip-value" id="chip-5000000" value="5000000" class="hidden">
+                    <label for="chip-5000000" class="bet-chip token-green">5000000</label>
+
+                    <input type="radio" name="selected-chip-value" id="chip-1500000" value="1500000" class="hidden">
+                    <label for="chip-1500000" class="bet-chip token-red">1500000</label>
+
+                    <input type="radio" name="selected-chip-value" id="chip-2500000" value="2500000" class="hidden">
+                    <label for="chip-2500000" class="bet-chip token-gold">2500000</label>
+                </div>
+            </div>
+        </div>
+
         <!-- System Message Box Display -->
         <div class="message-container" role="status" aria-live="polite">
             <p id="system-message">Select a gaming layout and enter your parameters...</p>
@@ -272,306 +535,7 @@
         </div>
     </div>
 
-        <!-- MODULE 12: SOCCER SIMULATION & WORLD CUP TELEMETRY ARENA -->
-<div id="football-arena" class="game-window hidden">
-    <div class="game-card">
-        
-        <!-- Live Tournament Header Link Anchor -->
-        <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="wc26-banner-link">
-            <div class="wc26-telemetry-header">
-                <div class="live-pulse-container">
-                    <span class="pulse-dot"></span>
-                    <span class="pulse-label">LIVE DATA LINK</span>
-                </div>
-                <span class="wc-route-text">FIFA WORLD CUP 2026™ // PORTAL ↗</span>
-            </div>
-            
-            <!-- Dynamic Hardware Branding Graphic Image Grid -->
-            <div class="wc26-graphic-frame">
-                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=480&q=80" 
-                     alt="FIFA World Cup 2026 Terminal Graphic" 
-                     class="wc26-asset-img" 
-                     loading="lazy">
-                <div class="hologram-overlay-grid"></div>
-            </div>
-        </a>
-
-        <!-- Tactical Simulation Display Core -->
-        <div class="arena-display-box matrix-bg split-display football-pitch-simulation">
-            <div class="team-sector Home">
-                <span class="team-node">HOME</span>
-                <span id="football-score-home" class="football-score-digit">0</span>
-            </div>
-            <div class="vs-divider-node">:</div>
-            <div class="team-sector Away">
-                <span class="team-node">AWAY</span>
-                <span id="football-score-away" class="football-score-digit">0</span>
-            </div>
-        </div>
-
-        <!-- System Wager Execution Zone Controls -->
-        <div class="baccarat-bet-zones football-bet-zones">
-            <input type="radio" name="football-choice" id="fb-bet-home" value="Home" checked class="hidden">
-            <label for="fb-bet-home" class="bet-zone-btn player-zone">
-                <span class="zone-name">HOME WIN</span>
-                <span class="payout-ratio">1.90x</span>
-            </label>
-
-            <input type="radio" name="football-choice" id="fb-bet-draw" value="Draw" class="hidden">
-            <label for="fb-bet-draw" class="bet-zone-btn tie-zone">
-                <span class="zone-name">DRAW LINK</span>
-                <span class="payout-ratio">3.40x</span>
-            </label>
-
-            <input type="radio" name="football-choice" id="fb-bet-away" value="Away" class="hidden">
-            <label for="fb-bet-away" class="bet-zone-btn banker-zone">
-                <span class="zone-name">AWAY WIN</span>
-                <span class="payout-ratio">2.10x</span>
-            </label>
-        </div>
-
-    </div>
-</div>
-
-        <!-- MODULE 13: CYBER-KENO MATRIX ENGINE -->
-<div id="keno-arena" class="game-window hidden">
-    <div class="game-card">
-        
-        <!-- Telemetry Status Header Bar -->
-        <div class="audio-hardware-controller" style="margin-bottom: 10px;">
-            <div class="audio-track-info">
-                <span class="pulse-dot" style="background-color: var(--cyber-blue); box-shadow: 0 0 8px var(--cyber-blue);"></span>
-                <span id="keno-selection-status" class="pulse-label">MATRIX INITIALIZED // 0 / 5 NODES ARMED</span>
-            </div>
-            <button id="btn-keno-clear" class="audio-node-btn" style="color: var(--alert-red); font-weight: bold; text-transform: uppercase; tracking-spacing: 0.5px;">[WIPE ARRAY]</button>
-        </div>
-
-        <!-- 20-Node Grid Viewport Data Array -->
-        <div class="keno-matrix-grid">
-            <!-- Programmatically generated via script or loop. Sample rows shown below: -->
-            <div class="keno-node" data-value="1">01</div>
-            <div class="keno-node" data-value="2">02</div>
-            <div class="keno-node" data-value="3">03</div>
-            <div class="keno-node" data-value="4">04</div>
-            <div class="keno-node" data-value="5">05</div>
-            <div class="keno-node" data-value="6">06</div>
-            <div class="keno-node" data-value="7">07</div>
-            <div class="keno-node" data-value="8">08</div>
-            <div class="keno-node" data-value="9">09</div>
-            <div class="keno-node" data-value="10">10</div>
-            <div class="keno-node" data-value="11">11</div>
-            <div class="keno-node" data-value="12">12</div>
-            <div class="keno-node" data-value="13">13</div>
-            <div class="keno-node" data-value="14">14</div>
-            <div class="keno-node" data-value="15">15</div>
-            <div class="keno-node" data-value="16">16</div>
-            <div class="keno-node" data-value="17">17</div>
-            <div class="keno-node" data-value="18">18</div>
-            <div class="keno-node" data-value="19">19</div>
-            <div class="keno-node" data-value="20">20</div>
-        </div>
-
-        <!-- Dynamic Multiplier Paytable Telemetry -->
-        <div class="baccarat-trend-bar" style="margin-top: 10px; justify-content: space-between;">
-            <span class="label">HIT VECTOR MULTIPLIERS:</span>
-            <div class="trend-grid keno-payout-manifest">
-                <span class="trend-dot tie" style="width: auto; padding: 0 4px; border-radius: 4px;">1H: 2x</span>
-                <span class="trend-dot player" style="width: auto; padding: 0 4px; border-radius: 4px;">2H: 5x</span>
-                <span class="trend-dot banker" style="width: auto; padding: 0 4px; border-radius: 4px;">3H: 15x</span>
-                <span class="trend-dot" style="width: auto; padding: 0 4px; border-radius: 4px; border: 1px solid var(--text-light); color: var(--text-light)">4H: 50x</span>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-        <!-- MODULE 14: CYBER-SONAR FISHING ARENA -->
-<div id="fishing-arena" class="game-window hidden">
-    <div class="game-card">
-        
-        <!-- Live Deep-Sea Telemetry Header Bar -->
-        <div class="audio-hardware-controller" style="margin-bottom: 10px;">
-            <div class="audio-track-info">
-                <span class="pulse-dot" style="background-color: var(--neon-green); box-shadow: 0 0 8px var(--neon-green);"></span>
-                <span id="sonar-depth-telemetry" class="pulse-label">SONAR ACTIVE // DEPTH: 450M // ECO-SCAN IN PROGRESS</span>
-            </div>
-            <span class="wc-route-text" style="color: var(--gold);">REEL INTENSITY: LEVEL 3</span>
-        </div>
-
-        <!-- Dynamic Sonar Display Radar Viewport -->
-        <div class="arena-display-box matrix-bg sonar-viewport-frame">
-            <div class="sonar-sweep-line"></div>
-            <div class="sonar-ping-target target-alpha" style="top: 25%; left: 40%;"></div>
-            <div class="sonar-ping-target target-beta" style="top: 60%; left: 70%;"></div>
-            <div class="sonar-ping-target target-gamma" style="top: 45%; left: 20%;"></div>
-            
-            <!-- Real-Time Catch Status Output Text Layer -->
-            <div class="sonar-readout-overlay">
-                <span id="fishing-status-line">DEPLOY LINE TO INITIALIZE DATA STREAM</span>
-                <div id="fishing-catch-display" class="hidden">
-                    <span class="fish-name-label">NEO-MARLIN</span>
-                    <span class="fish-weight-label">14.2 KG</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Interactive Tackle Depth Bet Zone Allocator Matrix -->
-        <div class="baccarat-bet-zones fishing-depth-selectors" style="margin-top: 10px; margin-bottom: 12px;">
-            <input type="radio" name="fishing-depth" id="fish-zone-shallow" value="Shallow" checked class="hidden">
-            <label for="fish-zone-shallow" class="bet-zone-btn player-zone">
-                <span class="zone-name">SHALLOW WATER</span>
-                <span class="payout-ratio">1.50x Payout</span>
-            </label>
-
-            <input type="radio" name="fishing-depth" id="fish-zone-reef" value="Reef" class="hidden">
-            <label for="fish-zone-reef" class="bet-zone-btn tie-zone">
-                <span class="zone-name">CORAL REEF</span>
-                <span class="payout-ratio">2.80x Payout</span>
-            </label>
-
-            <input type="radio" name="fishing-depth" id="fish-zone-abyss" value="Abyss" class="hidden">
-            <label for="fish-zone-abyss" class="bet-zone-btn banker-zone">
-                <span class="zone-name">THE ABYSS</span>
-                <span class="payout-ratio">8.50x Payout</span>
-            </label>
-        </div>
-
-        <!-- Full Real-Time Biome Manifest & Payout Reference Table -->
-        <div class="fishing-manifest-container">
-            <table class="fishing-spec-table">
-                <thead>
-                    <tr>
-                        <th>TARGET SPECIES</th>
-                        <th>BIOME ZONE</th>
-                        <th>EST. WEIGHT</th>
-                        <th>MAX MULTIPLIER</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="row-shallow">
-                        <td class="spec-name">Cyber-Mackerel</td>
-                        <td>Shallow Water</td>
-                        <td>1.2 - 3.5 kg</td>
-                        <td class="mult-val text-cyan">2.2x</td>
-                    </tr>
-                    <tr class="row-reef">
-                        <td class="spec-name">Neon Anemone Fin</td>
-                        <td>Coral Reef</td>
-                        <td>4.0 - 12.8 kg</td>
-                        <td class="mult-val text-green">5.0x</td>
-                    </tr>
-                    <tr class="row-reef">
-                        <td class="spec-name">Prismatic Ray</td>
-                        <td>Coral Reef</td>
-                        <td>15.1 - 30.0 kg</td>
-                        <td class="mult-val text-green">12.0x</td>
-                    </tr>
-                    <tr class="row-abyss">
-                        <td class="spec-name">Hadopelagic Kraken</td>
-                        <td>The Abyss</td>
-                        <td>85.5 - 250+ kg</td>
-                        <td class="mult-val text-gold">75.0x</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-</div>
-
-        <!-- MODULE 15: LIVE CASINO BACCARAT ARENA WITH STUDIO DEALER -->
-<div id="live-baccarat-arena" class="game-window hidden">
-    <div class="game-card live-studio-card">
-        
-        <!-- Live Stream Video Frame Component & Status Overlay -->
-        <div class="live-stream-viewport">
-            <img src="https://luckystreaklive.com/wp-content/uploads/2023/06/Baccarat-dealer-female-jpg-1024x682.jpg" 
-                 alt="Live Baccarat Studio Female Dealer" 
-                 class="live-video-frame" 
-                 loading="eager">
-                 
-            <!-- Cyber Interface Overlay Coordinates -->
-            <div class="stream-hologram-overlay"></div>
-            <div class="stream-status-badge">
-                <span class="live-pulse-dot"></span>
-                <span class="telemetry-txt">STREAM HD // VIP TABLE #4 // DEALER: VALERIA</span>
-            </div>
-            
-            <!-- Audio Feed Level Indicators -->
-            <div class="audio-mic-level">
-                <div class="mic-bar green"></div>
-                <div class="mic-bar green"></div>
-                <div class="mic-bar yellow"></div>
-            </div>
-        </div>
-
-        <!-- Real-Time Card Value Allocation Zones -->
-        <div class="arena-display-box matrix-bg baccarat-card-table">
-            <div class="baccarat-side player-side">
-                <div class="side-title">PLAYER</div>
-                <div id="live-player-cards" class="card-node-holder">
-                    <!-- Dynamic standard playing cards append here -->
-                    <div class="mini-card-face">♣ 8</div>
-                    <div class="mini-card-face">♠ A</div>
-                </div>
-                <div id="live-player-total" class="side-score-badge">9</div>
-            </div>
-            
-            <div class="table-center-divider"></div>
-            
-            <div class="baccarat-side banker-side">
-                <div class="side-title">BANKER</div>
-                <div id="live-banker-cards" class="card-node-holder">
-                    <div class="mini-card-face">♥ 9</div>
-                    <div class="mini-card-face">♦ J</div>
-                </div>
-                <div id="live-banker-total" class="side-score-badge">9</div>
-            </div>
-        </div>
-
-        <!-- Interactive Core Allocation Board Options -->
-        <div class="baccarat-bet-zones real-baccarat-board">
-            <input type="radio" name="live-bac-choice" id="l-bac-player" value="Player" checked class="hidden">
-            <label for="l-bac-player" class="bet-zone-btn player-zone">
-                <span class="zone-name">PLAYER</span>
-                <span class="payout-ratio">PAYS 1:1</span>
-            </label>
-
-            <input type="radio" name="live-bac-choice" id="l-bac-tie" value="Tie" class="hidden">
-            <label for="l-bac-tie" class="bet-zone-btn tie-zone">
-                <span class="zone-name">TIE MATRIX</span>
-                <span class="payout-ratio">PAYS 8:1</span>
-            </label>
-
-            <input type="radio" name="live-bac-choice" id="l-bac-banker" value="Banker" class="hidden">
-            <label for="l-bac-banker" class="bet-zone-btn banker-zone">
-                <span class="zone-name">BANKER</span>
-                <span class="payout-ratio">PAYS 0.95:1</span>
-            </label>
-        </div>
-
-        <!-- Real-Time Interactive Chip Selector Tray Component -->
-        <div class="casino-chip-tray">
-            <input type="radio" name="selected-chip-value" id="chip-1000000" value="1000000" checked class="hidden">
-            <label for="chip-1000000" class="bet-chip token-blue">1000000</label>
-
-            <input type="radio" name="selected-chip-value" id="chip-5000000" value="5000000" class="hidden">
-            <label for="chip-5000000" class="bet-chip token-green">5000000</label>
-
-            <input type="radio" name="selected-chip-value" id="chip-1500000" value="1500000" class="hidden">
-            <label for="chip-1500000" class="bet-chip token-red">1500000</label>
-
-            <input type="radio" name="selected-chip-value" id="chip-2500000" value="2500000" class="hidden">
-            <label for="chip-2500000" class="bet-chip token-gold">2500000</label>
-        </div>
-
-    </div>
-</div>
-
-    <!-- Consolidated and modular JavaScript -->
+    <!-- Engine Script Execution Framework -->
     <script src="script.js"></script>
     <script src="baccarat-engine.js"></script>
     <script src="fishing-engine.js"></script>
