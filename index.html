@@ -388,6 +388,100 @@
     </div>
 </div>
 
+        <!-- MODULE 14: CYBER-SONAR FISHING ARENA -->
+<div id="fishing-arena" class="game-window hidden">
+    <div class="game-card">
+        
+        <!-- Live Deep-Sea Telemetry Header Bar -->
+        <div class="audio-hardware-controller" style="margin-bottom: 10px;">
+            <div class="audio-track-info">
+                <span class="pulse-dot" style="background-color: var(--neon-green); box-shadow: 0 0 8px var(--neon-green);"></span>
+                <span id="sonar-depth-telemetry" class="pulse-label">SONAR ACTIVE // DEPTH: 450M // ECO-SCAN IN PROGRESS</span>
+            </div>
+            <span class="wc-route-text" style="color: var(--gold);">REEL INTENSITY: LEVEL 3</span>
+        </div>
+
+        <!-- Dynamic Sonar Display Radar Viewport -->
+        <div class="arena-display-box matrix-bg sonar-viewport-frame">
+            <div class="sonar-sweep-line"></div>
+            <div class="sonar-ping-target target-alpha" style="top: 25%; left: 40%;"></div>
+            <div class="sonar-ping-target target-beta" style="top: 60%; left: 70%;"></div>
+            <div class="sonar-ping-target target-gamma" style="top: 45%; left: 20%;"></div>
+            
+            <!-- Real-Time Catch Status Output Text Layer -->
+            <div class="sonar-readout-overlay">
+                <span id="fishing-status-line">DEPLOY LINE TO INITIALIZE DATA STREAM</span>
+                <div id="fishing-catch-display" class="hidden">
+                    <span class="fish-name-label">NEO-MARLIN</span>
+                    <span class="fish-weight-label">14.2 KG</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Tackle Depth Bet Zone Allocator Matrix -->
+        <div class="baccarat-bet-zones fishing-depth-selectors" style="margin-top: 10px; margin-bottom: 12px;">
+            <input type="radio" name="fishing-depth" id="fish-zone-shallow" value="Shallow" checked class="hidden">
+            <label for="fish-zone-shallow" class="bet-zone-btn player-zone">
+                <span class="zone-name">SHALLOW WATER</span>
+                <span class="payout-ratio">1.50x Payout</span>
+            </label>
+
+            <input type="radio" name="fishing-depth" id="fish-zone-reef" value="Reef" class="hidden">
+            <label for="fish-zone-reef" class="bet-zone-btn tie-zone">
+                <span class="zone-name">CORAL REEF</span>
+                <span class="payout-ratio">2.80x Payout</span>
+            </label>
+
+            <input type="radio" name="fishing-depth" id="fish-zone-abyss" value="Abyss" class="hidden">
+            <label for="fish-zone-abyss" class="bet-zone-btn banker-zone">
+                <span class="zone-name">THE ABYSS</span>
+                <span class="payout-ratio">8.50x Payout</span>
+            </label>
+        </div>
+
+        <!-- Full Real-Time Biome Manifest & Payout Reference Table -->
+        <div class="fishing-manifest-container">
+            <table class="fishing-spec-table">
+                <thead>
+                    <tr>
+                        <th>TARGET SPECIES</th>
+                        <th>BIOME ZONE</th>
+                        <th>EST. WEIGHT</th>
+                        <th>MAX MULTIPLIER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row-shallow">
+                        <td class="spec-name">Cyber-Mackerel</td>
+                        <td>Shallow Water</td>
+                        <td>1.2 - 3.5 kg</td>
+                        <td class="mult-val text-cyan">2.2x</td>
+                    </tr>
+                    <tr class="row-reef">
+                        <td class="spec-name">Neon Anemone Fin</td>
+                        <td>Coral Reef</td>
+                        <td>4.0 - 12.8 kg</td>
+                        <td class="mult-val text-green">5.0x</td>
+                    </tr>
+                    <tr class="row-reef">
+                        <td class="spec-name">Prismatic Ray</td>
+                        <td>Coral Reef</td>
+                        <td>15.1 - 30.0 kg</td>
+                        <td class="mult-val text-green">12.0x</td>
+                    </tr>
+                    <tr class="row-abyss">
+                        <td class="spec-name">Hadopelagic Kraken</td>
+                        <td>The Abyss</td>
+                        <td>85.5 - 250+ kg</td>
+                        <td class="mult-val text-gold">75.0x</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
     <!-- Consolidated and modular JavaScript -->
     <script src="script.js"></script>
     <script src="music.js"></script>
