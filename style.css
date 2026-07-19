@@ -1310,3 +1310,339 @@ input:focus,
     font-weight: 700;
                                 }
    
+/* ==========================================================================
+   13. MODULE 12: SOCCER MATRIX & FIFA WORLD CUP TELEMETRY STYLES
+   ========================================================================== */
+.wc26-banner-link {
+    display: block;
+    text-decoration: none;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: #04070a;
+    transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wc26-banner-link:hover {
+    border-color: var(--cyber-blue);
+}
+
+.wc26-telemetry-header {
+    background: #0b1118;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-grey);
+}
+
+.live-pulse-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--alert-red);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--alert-red);
+    animation: beaconPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes beaconPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50%      { opacity: 1; transform: scale(1.1); }
+}
+
+.pulse-label {
+    font-size: 0.55rem;
+    font-weight: 900;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.wc-route-text {
+    font-size: 0.58rem;
+    font-weight: 800;
+    color: var(--cyber-blue);
+    letter-spacing: 1px;
+}
+
+/* Graphic Asset Engine Mounting Viewport */
+.wc26-graphic-frame {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+    background: #020406;
+}
+
+.wc26-asset-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.65;
+    filter: grayscale(30%) contrast(110%);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.wc26-banner-link:hover .wc26-asset-img {
+    transform: scale(1.02);
+    opacity: 0.8;
+    filter: grayscale(0%) contrast(100%);
+}
+
+/* Tech Hologram Matrix Grid Overlay Overlay Effect */
+.hologram-overlay-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 24, 32, 0) 50%, rgba(6, 9, 14, 0.25) 50%), 
+                linear-gradient(90deg, rgba(0, 153, 255, 0.03), rgba(0, 255, 204, 0.01));
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+}
+
+/* Match Arena Interface Tweaks */
+.football-pitch-simulation {
+    border-left: 2px solid var(--cyber-blue) !important;
+}
+
+.football-score-digit {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.vs-divider-node {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    font-family: 'Courier New', Courier, monospace;
+    align-self: center;
+}
+
+/* Target Allocation Button State Rules Mapping */
+#fb-bet-home:checked + .player-zone { border-color: var(--cyber-blue) !important; background: rgba(0, 153, 255, 0.04); }
+#fb-bet-draw:checked + .tie-zone     { border-color: var(--neon-green) !important; background: rgba(0, 255, 204, 0.04); }
+#fb-bet-away:checked + .banker-zone { border-color: var(--gold) !important; background: rgba(223, 177, 91, 0.04); }
+
+#fb-bet-home:checked + .player-zone .zone-name { color: var(--cyber-blue); }
+#fb-bet-draw:checked + .tie-zone .zone-name     { color: var(--neon-green); }
+#fb-bet-away:checked + .banker-zone .zone-name { color: var(--gold); }
+
+/* ==========================================================================
+   14. MODULE 13: CYBER-KENO MATRIX SYSTEM ARCHITECTURE
+   ========================================================================== */
+.keno-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.keno-node {
+    background: #05080c;
+    border: 1px solid var(--border-grey);
+    aspect-ratio: 1.2;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-muted);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.keno-node:hover:not(.locked-hit):not(.draw-miss) {
+    border-color: var(--text-light);
+    color: var(--text-light);
+    background: #0b1118;
+}
+
+/* State Layer 1: Selected / Armed by User */
+.keno-node.armed-target {
+    border-color: var(--cyber-blue) !important;
+    color: var(--cyber-blue) !important;
+    background: rgba(0, 153, 255, 0.05);
+    box-shadow: 0 0 8px rgba(0, 153, 255, 0.15);
+}
+
+/* State Layer 2: Core Algorithm Draw Hit Match */
+.keno-node.locked-hit {
+    background: rgba(0, 255, 204, 0.1) !important;
+    border-color: var(--neon-green) !important;
+    color: var(--neon-green) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
+    text-shadow: 0 0 4px var(--neon-green);
+    transform: scale(0.96);
+}
+
+/* State Layer 3: Engine Draw Missed Vector */
+.keno-node.draw-miss {
+    background: rgba(255, 51, 102, 0.05) !important;
+    border-color: var(--alert-red) !important;
+    color: var(--alert-red) !important;
+    opacity: 0.7;
+}
+
+.keno-payout-manifest span {
+    font-size: 0.58rem !important;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   15. MODULE 14: CYBER-SONAR FISHING ENGINE & MANIFEST DATA STYLES
+   ========================================================================== */
+.sonar-viewport-frame {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+    background: radial-gradient(circle, #031210 0%, #020608 100%) !important;
+    border-left: 2px solid var(--neon-green) !important;
+    flex-direction: column !important;
+}
+
+/* Rotating Radar Line Sweep Effect */
+.sonar-sweep-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, rgba(0, 255, 204, 0.15) 0deg, transparent 90deg, transparent 360deg);
+    transform-origin: top left;
+    transform: translate(-50%, -50%);
+    animation: radarSweep 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes radarSweep {
+    0%   { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Radar Ping Telemetry Coordinates */
+.sonar-ping-target {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-green);
+    animation: targetBlink 1.5s infinite ease-in-out;
+    opacity: 0;
+    z-index: 2;
+}
+.sonar-ping-target.target-alpha { animation-delay: 0.2s; }
+.sonar-ping-target.target-beta  { animation-delay: 0.8s; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+.sonar-ping-target.target-gamma { animation-delay: 1.4s; background: var(--cyber-blue); box-shadow: 0 0 10px var(--cyber-blue); }
+
+@keyframes targetBlink {
+    0%, 100% { opacity: 0; transform: scale(0.6); }
+    35%      { opacity: 1; transform: scale(1.1); }
+    70%      { opacity: 0; }
+}
+
+.sonar-readout-overlay {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#fishing-status-line {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+#fishing-catch-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+.fish-name-label {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+}
+.fish-weight-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+/* Full Manifest Telemetry Data Grid Layout */
+.fishing-manifest-container {
+    width: 100%;
+    background: #04070a;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.fishing-spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.64rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.fishing-spec-table th {
+    background: #0b1118;
+    color: var(--text-muted);
+    font-weight: 800;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border-grey);
+    letter-spacing: 0.5px;
+}
+
+.fishing-spec-table td {
+    padding: 6px 8px;
+    color: var(--text-light);
+    border-bottom: 1px solid rgba(28, 38, 48, 0.4);
+}
+
+.fishing-spec-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Interactive Color Classes for Data Columns */
+.fishing-spec-table .spec-name { font-weight: bold; }
+.fishing-spec-table .mult-val { font-weight: 900; text-align: right; }
+
+.text-cyan  { color: var(--cyber-blue); }
+.text-green { color: var(--neon-green); }
+.text-gold  { color: var(--gold); }
+
+/* Row Highlight Effects Matched to Selected Depth State Controllers */
+#fish-zone-shallow:checked ~ .fishing-manifest-container .row-shallow { background: rgba(0, 153, 255, 0.03); }
+#fish-zone-reef:checked    ~ .fishing-manifest-container .row-reef    { background: rgba(0, 255, 204, 0.03); }
+#fish-zone-abyss:checked   ~ .fishing-manifest-container .row-abyss   { background: rgba(223, 177, 91, 0.03); }
+
+/* Checked State Changes for Fishing Depth Input Zones */
+#fish-zone-shallow:checked + .player-zone { border-color: var(--cyber-blue) !important; background: rgba(0, 153, 255, 0.04); }
+#fish-zone-reef:checked    + .tie-zone    { border-color: var(--neon-green) !important; background: rgba(0, 255, 204, 0.04); }
+#fish-zone-abyss:checked   + .banker-zone { border-color: var(--gold) !important; background: rgba(223, 177, 91, 0.04); }
+
+#fish-zone-shallow:checked + .player-zone .zone-name { color: var(--cyber-blue); }
+#fish-zone-reef:checked    + .tie-zone .zone-name    { color: var(--neon-green); }
+#fish-zone-abyss:checked   + .banker-zone .zone-name { color: var(--gold); }
