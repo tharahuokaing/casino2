@@ -1118,4 +1118,195 @@ input:focus,
     0%   { transform: translateX(0); }
     100% { transform: translateX(50%); }
        }
-                                               
+
+/* ============================================
+   IMPERIAL CYBER CASINO - HIGH-FIDELITY ADDITIONS
+   ============================================ */
+
+/* --- GLOBAL NEON UTILITIES --- */
+:root {
+    --neon-blue: #00f2fe;
+    --neon-purple: #4facfe;
+    --neon-pink: #ff007f;
+    --neon-gold: #ffd700;
+    --glass-bg: rgba(30, 30, 64, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* --- GLASSMORPHISM CARD UPGRADES --- */
+.game-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.37),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- METALLIC PLAYING CARDS (Blackjack / Baccarat) --- */
+.bj-card-element {
+    position: relative;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    color: #111122;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 
+        0 4px 10px rgba(0,0,0,0.3),
+        inset 0 0 4px rgba(255,255,255,0.8);
+    border: none;
+    transform-style: preserve-3d;
+    transition: transform var(--transition-normal);
+}
+
+.bj-card-element::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
+}
+
+/* --- HIGH-PERFORMANCE REEL ANIMATIONS (Slots) --- */
+.arena-display-box .reel {
+    background: linear-gradient(180deg, #101026 0%, #1e1e40 50%, #101026 100%);
+    border: 2px solid var(--border-highlight);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 12px currentColor;
+}
+
+/* Trigger this class via JS when spinning */
+.reel.spinning {
+    animation: blur-spin 0.15s linear infinite;
+}
+
+@keyframes blur-spin {
+    0% { transform: translateY(0) scaleY(1); filter: blur(0px); }
+    50% { transform: translateY(-10px) scaleY(1.1); filter: blur(4px); }
+    100% { transform: translateY(10px) scaleY(1); filter: blur(0px); }
+}
+
+/* --- CYBERPUNK CHIPS DESIGN --- */
+.chip-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.casino-chip {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 4px dashed #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md), inset 0 0 8px rgba(0,0,0,0.4);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.casino-chip:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.chip-10 { background: radial-gradient(circle, #00cec9, #008b8b); box-shadow: 0 0 15px rgba(0, 206, 201, 0.6); }
+.chip-50 { background: radial-gradient(circle, #e84393, #b31068); box-shadow: 0 0 15px rgba(232, 67, 147, 0.6); }
+.chip-100 { background: radial-gradient(circle, #6c5ce7, #4534c4); box-shadow: 0 0 15px rgba(108, 92, 231, 0.6); }
+.chip-500 { background: linear-gradient(135deg, #ffd700, #d4af37); color: #000; box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); border-color: #000; }
+
+/* --- PREMIUM INTERACTION FEEDBACK --- */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* --- THE REALTIME JACKPOT ANNOUNCER --- */
+.jackpot-ticker {
+    background: rgba(255, 107, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: border-glow 2s infinite alternate;
+}
+
+.jackpot-amount {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+}
+
+@keyframes border-glow {
+    0% { box-shadow: 0 0 5px rgba(255, 165, 0, 0.2); }
+    100% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.6); }
+}
+
+/* --- LIVE RECENT WINNERS STREAM --- */
+.live-winners-feed {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    margin-top: 20px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.live-winners-feed::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.winner-pill {
+    flex: 0 0 auto;
+    background: var(--bg-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 8px;
+}
+
+.winner-pill .amt {
+    color: var(--success-color);
+    font-weight: 700;
+                                }
+   
