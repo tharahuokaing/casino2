@@ -110,103 +110,15 @@
         <!-- GAME 4: Roulette Engine Layout -->
         <div id="roulette-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-roulette">
             <div class="game-card">
-        
-        <!-- Live Visual Output Area -->
-        <div class="arena-display-box wheel-bg">
-            <div id="roulette-ball-output" class="roulette-ball-locked">00</div>
+                <div class="arena-display-box wheel-bg">
+                    <div id="roulette-ball-output">00</div>
+                </div>
+                <div class="input-selection-group">
+                    <span class="text-label-inline">Pick Target Number (0-36):</span>
+                    <input type="number" id="roulette-target-input" min="0" max="36" value="7" aria-label="Roulette target number">
+                </div>
+            </div>
         </div>
-
-        <!-- Integrated Cyber Betting Layout -->
-        <div class="roulette-table-wrapper">
-            <div class="roulette-grid-container">
-                
-                <!-- Green Zero Chamber -->
-                <div class="roulette-cell zero-cell" data-bet-type="single" data-value="0">
-                    <span class="cell-num">0</span>
-                </div>
-
-                <!-- Main Numeric Matrix (3 Rows, 12 Columns) -->
-                <div class="roulette-numbers-board">
-                    <!-- Row 3 (3, 6, 9... 36) -->
-                    <div class="num-board-row">
-                        <div class="roulette-cell red" data-bet-type="single" data-value="3"><span class="cell-num">3</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="6"><span class="cell-num">6</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="9"><span class="cell-num">9</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="12"><span class="cell-num">12</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="15"><span class="cell-num">15</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="18"><span class="cell-num">18</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="21"><span class="cell-num">21</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="24"><span class="cell-num">24</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="27"><span class="cell-num">27</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="30"><span class="cell-num">30</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="33"><span class="cell-num">33</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="36"><span class="cell-num">36</span></div>
-                    </div>
-                    
-                    <!-- Row 2 (2, 5, 8... 35) -->
-                    <div class="num-board-row">
-                        <div class="roulette-cell black" data-bet-type="single" data-value="2"><span class="cell-num">2</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="5"><span class="cell-num">5</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="8"><span class="cell-num">8</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="11"><span class="cell-num">11</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="14"><span class="cell-num">14</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="17"><span class="cell-num">17</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="20"><span class="cell-num">20</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="23"><span class="cell-num">23</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="26"><span class="cell-num">26</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="29"><span class="cell-num">29</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="32"><span class="cell-num">32</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="35"><span class="cell-num">35</span></div>
-                    </div>
-
-                    <!-- Row 1 (1, 4, 7... 34) -->
-                    <div class="num-board-row">
-                        <div class="roulette-cell red" data-bet-type="single" data-value="1"><span class="cell-num">1</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="4"><span class="cell-num">4</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="7"><span class="cell-num">7</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="10"><span class="cell-num">10</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="13"><span class="cell-num">13</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="16"><span class="cell-num">16</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="19"><span class="cell-num">19</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="22"><span class="cell-num">22</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="25"><span class="cell-num">25</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="28"><span class="cell-num">28</span></div>
-                        <div class="roulette-cell black" data-bet-type="single" data-value="31"><span class="cell-num">31</span></div>
-                        <div class="roulette-cell red" data-bet-type="single" data-value="34"><span class="cell-num">34</span></div>
-                    </div>
-                </div>
-
-                <!-- Column Payout Outer Blocks -->
-                <div class="roulette-columns-block">
-                    <div class="roulette-cell outside-cell col-cell" data-bet-type="column" data-value="3">2:1</div>
-                    <div class="roulette-cell outside-cell col-cell" data-bet-type="column" data-value="2">2:1</div>
-                    <div class="roulette-cell outside-cell col-cell" data-bet-type="column" data-value="1">2:1</div>
-                </div>
-            </div>
-
-                <!-- Dozens Outside Pools -->
-               <div class="roulette-dozens-container">
-                    <div class="roulette-cell outside-cell dozen-cell" data-bet-type="dozen" data-value="1">1st 12</div>
-                    <div class="roulette-cell outside-cell dozen-cell" data-bet-type="dozen" data-value="2">2nd 12</div>
-                    <div class="roulette-cell outside-cell dozen-cell" data-bet-type="dozen" data-value="3">3rd 12</div>
-                </div>
-
-                <!-- Even/Odd, Red/Black High-Low Proposition Fields -->
-                <div class="roulette-propositions-container">
-                     <div class="roulette-cell outside-cell prop-cell" data-bet-type="range" data-value="low">1 to 18</div>
-                    <div class="roulette-cell outside-cell prop-cell" data-bet-type="parity" data-value="even">Even</div>
-                    <div class="roulette-cell outside-cell prop-cell red-pool" data-bet-type="color" data-value="red">Red</div>
-                    <div class="roulette-cell outside-cell prop-cell black-pool" data-bet-type="color" data-value="black">Black</div>
-                    <div class="roulette-cell outside-cell prop-cell" data-bet-type="parity" data-value="odd">Odd</div>
-                    <div class="roulette-cell outside-cell prop-cell" data-bet-type="range" data-value="high">19 to 36</div>
-                </div>
-            </div>
-
-                <!-- System Readout Info -->
-                <div class="input-selection-group" style="margin-top: 20px;">
-                    <span id="roulette-selection-status" class="text-label-inline">Click any zone on the table above to place your bet.</span>
-                </div>
-            </div>
 
         <!-- GAME 5: Rock Paper Scissors Engine Layout -->
         <div id="rps-arena" class="game-window hidden" role="tabpanel" aria-labelledby="tab-rps">
