@@ -1284,7 +1284,7 @@ input:focus,
     gap: 15px;
     overflow-x: auto;
     padding: 10px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-top: 20px;
     scrollbar-width: none; /* Firefox */
@@ -1302,14 +1302,23 @@ input:focus,
     font-size: 0.8rem;
     border: 1px solid var(--border-color);
     display: flex;
+    align-items: center;
     gap: 8px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeIn var(--transition-normal);
+}
+
+.winner-pill .username {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .winner-pill .amt {
     color: var(--success-color);
     font-weight: 700;
-                                }
-   
+    font-family: 'Courier New', monospace;
+}
+
 /* ==========================================================================
    13. MODULE 12: SOCCER MATRIX & FIFA WORLD CUP TELEMETRY STYLES
    ========================================================================== */
