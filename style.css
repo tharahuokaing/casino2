@@ -3759,3 +3759,84 @@ body {
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
     transform: translateY(-1px);
 }
+
+/* ==========================================================================
+   CYBER HUD NAVIGATION BAR & TRIGGER BUTTONS
+   ========================================================================== */
+
+.cyber-hud-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.6) 100%);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    margin-bottom: 20px;
+}
+
+/* Balance Card Styling */
+.balance-card {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(2, 6, 23, 0.8);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    padding: 8px 18px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.12), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono, monospace);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #ffd700;
+}
+
+.currency-symbol {
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 0.95rem;
+}
+
+/* Header Trigger Buttons Group */
+.hud-action-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ledger & Analytics Action Buttons */
+.btn-ledger-open,
+.btn-analytics-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(0, 243, 255, 0.12) 0%, rgba(0, 85, 255, 0.08) 100%);
+    border: 1px solid rgba(0, 243, 255, 0.35);
+    color: var(--neon-cyan, #00f3ff);
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    font-family: var(--font-mono, monospace);
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-ledger-open:hover,
+.btn-analytics-open:hover {
+    background: linear-gradient(135deg, rgba(0, 243, 255, 0.25) 0%, rgba(0, 85, 255, 0.18) 100%);
+    border-color: var(--neon-cyan, #00f3ff);
+    box-shadow: 0 0 18px rgba(0, 243, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-ledger-open:active,
+.btn-analytics-open:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 0.9rem;
+}
