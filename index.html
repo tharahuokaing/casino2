@@ -32,19 +32,33 @@
             <button class="nav-btn" id="tab-live-baccarat" role="tab" aria-selected="false" aria-controls="live-baccarat-arena">Live Baccarat</button>
         </nav>
 
-    <!-- Top HUD Bar -->
-    <header class="cyber-hud-bar">
-    <div class="session-status-badge">
-        <span class="session-dot" id="session-status-dot"></span>
-        <span class="session-txt">ACTIVE SESSION // CREDITS: $<span id="session-balance-display">1,000,000.00</span></span>
-    </div>
+        <!-- Navigation Header Segment -->
+        <header class="cyber-hud-bar" role="banner">
+            <!-- VIP Balance Card (Primary) -->
+            <div class="balance-card">
+                <span class="currency-symbol">$</span>
+                <span id="hud-balance-display">1,000,000.00</span>
+                <span class="vip-badge-shimmer" style="font-size: 0.55rem; padding: 2px 6px; border-radius: 6px; margin-left: 6px;">VIP</span>
+            </div>
 
-    <!-- Gold VIP Balance Card -->
-    <div class="balance-card">
-        <span class="currency-symbol">$</span>
-        <span id="hud-balance-display">1,000,000.00</span>
-    </div>
-</header>
+            <!-- Navigation Action Triggers -->
+            <div class="hud-action-group">
+                <!-- Auth Trigger Button -->
+                <button id="open-auth-trigger" type="button" class="btn-auth-open" aria-label="Login or Register">
+                    <span class="btn-icon">🔐</span> LOGIN / REGISTER
+                </button>
+
+                <!-- Performance Analytics Drawer Trigger -->
+                <button id="open-analytics-btn" type="button" class="btn-analytics-open" aria-label="Open Performance Analytics">
+                    <span class="btn-icon">📊</span> ANALYTICS
+                </button>
+
+                <!-- Transaction Ledger Modal Trigger -->
+                <button id="open-ledger-trigger" type="button" class="btn-ledger-open" aria-label="Open Ledger History">
+                    <span class="btn-icon">📜</span> LEDGER HISTORY
+                </button>
+            </div>
+        </header>
 
         <!-- Master Statistics Dashboard -->
         <section class="dashboard" role="region" aria-label="Game Statistics">
