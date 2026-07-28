@@ -265,3 +265,125 @@
         refresh: renderLedgerModal
     };
 })();
+
+/**
+ * CYBER CASINO LEDGER IMPORT/RESTORE ENGINE
+ * Add this to your transaction-modal.js or reference as a separate module.
+ */
+(function() {
+    const DB_NAME = 'CyberCasinoDB';
+    const STORE_NAME = 'transaction_ledger';
+
+    // --------------------------------------------------------------------------
+    // 1. JSON Import & Validation Logic
+    // --------------------------------------------------------------------------
+    async function importLedgerBackup(file, mode = 'merge') {
+        try {
+            const fileText = await file.text();
+            const importedData = JSON.parse(fileText);
+
+            // Validate standard casino export schema
+            const records = Array.isArray(importedData) ? importedData : importedData.transactions;
+
+            if (!Array.isArray(records)) {
+                throw new Error('Invalid JSON format: Missing array of transaction records.');
+            }
+
+            // Sanitize and validate record entries
+            const validRecords = records.filter(item => {
+                return item && (item.timestamp || item.id) && (item.amount !== undefined || item.netChange !== undefined);
+            });
+
+            if (validRecords.length === 0) {
+                throw new Error('No valid transaction records found in the uploaded backup file.');
+            }
+
+            // Write to IndexedDB
+            const req = indexedDB.open(DB_NAME);
+            req.onsuccess = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    alert('IndexedDB store not found.');
+                    return;
+                }
+
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+
+                if (mode === 'overwrite') {
+                    store.clear();
+                }
+
+                let addedCount = 0;
+                validRecords.forEach(record => {
+                    // Normalize record fields
+                    const entry = {
+                        id: record.id || `import_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+                        timestamp: record.timestamp || new Date().toISOString(),
+                        game: record.game || 'Imported Entry',
+                        type: record.type || 'RESTORE',
+                        amount: Number(record.amount) || 0,
+                        netChange: Number(record.netChange) || 0,
+                        balanceAfter: Number(record.balanceAfter) || 0
+                    };
+
+                    store.put(entry);
+                    addedCount++;
+                });
+
+                tx.oncomplete = () => {
+                    // Play success audio if available
+                    if (window.playAudioFx) window.playAudioFx('open');
+                    
+                    alert(`Success! Successfully ${mode === 'overwrite' ? 'restored' : 'merged'} ${addedCount} transactions.`);
+
+                    // Refresh Modal and Analytics UI
+                    if (window.CyberLedgerModal && window.CyberLedgerModal.refresh) {
+                        window.CyberLedgerModal.refresh();
+                    }
+                    if (window.CyberAnalyticsDrawer && window.CyberAnalyticsDrawer.refresh) {
+                        window.CyberAnalyticsDrawer.refresh();
+                    }
+                };
+            };
+        } catch (err) {
+            alert(`Restore Failed: ${err.message}`);
+        }
+    }
+
+    // --------------------------------------------------------------------------
+    // 2. Trigger File Selection Dialog
+    // --------------------------------------------------------------------------
+    function triggerRestoreDialog() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json, application/json';
+
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const modeChoice = confirm(
+                "Click 'OK' to MERGE with existing history.\nClick 'Cancel' to OVERWRITE (Purge existing ledger)."
+            );
+
+            const mode = modeChoice ? 'merge' : 'overwrite';
+            importLedgerBackup(file, mode);
+        };
+
+        input.click();
+    }
+
+    // Bind to UI Button
+    document.addEventListener('click', (e) => {
+        if (e.target.id === 'import-json-btn' || e.target.closest('#import-json-btn')) {
+            triggerRestoreDialog();
+        }
+    });
+
+    // Expose Global Restore Interface
+    window.CyberLedgerRestore = {
+        importFile: importLedgerBackup,
+        prompt: triggerRestoreDialog
+    };
+})();
