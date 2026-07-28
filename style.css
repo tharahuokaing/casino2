@@ -1874,3 +1874,125 @@ input:focus,
 #l-bac-player:checked + .player-zone .zone-name { color: var(--cyber-blue); text-shadow: 0 0 4px var(--cyber-blue); }
 #l-bac-tie:checked    + .tie-zone .zone-name    { color: var(--neon-green); text-shadow: 0 0 4px var(--neon-green); }
 #l-bac-banker:checked + .banker-zone .zone-name { color: var(--gold); text-shadow: 0 0 4px var(--gold); }
+
+/* ==========================================================================
+   17. SESSION CONTROLLER & BALANCE GUARD STYLES
+   ========================================================================== */
+
+/* Top Navigation Session Status Badge */
+.session-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(3, 6, 10, 0.9);
+    border: 1px solid var(--border-grey, #1e293b);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Active Session Indicator Dot */
+.session-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ffcc;
+    box-shadow: 0 0 8px #00ffcc;
+    animation: sessionPulse 2s infinite ease-in-out;
+}
+
+.session-dot.offline {
+    background: #ff3366;
+    box-shadow: 0 0 8px #ff3366;
+    animation: none;
+}
+
+@keyframes sessionPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50%      { opacity: 1; transform: scale(1.1); }
+}
+
+/* Balance Left Display Glow */
+#balance-display {
+    font-weight: 900;
+    color: var(--neon-green, #00ffcc);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Flashes when balance updates */
+.balance-updated {
+    animation: balanceFlash 0.5s ease-out;
+}
+
+@keyframes balanceFlash {
+    0%   { color: #ffffff; text-shadow: 0 0 12px #ffffff; }
+    100% { color: var(--neon-green, #00ffcc); text-shadow: none; }
+}
+
+/* Mid-Game Refresh Warning Overlay */
+.refresh-guard-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.refresh-guard-modal {
+    background: #06090e;
+    border: 1px solid var(--alert-red, #ff3366);
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 400px;
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.refresh-guard-modal h3 {
+    color: var(--alert-red, #ff3366);
+    margin-top: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.refresh-guard-modal p {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    margin: 12px 0 20px 0;
+}
+
+.refresh-guard-modal .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.refresh-guard-modal .btn-confirm {
+    background: var(--alert-red, #ff3366);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.refresh-guard-modal .btn-cancel {
+    background: #1a202c;
+    color: #ccc;
+    border: 1px solid #2d3748;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
