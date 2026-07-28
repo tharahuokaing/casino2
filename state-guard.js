@@ -4,7 +4,7 @@
  */
 (function() {
     const BALANCE_STORAGE_KEY = 'cyber_app_user_balance';
-    const DEFAULT_INITIAL_BALANCE = 1000.00;
+    const DEFAULT_INITIAL_BALANCE = 1000000.00;
 
     // Cache core UI elements
     const elBalanceDisplay = document.getElementById('balance-display');
