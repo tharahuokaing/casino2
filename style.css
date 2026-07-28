@@ -3316,3 +3316,281 @@ body {
         max-width: 100% !important;
     }
 }
+
+/* ==========================================================================
+   TRANSACTION MODAL V2.0 - HIGH-ROLLER GLASSMORPHIC OVERLAY
+   ========================================================================== */
+
+/* Modal Backdrop with Blur */
+.ledger-modal-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 7, 18, 0.75);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.ledger-modal-overlay.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Glass Frame Window */
+.ledger-modal-frame {
+    width: 92%;
+    max-width: 680px;
+    background: linear-gradient(165deg, rgba(15, 23, 42, 0.95) 0%, rgba(3, 7, 18, 0.98) 100%);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 243, 255, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(20px) scale(0.97); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Modal Header Bar */
+.ledger-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    background: linear-gradient(90deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.4) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ledger-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ledger-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+}
+
+.close-modal-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-sub);
+    font-size: 1.4rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-modal-btn:hover {
+    background: rgba(255, 0, 85, 0.2);
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+}
+
+/* Live Metrics Stat Bar */
+.ledger-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 14px 24px;
+    background: rgba(2, 6, 23, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-pill {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-label {
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.stat-val {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-main);
+    font-family: var(--font-mono);
+}
+
+/* Table Header & Rows */
+.ledger-body {
+    padding: 16px 24px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr 1.2fr 1.2fr 1.2fr;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.ledger-rows {
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+    padding-right: 4px;
+}
+
+.ledger-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr 1.2fr 1.2fr 1.2fr;
+    align-items: center;
+    padding: 10px 8px;
+    font-size: 0.82rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.2s ease;
+}
+
+.ledger-row:hover {
+    background: rgba(0, 243, 255, 0.05);
+    border-color: rgba(0, 243, 255, 0.2);
+    transform: translateX(3px);
+}
+
+.col-net {
+    font-weight: 800;
+    font-family: var(--font-mono);
+}
+
+.row-positive .col-net {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+}
+
+.row-negative .col-net {
+    color: var(--neon-pink);
+    text-shadow: 0 0 8px rgba(255, 0, 85, 0.3);
+}
+
+/* Badges */
+.col-type {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-align: center;
+    width: fit-content;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.badge-win {
+    background: rgba(0, 255, 136, 0.12);
+    color: var(--neon-green);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+}
+
+.badge-loss, .badge-stake {
+    background: rgba(255, 0, 85, 0.12);
+    color: var(--neon-pink);
+    border: 1px solid rgba(255, 0, 85, 0.4);
+}
+
+.badge-reset {
+    background: rgba(0, 243, 255, 0.12);
+    color: var(--neon-cyan);
+    border: 1px solid rgba(0, 243, 255, 0.4);
+}
+
+/* Empty State */
+.empty-ledger-msg {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+}
+
+/* Footer & Buttons */
+.ledger-footer {
+    padding: 16px 24px;
+    background: rgba(15, 23, 42, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.export-btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-clear-history {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-clear-history:hover {
+    background: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+    .table-header, .ledger-row {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .table-header span:nth-child(1), .ledger-row span:nth-child(1),
+    .table-header span:nth-child(5), .ledger-row span:nth-child(5) {
+        display: none;
+    }
+    .ledger-stats-bar {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .ledger-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .export-btn-group {
+        justify-content: space-between;
+    }
+}
