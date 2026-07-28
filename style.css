@@ -2090,3 +2090,185 @@ input:focus,
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
 }
+
+/* ==========================================================================
+   REAL-TIME TRANSACTION LEDGER MODAL STYLES
+   ========================================================================== */
+
+.ledger-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.3s ease;
+}
+
+.ledger-modal-overlay.hidden {
+    display: none;
+}
+
+.ledger-modal-frame {
+    width: 90%;
+    max-width: 650px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 243, 255, 0.1);
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace, sans-serif;
+    color: #e2e8f0;
+}
+
+/* Header */
+.ledger-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: rgba(30, 41, 59, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ledger-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ledger-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    color: #00f3ff;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal-btn:hover {
+    color: #ff0055;
+}
+
+/* Stats Summary Row */
+.ledger-stats-bar {
+    display: flex;
+    gap: 20px;
+    padding: 12px 20px;
+    background: rgba(2, 6, 23, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-pill {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.stat-val {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #f8fafc;
+}
+
+.txt-green { color: #00ff88 !important; }
+.txt-red { color: #ff0055 !important; }
+
+/* Table Section */
+.ledger-body {
+    padding: 12px 20px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+    font-size: 0.7rem;
+    color: #64748b;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-transform: uppercase;
+}
+
+.ledger-rows {
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.col-net { font-weight: bold; }
+.row-positive .col-net { color: #00ff88; }
+.row-negative .col-net { color: #ff0055; }
+
+/* Badges */
+.col-type {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+    width: fit-content;
+    font-weight: bold;
+}
+.badge-win { background: rgba(0, 255, 136, 0.15); color: #00ff88; border: 1px solid #00ff88; }
+.badge-loss, .badge-stake { background: rgba(255, 0, 85, 0.15); color: #ff0055; border: 1px solid #ff0055; }
+.badge-reset { background: rgba(0, 243, 255, 0.15); color: #00f3ff; border: 1px solid #00f3ff; }
+
+.empty-ledger-msg {
+    text-align: center;
+    padding: 40px 0;
+    color: #475569;
+    font-size: 0.85rem;
+}
+
+/* Footer */
+.ledger-footer {
+    padding: 12px 20px;
+    background: rgba(15, 23, 42, 0.8);
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-clear-history {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear-history:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
