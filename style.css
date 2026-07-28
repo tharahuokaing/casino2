@@ -2272,3 +2272,28 @@ input:focus,
     background: #ef4444;
     color: #ffffff;
 }
+
+/* Navigation Button Styling */
+.btn-ledger-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid var(--glass-border, rgba(0, 243, 255, 0.25));
+    color: var(--neon-cyan, #00f3ff);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ledger-open:hover {
+    background: rgba(0, 243, 255, 0.2);
+    border-color: #00f3ff;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+    transform: translateY(-1px);
+}
