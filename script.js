@@ -328,7 +328,7 @@ function playCoinFlip() {
         
         if (actionBtn) actionBtn.disabled = false;
         updateDisplays();
-    }, 1000);
+    }, 1000000);
 }
 
 // ============================================
