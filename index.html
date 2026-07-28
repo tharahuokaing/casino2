@@ -32,38 +32,59 @@
             <button class="nav-btn" id="tab-live-baccarat" role="tab" aria-selected="false" aria-controls="live-baccarat-arena">Live Baccarat</button>
         </nav>
 
+        <!-- Top HUD Bar -->
+<header class="cyber-hud-bar">
+    <div class="session-status-badge">
+        <span class="session-dot" id="session-status-dot"></span>
+        <span class="session-txt">ACTIVE SESSION // CREDITS: $<span id="session-balance-display">1,000,000.00</span></span>
+    </div>
+
+    <!-- Gold VIP Balance Card -->
+    <div class="balance-card">
+        <span class="currency-symbol">$</span>
+        <span id="hud-balance-display">1,000,000.00</span>
+    </div>
+</header>
+
         <!-- Master Statistics Dashboard -->
-        <div class="dashboard" role="region" aria-label="Game Statistics">
+        <section class="dashboard" role="region" aria-label="Game Statistics">
             <div class="display-box">
-                <span class="label">Balance</span>
-                <span id="balance-display">1000000.00</span>
+                <span class="label">Main Balance</span>
+                <span id="balance-display" class="value-highlight">$1,000,000.00</span>
             </div>
+
             <div class="display-box">
                 <span class="label">Current Bet</span>
-                <span id="bet-display">1000000.00</span>
+                <span id="bet-display" class="value-highlight">$1,000,000.00</span>
             </div>
-            <div class="session-status-badge">
-                <span class="session-dot" id="session-status-dot"></span>
-                <span class="session-txt">ACTIVE SESSION // CREDITS: $<span id="balance-display">1000000.00</span></span>
-            </div>
+
             <div class="display-box">
                 <span class="label">Last Win</span>
-                <span id="win-display">$0</span>
+                <span id="win-display" class="value-green">$0.00</span>
             </div>
+        </section>
+
             <!-- Navigation Header Segment -->
-            <header class="cyber-hud-bar">
+            <header class="cyber-hud-bar" role="banner">
                 <!-- Balance Card -->
                 <div class="balance-card">
                     <span class="currency-symbol">$</span>
-                    <span id="balance-display">1000000.00</span>
-                  </div>
+                    <span id="hud-balance-display">1,000,000.00</span>
+                </div>
 
-                <!-- NEW: Ledger Trigger Button -->
-                <button id="open-ledger-trigger" class="btn-ledger-open">
-                    <span class="btn-icon">📜</span> LEDGER HISTORY
-               </button>
+                <!-- HUD Action Controls Group -->
+                <div class="hud-action-group">
+                    <!-- Analytics Drawer Trigger -->
+                    <button id="open-analytics-btn" type="button" class="btn-analytics-open" aria-label="Open Analytics Drawer">
+                        <span class="btn-icon">📊</span> ANALYTICS
+                    </button>
+
+                    <!-- Ledger Trigger Button -->
+                    <button id="open-ledger-trigger" type="button" class="btn-ledger-open" aria-label="Open Transaction Ledger">
+                        <span class="btn-icon">📜</span> LEDGER HISTORY
+                    </button>
+                </div>
             </header>
-        </div>
 
         <!-- SYSTEM AUDIO HARDWARE MODULE -->
         <div class="audio-hardware-controller" role="region" aria-label="Audio Controls">
