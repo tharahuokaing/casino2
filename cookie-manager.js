@@ -44,16 +44,42 @@ const CyberStorage = {
     },
 
     /**
-     * Reset user session balance back to initial baseline state
-     * @param {number} defaultAmount 
+     * Synchronizes and resets session parameters while explicitly preserving 
+     * the CURRENT balance left in memory/UI unless an explicit override amount is provided.
+     * 
+     * @param {number|null} targetAmount - Optional balance override value.
      */
-    resetBalanceSession: function(defaultAmount = 1000.00) {
-        localStorage.setItem('cyber_app_user_balance', defaultAmount.toFixed(2));
-        this.setCookie('user_session_active', 'true', 1);
-        
+    resetBalanceSession: function(targetAmount = null) {
         const elBalanceDisplay = document.getElementById('balance-display');
-        if (elBalanceDisplay) {
-            elBalanceDisplay.textContent = defaultAmount.toFixed(2);
+        let currentBalanceLeft;
+
+        if (targetAmount !== null) {
+            // Use user-provided explicit amount
+            currentBalanceLeft = parseFloat(targetAmount);
+        } else {
+            // Read remaining balance directly from UI, falling back to local storage or 1000.00
+            const uiVal = parseFloat(elBalanceDisplay?.textContent || '');
+            const storageVal = parseFloat(localStorage.getItem('cyber_app_user_balance') || '');
+
+            if (!isNaN(uiVal)) {
+                currentBalanceLeft = uiVal;
+            } else if (!isNaN(storageVal)) {
+                currentBalanceLeft = storageVal;
+            } else {
+                currentBalanceLeft = 1000.00; // Default baseline if no balance context exists
+            }
         }
+
+        // Commit remaining balance and active session state
+        localStorage.setItem('cyber_app_user_balance', currentBalanceLeft.toFixed(2));
+        this.setCookie('user_session_active', 'true', 1);
+        this.setCookie('user_balance_left', currentBalanceLeft.toFixed(2), 1);
+        
+        // Ensure UI stays in sync
+        if (elBalanceDisplay) {
+            elBalanceDisplay.textContent = currentBalanceLeft.toFixed(2);
+        }
+
+        console.log(`[SESSION RESET] Session re-initialized. Remaining Balance Preserved: ${currentBalanceLeft.toFixed(2)}`);
     }
 };
