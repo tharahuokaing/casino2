@@ -1996,3 +1996,97 @@ input:focus,
     border-radius: 4px;
     cursor: pointer;
 }
+
+/* ==========================================================================
+   CYBER HUD V2 - GLASSMORPHISM & REAL-TIME ANIMATION OVERRIDES
+   ========================================================================== */
+
+:root {
+    --neon-cyan: #00f3ff;
+    --neon-magenta: #ff0055;
+    --neon-green: #00ff88;
+    --dark-glass: rgba(10, 15, 26, 0.75);
+    --glass-border: rgba(0, 243, 255, 0.2);
+}
+
+/* Glassmorphism Header Bar Container */
+.cyber-hud-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: var(--dark-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Balance Card Indicator */
+.balance-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border-left: 3px solid var(--neon-cyan);
+}
+
+.balance-card .currency-symbol {
+    color: var(--neon-cyan);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+#balance-display {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reactive Counter Pulse on Balance Mutation */
+#balance-display.balance-updated {
+    animation: neonGlowPulse 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes neonGlowPulse {
+    0% {
+        color: var(--neon-green);
+        text-shadow: 0 0 15px var(--neon-green);
+        transform: scale(1.15);
+    }
+    100% {
+        color: #ffffff;
+        text-shadow: none;
+        transform: scale(1);
+    }
+}
+
+/* Multi-Tab Sync Indicator Badge */
+.sync-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sync-badge .dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--neon-green);
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
