@@ -95,11 +95,12 @@
                     </div>
                 </div>
 
-                <!-- Footer with Export & Maintenance Tools -->
+                <!-- Footer with Export & Restore Maintenance Tools -->
                 <div class="ledger-footer">
                     <div class="export-btn-group">
-                        <button id="export-json-btn" class="btn-export btn-json">⚡ JSON EXPORT</button>
-                        <button id="export-csv-btn" class="btn-export btn-csv">📊 CSV EXPORT</button>
+                          <button id="import-json-btn" class="btn-export btn-import">📥 RESTORE BACKUP</button>
+                          <button id="export-json-btn" class="btn-export btn-json">⚡ JSON EXPORT</button>
+                          <button id="export-csv-btn" class="btn-export btn-csv">📊 CSV EXPORT</button>
                     </div>
                     <button id="clear-ledger-btn" class="btn-clear-history">PURGE HISTORY</button>
                 </div>
