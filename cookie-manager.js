@@ -57,7 +57,7 @@ const CyberStorage = {
             // Use user-provided explicit amount
             currentBalanceLeft = parseFloat(targetAmount);
         } else {
-            // Read remaining balance directly from UI, falling back to local storage or 1000.00
+            // Read remaining balance directly from UI, falling back to local storage or 1000000.00
             const uiVal = parseFloat(elBalanceDisplay?.textContent || '');
             const storageVal = parseFloat(localStorage.getItem('cyber_app_user_balance') || '');
 
@@ -66,7 +66,7 @@ const CyberStorage = {
             } else if (!isNaN(storageVal)) {
                 currentBalanceLeft = storageVal;
             } else {
-                currentBalanceLeft = 1000.00; // Default baseline if no balance context exists
+                currentBalanceLeft = 1000000.00; // Default baseline if no balance context exists
             }
         }
 
