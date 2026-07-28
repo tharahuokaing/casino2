@@ -1,195 +1,267 @@
 /**
- * TRANSACTION HISTORY MODAL ENGINE
- * Listens to state mutations, logs win/loss history into IndexedDB,
- * and renders a real-time ledger modal view.
+ * CYBER CASINO TRANSACTION LEDGER MODAL CONTROLLER v2.0
+ * Features: High-Roller UI, Sound FX Engine, Live Metrics & Export Directives
  */
 (function() {
     const DB_NAME = 'CyberCasinoDB';
     const STORE_NAME = 'transaction_ledger';
 
     document.addEventListener('DOMContentLoaded', () => {
-        initLedgerDB();
-        injectModalHTML();
-        setupEventListeners();
+        injectLedgerModalMarkup();
+        bindEvents();
     });
 
-    // 1. Initialize IndexedDB for Transaction History
-    function initLedgerDB() {
-        const request = indexedDB.open(DB_NAME, 2); // Upgraded DB version
-        request.onupgradeneeded = (e) => {
-            const db = e.target.result;
-            if (!db.objectStoreNames.contains(STORE_NAME)) {
-                const store = db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
-                store.createIndex('timestamp', 'timestamp', { unique: false });
+    // --------------------------------------------------------------------------
+    // 1. Synthesize Casino Audio Effects (Web Audio API - No External Files)
+    // --------------------------------------------------------------------------
+    function playAudioFx(type) {
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            if (type === 'open') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.15);
+            } else if (type === 'click') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(600, ctx.currentTime);
+                gain.gain.setValueAtTime(0.05, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.05);
             }
-        };
+        } catch (e) {
+            // Audio context blocked or unsupported
+        }
     }
 
-    // 2. Log a New Transaction Entry
-    async function recordTransaction(type, gameName, amount, netChange, balanceAfter) {
-        const entry = {
-            timestamp: new Date().toISOString(),
-            game: gameName || 'System',
-            type: type, // 'WIN', 'LOSS', 'STAKE', 'RESET'
-            amount: parseFloat(amount),
-            netChange: parseFloat(netChange),
-            balanceAfter: parseFloat(balanceAfter)
-        };
+    // --------------------------------------------------------------------------
+    // 2. Inject Modal DOM Structure
+    // --------------------------------------------------------------------------
+    function injectLedgerModalMarkup() {
+        if (document.getElementById('ledger-modal-overlay')) return;
 
-        const dbRequest = indexedDB.open(DB_NAME);
-        dbRequest.onsuccess = (e) => {
-            const db = e.target.result;
-            if (db.objectStoreNames.contains(STORE_NAME)) {
-                const tx = db.transaction(STORE_NAME, 'readwrite');
-                const store = tx.objectStore(STORE_NAME);
-                store.add(entry);
-                tx.oncomplete = () => {
-                    // Refresh view if modal is open
-                    const modal = document.getElementById('ledger-modal-overlay');
-                    if (modal && !modal.classList.contains('hidden')) {
-                        renderTransactionList();
-                    }
-                };
-            }
-        };
-    }
-
-    // 3. Inject Modal HTML Shell into Document Body
-    function injectModalHTML() {
-        const modalMarkup = `
+        const modalHTML = `
         <div id="ledger-modal-overlay" class="ledger-modal-overlay hidden">
             <div class="ledger-modal-frame">
+                <!-- Header -->
                 <div class="ledger-header">
                     <div class="ledger-title">
                         <span class="ledger-icon">📜</span>
                         <h3>TRANSACTION LEDGER</h3>
+                        <span class="vip-badge-shimmer" style="font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; margin-left: 8px;">VIP AUDIT</span>
                     </div>
-                    <button id="close-ledger-btn" class="close-modal-btn">&times;</button>
+                    <button id="close-ledger-btn" class="close-modal-btn" aria-label="Close Modal">&times;</button>
                 </div>
-                
+
+                <!-- Live Performance Metrics Header -->
                 <div class="ledger-stats-bar">
                     <div class="stat-pill">
-                        <span class="stat-label">RECORDED LOGS</span>
-                        <span id="total-logs-count" class="stat-val">0</span>
+                        <span class="stat-label">TOTAL TURNOVER</span>
+                        <span id="ledger-stat-volume" class="stat-val">$0.00</span>
                     </div>
                     <div class="stat-pill">
-                        <span class="stat-label">SESSION NET FLOW</span>
-                        <span id="session-net-flow" class="stat-val">$0.00</span>
+                        <span class="stat-label">NET PROFIT / LOSS</span>
+                        <span id="ledger-stat-net" class="stat-val">$0.00</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-label">TOTAL SETTLED</span>
+                        <span id="ledger-stat-count" class="stat-val">0</span>
                     </div>
                 </div>
 
+                <!-- Transaction History Table -->
                 <div class="ledger-body">
                     <div class="table-header">
-                        <span>TIME</span>
-                        <span>GAME / SOURCE</span>
-                        <span>TYPE</span>
-                        <span>NET AMOUNT</span>
-                        <span>BALANCE</span>
+                        <span>Time</span>
+                        <span>Game</span>
+                        <span>Type</span>
+                        <span>Net P/L</span>
+                        <span>Balance</span>
                     </div>
                     <div id="ledger-rows-container" class="ledger-rows">
-                        <!-- Dynamic rows will render here -->
+                        <div class="empty-ledger-msg">QUERYING BLOCKCHAIN LEDGER...</div>
                     </div>
                 </div>
-                
+
+                <!-- Footer with Export & Maintenance Tools -->
                 <div class="ledger-footer">
-                    <button id="clear-ledger-btn" class="btn-clear-history">CLEAR LOGS</button>
+                    <div class="export-btn-group">
+                        <button id="export-json-btn" class="btn-export btn-json">⚡ JSON EXPORT</button>
+                        <button id="export-csv-btn" class="btn-export btn-csv">📊 CSV EXPORT</button>
+                    </div>
+                    <button id="clear-ledger-btn" class="btn-clear-history">PURGE HISTORY</button>
                 </div>
             </div>
         </div>`;
 
-        document.body.insertAdjacentHTML('beforeend', modalMarkup);
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
 
-    // 4. Render Transaction Rows from DB
-    async function renderTransactionList() {
+    // --------------------------------------------------------------------------
+    // 3. Database Layer & Data Rendering
+    // --------------------------------------------------------------------------
+    function fetchLedgerData() {
+        return new Promise((resolve) => {
+            const req = indexedDB.open(DB_NAME);
+            req.onsuccess = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) return resolve([]);
+                
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const store = tx.objectStore(STORE_NAME);
+                const getAll = store.getAll();
+                getAll.onsuccess = () => resolve(getAll.result || []);
+            };
+            req.onerror = () => resolve([]);
+        });
+    }
+
+    async function renderLedgerModal() {
         const container = document.getElementById('ledger-rows-container');
-        const countLabel = document.getElementById('total-logs-count');
-        const netFlowLabel = document.getElementById('session-net-flow');
         if (!container) return;
 
-        const dbRequest = indexedDB.open(DB_NAME);
-        dbRequest.onsuccess = (e) => {
+        const data = await fetchLedgerData();
+        
+        // Reverse array to show newest transactions first
+        const records = [...data].reverse();
+
+        if (records.length === 0) {
+            container.innerHTML = '<div class="empty-ledger-msg">NO TRANSACTIONS RECORDED YET</div>';
+            updateStatsUI(0, 0, 0);
+            return;
+        }
+
+        let totalTurnover = 0;
+        let netPL = 0;
+
+        container.innerHTML = records.map(item => {
+            const net = Number(item.netChange) || 0;
+            const amt = Number(item.amount) || 0;
+            totalTurnover += Math.abs(amt);
+            netPL += net;
+
+            const isPos = net > 0;
+            const isZero = net === 0;
+            const rowClass = isPos ? 'row-positive' : (isZero ? '' : 'row-negative');
+            
+            const badgeType = (item.type || 'TX').toLowerCase();
+            let badgeClass = 'badge-stake';
+            if (badgeType.includes('win')) badgeClass = 'badge-win';
+            else if (badgeType.includes('loss')) badgeClass = 'badge-loss';
+            else if (badgeType.includes('reset')) badgeClass = 'badge-reset';
+
+            const timeStr = item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '--:--';
+
+            return `
+            <div class="ledger-row ${rowClass}" data-id="${item.id || ''}">
+                <span style="color: var(--text-muted); font-size: 0.75rem;">${timeStr}</span>
+                <span style="font-weight: 600; color: #ffffff;">${escapeHtml(item.game || 'System')}</span>
+                <span><span class="col-type ${badgeClass}">${(item.type || 'SETTLE').toUpperCase()}</span></span>
+                <span class="col-net">${isPos ? '+' : ''}$${net.toFixed(2)}</span>
+                <span style="color: var(--neon-cyan); font-weight: 600;">$${Number(item.balanceAfter || 0).toFixed(2)}</span>
+            </div>`;
+        }).join('');
+
+        updateStatsUI(totalTurnover, netPL, records.length);
+    }
+
+    function updateStatsUI(volume, net, count) {
+        const volEl = document.getElementById('ledger-stat-volume');
+        const netEl = document.getElementById('ledger-stat-net');
+        const countEl = document.getElementById('ledger-stat-count');
+
+        if (volEl) volEl.textContent = `$${volume.toFixed(2)}`;
+        if (countEl) countEl.textContent = count;
+        
+        if (netEl) {
+            netEl.textContent = `${net >= 0 ? '+' : ''}$${net.toFixed(2)}`;
+            netEl.className = 'stat-val ' + (net > 0 ? 'txt-green' : (net < 0 ? 'txt-red' : ''));
+        }
+    }
+
+    // --------------------------------------------------------------------------
+    // 4. Modal Open/Close Controls & Event Binding
+    // --------------------------------------------------------------------------
+    function openModal() {
+        const modal = document.getElementById('ledger-modal-overlay');
+        if (modal) {
+            playAudioFx('open');
+            renderLedgerModal();
+            modal.classList.remove('hidden');
+        }
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('ledger-modal-overlay');
+        if (modal) {
+            playAudioFx('click');
+            modal.classList.add('hidden');
+        }
+    }
+
+    async function purgeLedgerHistory() {
+        if (!confirm('Are you sure you want to purge all local transaction records? This action cannot be undone.')) return;
+        
+        playAudioFx('click');
+        const req = indexedDB.open(DB_NAME);
+        req.onsuccess = (e) => {
             const db = e.target.result;
             if (!db.objectStoreNames.contains(STORE_NAME)) return;
-
-            const tx = db.transaction(STORE_NAME, 'readonly');
+            const tx = db.transaction(STORE_NAME, 'readwrite');
             const store = tx.objectStore(STORE_NAME);
-            const req = store.getAll();
-
-            req.onsuccess = () => {
-                const logs = req.result.reverse(); // Show latest first
-                container.innerHTML = '';
-
-                if (logs.length === 0) {
-                    container.innerHTML = `<div class="empty-ledger-msg">NO TRANSACTIONS RECORDED YET</div>`;
-                    if (countLabel) countLabel.textContent = '0';
-                    if (netFlowLabel) {
-                        netFlowLabel.textContent = '$0.00';
-                        netFlowLabel.className = 'stat-val';
-                    }
-                    return;
-                }
-
-                let totalNet = 0;
-                logs.forEach(item => {
-                    totalNet += item.netChange;
-                    const row = document.createElement('div');
-                    row.className = `ledger-row ${item.netChange >= 0 ? 'row-positive' : 'row-negative'}`;
-
-                    const timeStr = new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-                    const formattedNet = (item.netChange >= 0 ? '+' : '') + item.netChange.toFixed(2);
-
-                    row.innerHTML = `
-                        <span class="col-time">${timeStr}</span>
-                        <span class="col-game">${item.game.toUpperCase()}</span>
-                        <span class="col-type badge-${item.type.toLowerCase()}">${item.type}</span>
-                        <span class="col-net">${formattedNet}</span>
-                        <span class="col-bal">$${item.balanceAfter.toFixed(2)}</span>
-                    `;
-                    container.appendChild(row);
-                });
-
-                if (countLabel) countLabel.textContent = logs.length;
-                if (netFlowLabel) {
-                    netFlowLabel.textContent = (totalNet >= 0 ? '+$' : '-$') + Math.abs(totalNet).toFixed(2);
-                    netFlowLabel.className = `stat-val ${totalNet >= 0 ? 'txt-green' : 'txt-red'}`;
-                }
-            };
+            const clearReq = store.clear();
+            clearReq.onsuccess = () => renderLedgerModal();
         };
     }
 
-    // 5. Setup UI Event Handlers & Global Integration Hook
-    function setupEventListeners() {
-        // Toggle modal open/close
+    function bindEvents() {
         document.body.addEventListener('click', (e) => {
-            if (e.target.closest('#open-ledger-trigger')) {
-                const modal = document.getElementById('ledger-modal-overlay');
-                modal.classList.remove('hidden');
-                renderTransactionList();
+            // Open Triggers
+            if (e.target.closest('#open-ledger-btn') || e.target.closest('.btn-ledger-open')) {
+                openModal();
             }
-            if (e.target.closest('#close-ledger-btn') || e.target.id === 'ledger-modal-overlay') {
-                document.getElementById('ledger-modal-overlay').classList.add('hidden');
+            // Close Triggers
+            if (e.target.id === 'close-ledger-btn' || e.target.id === 'ledger-modal-overlay') {
+                closeModal();
             }
-        });
-
-        // Clear history button
-        document.body.addEventListener('click', (e) => {
+            // Purge History
             if (e.target.id === 'clear-ledger-btn') {
-                const dbRequest = indexedDB.open(DB_NAME);
-                dbRequest.onsuccess = (evt) => {
-                    const db = evt.target.result;
-                    const tx = db.transaction(STORE_NAME, 'readwrite');
-                    tx.objectStore(STORE_NAME).clear();
-                    tx.oncomplete = () => renderTransactionList();
-                };
+                purgeLedgerHistory();
+            }
+            // Dynamic Audio Feedback for Row Selection
+            if (e.target.closest('.ledger-row')) {
+                playAudioFx('click');
             }
         });
 
-        // Register Global Helper for Game Engine Modules
-        window.CyberLedger = {
-            log: function(gameName, type, amount, netChange, newBalance) {
-                recordTransaction(type, gameName, amount, netChange, newBalance);
-            }
-        };
+        // Close on Escape Key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
     }
+
+    function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, (m) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+        }[m]));
+    }
+
+    // Expose Global Controller Interface
+    window.CyberLedgerModal = {
+        open: openModal,
+        close: closeModal,
+        refresh: renderLedgerModal
+    };
 })();
