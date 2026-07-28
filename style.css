@@ -3594,3 +3594,150 @@ body {
         justify-content: space-between;
     }
 }
+
+/* ==========================================================================
+   CYBER-CASINO V3.0 - MASTER GLASSMORPHISM & HIGH-ROLLER OVERHAUL
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Dynamic VIP Shimmer & Pulsing Border Animations
+   -------------------------------------------------------------------------- */
+@keyframes goldShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes neonBorderPulse {
+    0%, 100% {
+        border-color: rgba(0, 243, 255, 0.3);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.15), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        border-color: rgba(0, 243, 255, 0.6);
+        box-shadow: 0 0 25px rgba(0, 243, 255, 0.35), inset 0 0 15px rgba(0, 243, 255, 0.1);
+    }
+}
+
+/* Metallic Shimmer Badge Overlay */
+.vip-badge-shimmer {
+    background: linear-gradient(
+        90deg, 
+        #b38728 0%, 
+        #fbf5b7 25%, 
+        #daa520 50%, 
+        #fbf5b7 75%, 
+        #aa771c 100%
+    ) !important;
+    background-size: 200% auto !important;
+    color: #1a0f00 !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    animation: goldShimmer 3.5s linear infinite;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   2. Enhanced Chart Section & Canvas Container
+   -------------------------------------------------------------------------- */
+.chart-container-section {
+    position: relative;
+    background: linear-gradient(165deg, rgba(15, 23, 42, 0.9) 0%, rgba(3, 7, 18, 0.95) 100%) !important;
+    border: 1px solid rgba(0, 243, 255, 0.25) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 243, 255, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chart-container-section:hover {
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+#pl-chart-canvas {
+    border-radius: 8px;
+    background: rgba(2, 6, 23, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   3. Modern Glass Drawer & High-Roller Panels
+   -------------------------------------------------------------------------- */
+.analytics-drawer {
+    background: rgba(11, 17, 32, 0.88) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+    border-left: 1px solid rgba(0, 243, 255, 0.3) !important;
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.85), -5px 0 25px rgba(0, 243, 255, 0.15) !important;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.7) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 243, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   4. High-Roller Breakdown Rows & Micro-Interactions
+   -------------------------------------------------------------------------- */
+.game-breakdown-section {
+    background: rgba(2, 6, 23, 0.4);
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.breakdown-row {
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    padding: 8px 6px !important;
+}
+
+.breakdown-row:hover {
+    background: rgba(0, 243, 255, 0.06) !important;
+    transform: translateX(4px);
+}
+
+.breakdown-row.pos .b-net {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+    font-weight: 800;
+}
+
+.breakdown-row.neg .b-net {
+    color: var(--neon-pink) !important;
+    text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+    font-weight: 800;
+}
+
+/* Custom Scrollbars for Drawer & Ledger */
+.analytics-body::-webkit-scrollbar,
+.ledger-rows::-webkit-scrollbar {
+    width: 5px;
+}
+
+.analytics-body::-webkit-scrollbar-track,
+.ledger-rows::-webkit-scrollbar-track {
+    background: rgba(2, 6, 23, 0.5);
+}
+
+.analytics-body::-webkit-scrollbar-thumb,
+.ledger-rows::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--neon-cyan), #0055ff);
+    border-radius: 10px;
+}
