@@ -2479,3 +2479,840 @@ input:focus,
     border-color: #00ff88;
     box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
+
+/* ==========================================================================
+   CYBER-CASINO ENGINE v2.0 - MASTER CSS STYLESHEET
+   Includes: Navigation HUD, Ledger Modal, Analytics Drawer, 
+             Network Ticker & Export Controls.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Variables & Global Resets
+   -------------------------------------------------------------------------- */
+:root {
+    --bg-dark: #030712;
+    --card-bg: rgba(15, 23, 42, 0.9);
+    --hud-bg: rgba(30, 41, 59, 0.6);
+    --border-glass: rgba(0, 243, 255, 0.25);
+    
+    --neon-cyan: #00f3ff;
+    --neon-green: #00ff88;
+    --neon-pink: #ff0055;
+    
+    --text-main: #f8fafc;
+    --text-muted: #64748b;
+    --text-sub: #94a3b8;
+    
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. Navigation HUD & Header Controls
+   -------------------------------------------------------------------------- */
+.cyber-hud-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 12px 24px;
+    background: rgba(2, 6, 23, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.balance-card {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: var(--neon-green);
+    font-size: 0.95rem;
+}
+
+.btn-ledger-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid var(--border-glass);
+    color: var(--neon-cyan);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ledger-open:hover {
+    background: rgba(0, 243, 255, 0.2);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   3. Live Network Activity Ticker Bar
+   -------------------------------------------------------------------------- */
+.network-ticker-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(2, 6, 23, 0.95);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    overflow: hidden;
+}
+
+.ticker-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    color: var(--neon-cyan);
+    padding-right: 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+}
+
+.ticker-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--neon-green);
+}
+
+.ticker-viewport {
+    flex: 1;
+    overflow: hidden;
+    margin-left: 16px;
+}
+
+.ticker-track {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.ticker-item {
+    white-space: nowrap;
+}
+
+.ticker-item .usr { color: var(--text-main); font-weight: 600; }
+.ticker-item .amt { color: var(--neon-green); font-weight: bold; }
+.ticker-item .game { color: var(--neon-cyan); }
+
+.ticker-enter {
+    animation: fadeInSlide 0.5s ease-out;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --------------------------------------------------------------------------
+   4. Real-Time Transaction Ledger Modal
+   -------------------------------------------------------------------------- */
+.ledger-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.3s ease;
+}
+
+.ledger-modal-overlay.hidden {
+    display: none;
+}
+
+.ledger-modal-frame {
+    width: 90%;
+    max-width: 650px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-glass);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 243, 255, 0.1);
+    overflow: hidden;
+}
+
+.ledger-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--hud-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ledger-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ledger-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    color: var(--neon-cyan);
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    color: var(--text-sub);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal-btn:hover {
+    color: var(--neon-pink);
+}
+
+.ledger-stats-bar {
+    display: flex;
+    gap: 20px;
+    padding: 12px 20px;
+    background: rgba(2, 6, 23, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-pill {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.stat-val {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.txt-green { color: var(--neon-green) !important; }
+.txt-red { color: var(--neon-pink) !important; }
+
+.ledger-body {
+    padding: 12px 20px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-transform: uppercase;
+}
+
+.ledger-rows {
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.col-net { font-weight: bold; }
+.row-positive .col-net { color: var(--neon-green); }
+.row-negative .col-net { color: var(--neon-pink); }
+
+/* Badges */
+.col-type {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+    width: fit-content;
+    font-weight: bold;
+}
+.badge-win { background: rgba(0, 255, 136, 0.15); color: var(--neon-green); border: 1px solid var(--neon-green); }
+.badge-loss, .badge-stake { background: rgba(255, 0, 85, 0.15); color: var(--neon-pink); border: 1px solid var(--neon-pink); }
+.badge-reset { background: rgba(0, 243, 255, 0.15); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); }
+
+.empty-ledger-msg {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.ledger-footer {
+    padding: 12px 20px;
+    background: rgba(15, 23, 42, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-clear-history {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear-history:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   5. Data Export Button Group
+   -------------------------------------------------------------------------- */
+.export-btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-export {
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    color: var(--neon-cyan);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-export:hover {
+    background: rgba(0, 243, 255, 0.2);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.btn-json {
+    color: var(--neon-green);
+    border-color: rgba(0, 255, 136, 0.25);
+    background: rgba(0, 255, 136, 0.08);
+}
+
+.btn-json:hover {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   6. Performance Analytics Side Drawer
+   -------------------------------------------------------------------------- */
+.analytics-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 10001;
+    transition: opacity 0.3s ease;
+}
+
+.analytics-overlay.hidden { display: none; }
+
+.analytics-drawer {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    border-left: 1px solid var(--border-glass);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+.analytics-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--hud-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.title-group h3 { margin: 0; font-size: 1.1rem; color: var(--neon-cyan); letter-spacing: 1px; }
+.close-analytics-btn { background: none; border: none; color: var(--text-sub); font-size: 1.8rem; cursor: pointer; }
+
+.analytics-body { padding: 20px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 24px; }
+
+.metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.metric-card {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.m-label { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.8px; }
+.m-val { font-size: 1.2rem; font-weight: bold; }
+.highlight-green { color: var(--neon-green); }
+.highlight-cyan { color: var(--neon-cyan); }
+
+.proportion-section { display: flex; flex-direction: column; gap: 8px; }
+.prop-labels { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; }
+.proportion-bar-container {
+    height: 10px;
+    background: #0f172a;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+}
+.bar-segment { height: 100%; transition: width 0.4s ease; }
+.win-segment { background: var(--neon-green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+.loss-segment { background: var(--neon-pink); box-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
+
+.game-breakdown-section h4 { margin: 0 0 12px 0; font-size: 0.8rem; color: var(--text-sub); letter-spacing: 1px; }
+.breakdown-header { display: grid; grid-template-columns: 2fr 1fr 1fr; font-size: 0.68rem; color: var(--text-muted); padding-bottom: 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.breakdown-rows { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.breakdown-row { display: grid; grid-template-columns: 2fr 1fr 1fr; font-size: 0.8rem; padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+.breakdown-row.pos .b-net { color: var(--neon-green); }
+.breakdown-row.neg .b-net { color: var(--neon-pink); }
+.empty-breakdown { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 20px 0; }
+
+/* ==========================================================================
+   MODERN CASINO ENHANCEMENT OVERLAY
+   Adds 3D depth, animated neon glows, metallic gold accents, and fluid motion.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Dynamic Ambient Background & Modern Typography
+   -------------------------------------------------------------------------- */
+body {
+    background: radial-gradient(circle at 50% 10%, #0d1527 0%, #030712 70%);
+    background-attachment: fixed;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Smooth Cyber Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(2, 6, 23, 0.6);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00f3ff, #0055ff);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00f3ff;
+    box-shadow: 0 0 10px #00f3ff;
+}
+
+/* --------------------------------------------------------------------------
+   2. Modern High-Roller HUD & Glass Header
+   -------------------------------------------------------------------------- */
+.cyber-hud-bar {
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Gold Metallic Balance Badge */
+.balance-card {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.05) 100%) !important;
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    color: #ffd700 !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.15), inset 0 0 10px rgba(255, 215, 0, 0.05);
+    padding: 8px 18px !important;
+    border-radius: 20px !important;
+    transition: all 0.3s ease;
+}
+
+.balance-card:hover {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.35), inset 0 0 15px rgba(255, 215, 0, 0.1);
+    transform: scale(1.02);
+}
+
+/* Glow Pill Buttons */
+.btn-ledger-open {
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, rgba(0, 243, 255, 0.15) 0%, rgba(0, 85, 255, 0.1) 100%) !important;
+    border: 1px solid rgba(0, 243, 255, 0.4) !important;
+    text-transform: uppercase;
+    font-size: 0.75rem !important;
+    letter-spacing: 1px !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Modern Casino Modals & Glass Panels
+   -------------------------------------------------------------------------- */
+.ledger-modal-frame,
+.analytics-drawer {
+    background: rgba(11, 17, 32, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 243, 255, 0.15) !important;
+}
+
+.ledger-header, 
+.analytics-header {
+    background: linear-gradient(90deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.4) 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Interactive Table Rows */
+.ledger-row, 
+.breakdown-row {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 6px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.ledger-row:hover, 
+.breakdown-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(4px);
+}
+
+/* Metallic Badges */
+.badge-win {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 180, 96, 0.1) 100%) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+.badge-loss, .badge-stake {
+    background: linear-gradient(135deg, rgba(255, 0, 85, 0.2) 0%, rgba(180, 0, 60, 0.1) 100%) !important;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   4. Casino Analytics Cards & Neon Indicators
+   -------------------------------------------------------------------------- */
+.metric-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.6) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Glow Proportion Bar */
+.proportion-bar-container {
+    height: 12px !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.win-segment {
+    background: linear-gradient(90deg, #00ff88, #00cc66) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.6) !important;
+}
+
+.loss-segment {
+    background: linear-gradient(90deg, #ff0055, #cc0044) !important;
+    box-shadow: 0 0 12px rgba(255, 0, 85, 0.6) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Action Buttons (CSV/JSON/Clear)
+   -------------------------------------------------------------------------- */
+.btn-export, .btn-clear-history {
+    border-radius: 8px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700 !important;
+}
+
+.btn-json {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 180, 96, 0.05) 100%) !important;
+}
+
+.btn-export:hover {
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   MODERN CASINO V2 - VIP & GAME CARD VISUAL OVERHAUL
+   Features: Animated Neon Borders, Metallic Gold Accents, Interactive Cards
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Dynamic Glow Variables & Keyframes
+   -------------------------------------------------------------------------- */
+:root {
+    --gold-primary: #ffd700;
+    --gold-glow: rgba(255, 215, 0, 0.4);
+    --neon-purple: #b026ff;
+    --purple-glow: rgba(176, 38, 255, 0.35);
+    --card-surface: linear-gradient(160deg, rgba(20, 30, 55, 0.85) 0%, rgba(10, 16, 32, 0.95) 100%);
+}
+
+@keyframes neonPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 10px rgba(0, 243, 255, 0.1); }
+    50% { box-shadow: 0 0 25px rgba(0, 243, 255, 0.4), inset 0 0 15px rgba(0, 243, 255, 0.2); }
+}
+
+@keyframes goldShine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* --------------------------------------------------------------------------
+   2. Modern Casino Lobby & Game Card Grid
+   -------------------------------------------------------------------------- */
+.game-grid, .casino-lobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 24px;
+}
+
+.game-card {
+    position: relative;
+    background: var(--card-surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 243, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 243, 255, 0.25);
+}
+
+.game-card:hover::before {
+    opacity: 1;
+}
+
+/* Card Visual Header / Thumbnail */
+.game-card-thumb {
+    width: 100%;
+    height: 160px;
+    background-color: rgba(2, 6, 23, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 16, 32, 0.95) 100%);
+}
+
+.game-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.game-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.game-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-sub);
+}
+
+.multiplier-tag {
+    color: var(--neon-green);
+    font-weight: bold;
+    background: rgba(0, 255, 136, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Play Button Action */
+.btn-play-game {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00f3ff 0%, #0055ff 100%);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+}
+
+.game-card:hover .btn-play-game {
+    background: linear-gradient(135deg, #00ff88 0%, #00b359 100%);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    color: #030712;
+}
+
+/* --------------------------------------------------------------------------
+   3. Metallic Metallic Gold VIP Badge & Jackpot Counter
+   -------------------------------------------------------------------------- */
+.vip-badge-shimmer {
+    background: linear-gradient(
+        90deg, 
+        #b38728 0%, 
+        #fbf5b7 25%, 
+        #daa520 50%, 
+        #fbf5b7 75%, 
+        #aa771c 100%
+    ) !important;
+    background-size: 200% auto !important;
+    color: #1a0f00 !important;
+    animation: goldShine 4s linear infinite;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.jackpot-banner {
+    background: linear-gradient(135deg, rgba(176, 38, 255, 0.15) 0%, rgba(0, 243, 255, 0.1) 100%);
+    border: 1px solid rgba(176, 38, 255, 0.4);
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 20px var(--purple-glow);
+}
+
+.jackpot-amount {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--gold-primary);
+    text-shadow: 0 0 12px var(--gold-glow);
+    letter-spacing: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   4. High-Roller Mobile Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .cyber-hud-bar {
+        padding: 10px 12px !important;
+        gap: 8px !important;
+    }
+
+    .balance-card {
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .btn-ledger-open {
+        padding: 6px 10px !important;
+        font-size: 0.7rem !important;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .game-card-thumb {
+        height: 110px;
+        font-size: 2.5rem;
+    }
+
+    .jackpot-banner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        margin: 12px;
+    }
+
+    .analytics-drawer {
+        max-width: 100% !important;
+    }
+}
