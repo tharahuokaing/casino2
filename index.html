@@ -32,8 +32,8 @@
             <button class="nav-btn" id="tab-live-baccarat" role="tab" aria-selected="false" aria-controls="live-baccarat-arena">Live Baccarat</button>
         </nav>
 
-        <!-- Top HUD Bar -->
-<header class="cyber-hud-bar">
+    <!-- Top HUD Bar -->
+    <header class="cyber-hud-bar">
     <div class="session-status-badge">
         <span class="session-dot" id="session-status-dot"></span>
         <span class="session-txt">ACTIVE SESSION // CREDITS: $<span id="session-balance-display">1,000,000.00</span></span>
@@ -555,6 +555,98 @@
                 <button class="btn btn-secondary" id="btn-increase-bet" aria-label="Increase bet">+ Increase</button>
             </div>
             <button class="btn btn-primary" id="btn-action">SPIN REELS</button>
+        </div>
+
+        <!-- Cyber Auth Overlay Modal -->
+        <div id="auth-modal-overlay" class="auth-modal-overlay hidden">
+            <div class="auth-modal-frame">
+                <!-- Close Button -->
+                <button id="close-auth-btn" class="close-auth-btn" aria-label="Close Authentication">&times;</button>
+
+                <!-- Auth Tab Navigation -->
+                <div class="auth-tabs">
+                    <button id="tab-login-btn" class="auth-tab-btn active" data-tab="login">
+                        <span class="tab-icon">🔑</span> LOGIN
+                    </button>
+                    <button id="tab-register-btn" class="auth-tab-btn" data-tab="register">
+                        <span class="tab-icon">⚡</span> REGISTER
+                    </button>
+                </div>
+
+                <div class="auth-body">
+                    <!-- Form 1: Login Form -->
+                    <form id="auth-login-form" class="auth-form">
+                        <div class="auth-header-text">
+                            <h3>WELCOME BACK, HIGH-ROLLER</h3>
+                            <p>Enter your credentials to access your session wallet.</p>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="login-username">HANDLE / USERNAME</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="login-username" placeholder="CyberPlayer77" required autocomplete="username">
+                            </div>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="login-password">SECURITY PASSCODE</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="login-password" placeholder="••••••••••••" required autocomplete="current-password">
+                            </div>
+                        </div>
+
+                        <div class="auth-form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="login-remember">
+                                <span>Remember Session</span>
+                            </label>
+                            <a href="#" class="forgot-pass-link">Forgot Key?</a>
+                        </div>
+
+                        <button type="submit" class="btn-auth-submit">
+                            <span>AUTHENTICATE</span> ⚡
+                        </button>
+                    </form>
+    
+                    <!-- Form 2: Register Form (Hidden by default) -->
+                    <form id="auth-register-form" class="auth-form hidden">
+                        <div class="auth-header-text">
+                            <h3>JOIN THE HIGH-ROLLER CLUB</h3>
+                            <p>Create a secure vault account to store your casino credits.</p>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="reg-username">NEW HANDLE</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="reg-username" placeholder="VipPlayer99" required minlength="3">
+                            </div>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="reg-email">COMM CHANNEL (EMAIL)</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">✉️</span>
+                                <input type="email" id="reg-email" placeholder="player@domain.com" required>
+                            </div>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="reg-password">SET PASSCODE</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔑</span>
+                                <input type="password" id="reg-password" placeholder="••••••••••••" required minlength="6">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-auth-submit btn-register-accent">
+                            <span>INITIALIZE ACCOUNT</span> 🚀
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
