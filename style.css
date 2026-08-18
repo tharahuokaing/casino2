@@ -4405,3 +4405,153 @@ body {
         letter-spacing: 0.5px;
     }
 }
+
+/* ==========================================================================
+   MASTER STATISTICS DASHBOARD & FULL BALANCE DISPLAY
+   ========================================================================== */
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+/* Display Container Box */
+.display-box {
+    background: rgba(14, 18, 36, 0.95);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 14px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+    max-width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 
+                inset 0 0 15px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* Dashboard Label */
+.display-box .label {
+    color: #8a99ad;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+/* Full Balance Value Display */
+#balance-display,
+.value-highlight {
+    color: #00f0ff;
+    font-family: 'Rajdhani', 'JetBrains Mono', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.75rem); /* Responsive fluid scaling */
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap; /* Ensures full balance stays on one line */
+    overflow: visible;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6),
+                 0 0 24px rgba(0, 240, 255, 0.3);
+    line-height: 1.1;
+    display: block;
+    width: 100%;
+}
+
+/* ==========================================================================
+   MOBILE & SMALL SCREEN OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .display-box {
+        padding: 1rem 1.25rem;
+        min-width: 100%;
+    }
+
+    #balance-display,
+    .value-highlight {
+        font-size: clamp(1.4rem, 6.5vw, 2rem); /* Auto-fits large dollar amounts */
+        letter-spacing: 0.5px;
+    }
+}
+
+/* ==========================================================================
+   MASTER STATISTICS DASHBOARD & FULL BALANCE DISPLAY
+   ========================================================================== */
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+/* Display Container Box */
+.display-box {
+    background: rgba(14, 18, 36, 0.95);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 14px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+    max-width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 
+                inset 0 0 15px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* Dashboard Label */
+.display-box .label {
+    color: #8a99ad;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+/* Full Balance Value Display */
+#balance-display,
+.value-highlight {
+    color: #00f0ff;
+    font-family: 'Rajdhani', 'JetBrains Mono', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.75rem); /* Responsive fluid scaling */
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap; /* Ensures full balance stays on one line */
+    overflow: visible;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6),
+                 0 0 24px rgba(0, 240, 255, 0.3);
+    line-height: 1.1;
+    display: block;
+    width: 100%;
+}
+
+/* ==========================================================================
+   MOBILE & SMALL SCREEN OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .display-box {
+        padding: 1rem 1.25rem;
+        min-width: 100%;
+    }
+
+    #balance-display,
+    .value-highlight {
+        font-size: clamp(1.4rem, 6.5vw, 2rem); /* Auto-fits large dollar amounts */
+        letter-spacing: 0.5px;
+    }
+}
