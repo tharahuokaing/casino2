@@ -25,11 +25,17 @@
     function createRandomWinEntry() {
         const randomUser = USERS[Math.floor(Math.random() * USERS.length)];
         const randomGame = GAMES[Math.floor(Math.random() * GAMES.length)];
-        const randomAmount = (Math.random() * 250 + 10).toFixed(2);
+        
+        // Generate payout between $100,000.00 and $9,999,999.00
+        const randomRawAmount = Math.random() * 9899999 + 100000;
+        const formattedAmount = randomRawAmount.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
 
         return `<div class="ticker-item">
             <span class="usr">${randomUser}</span> won 
-            <span class="amt">+$${randomAmount}</span> on 
+            <span class="amt">+$${formattedAmount}</span> on 
             <span class="game">${randomGame}</span>
         </div>`;
     }
