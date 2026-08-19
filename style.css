@@ -4539,19 +4539,3 @@ body {
     display: block;
     width: 100%;
 }
-
-/* ==========================================================================
-   MOBILE & SMALL SCREEN OPTIMIZATIONS
-   ========================================================================== */
-@media screen and (max-width: 480px) {
-    .display-box {
-        padding: 1rem 1.25rem;
-        min-width: 100%;
-    }
-
-    #balance-display,
-    .value-highlight {
-        font-size: clamp(1.4rem, 6.5vw, 2rem); /* Auto-fits large dollar amounts */
-        letter-spacing: 0.5px;
-    }
-}
