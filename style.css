@@ -4555,3 +4555,82 @@ body {
         letter-spacing: 0.5px;
     }
 }
+
+/* ==========================================================================
+   COMPACT GOLDEN CONTROLS STYLES
+   ========================================================================== */
+
+/* Main Controls Layout Container */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+/* Bet Adjusters Container (Flex Row for + and -) */
+.bet-adjusters {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* Base Button Styling (Shared Compact Properties) */
+.controls .btn {
+    font-family: 'Rajdhani', 'JetBrains Mono', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #ffe680;
+    border-radius: 6px;
+    cursor: pointer;
+    line-height: 1.1;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Primary Action Button (SPIN REELS) - Golden Metallic */
+.controls .btn-primary {
+    width: 100%;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #1a0f00;
+    background: linear-gradient(180deg, #ffe066 0%, #d4af37 50%, #aa7c11 100%);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.controls .btn-primary:hover {
+    background: linear-gradient(180deg, #fff099 0%, #e5c158 50%, #c49218 100%);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    transform: translateY(-1px);
+}
+
+/* Secondary Buttons (INCREASE / DECREASE) - Compact Gold */
+.controls .btn-secondary {
+    flex: 1;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    color: #ffd700;
+    background: linear-gradient(180deg, #2a2111 0%, #151008 100%);
+    border-color: #b8860b;
+}
+
+.controls .btn-secondary:hover {
+    color: #ffffff;
+    border-color: #ffd700;
+    background: linear-gradient(180deg, #3d3019 0%, #20180c 100%);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Active Press Effect */
+.controls .btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
