@@ -4634,3 +4634,99 @@ body {
     transform: translateY(1px);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
+
+/* ==========================================================================
+   GOLDEN COMPACT GAME CONTROLS (ANDROID & DESKTOP)
+   ========================================================================== */
+
+/* Main Controls Container - Centered */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px; /* Compact width for desktop */
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+/* Common Button Styles */
+.btn {
+    font-family: 'Rajdhani', 'JetBrains Mono', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 1.2;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+/* Golden Primary Spin Button (Smaller Height & Centered) */
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+    color: #000000;
+    background: linear-gradient(135deg, #ffe066 0%, #ffd700 50%, #e6a100 100%);
+    border: 1px solid #fff2a3;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.55);
+}
+
+/* Bet Adjusters Row */
+.bet-adjusters {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Golden Secondary Adjuster Buttons */
+.btn-secondary {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #ffd700;
+    background: rgba(20, 16, 5, 0.85);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(40, 32, 10, 0.95);
+    border-color: #ffd700;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   ANDROID & MOBILE OPTIMIZATIONS (FULL WIDTH STRETCH)
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .controls {
+        max-width: 100%; /* Spans full screen width on mobile */
+        padding: 0 0.75rem;
+    }
+
+    .btn-primary {
+        padding: 0.85rem 1rem;
+        font-size: 1.25rem; /* Easy tap target for fingers */
+    }
+
+    .btn-secondary {
+        padding: 0.65rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
