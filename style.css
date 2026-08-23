@@ -4730,3 +4730,153 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* ==========================================================================
+   MOBILE & ANDROID FULL-WIDTH RESPONSIVE OVERRIDES
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+    /* Main Layout & Canvas Container */
+    body {
+        padding: 8px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        overflow-x: hidden;
+    }
+
+    /* Outer Wrapper Card */
+    .container, 
+    main, 
+    .dashboard-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 1. Header Navigation Game Tags Grid */
+    .game-nav, 
+    .nav-tags, 
+    div[role="navigation"] {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 8px !important;
+    }
+
+    .game-nav button, 
+    .nav-tags button {
+        flex: 1 1 calc(33.33% - 6px) !important;
+        min-width: 80px !important;
+        font-size: 0.7rem !important;
+        padding: 8px 4px !important;
+        text-align: center !important;
+    }
+
+    /* 2. Top Account & Portal Bar */
+    .account-bar, 
+    .top-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    .top-actions button, 
+    .top-actions a {
+        width: 100% !important;
+        justify-content: center !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* 3. Main Balance, Current Bet & Last Win Metrics Grid */
+    .dashboard, 
+    .metrics-grid, 
+    .stats-container {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Stacks vertically on mobile */
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .display-box, 
+    .metric-card {
+        width: 100% !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .display-box .value-highlight, 
+    #balance-display {
+        font-size: 1.8rem !important;
+        word-break: break-all;
+    }
+
+    /* 4. Slot Arena Layout (Reels + Info Box Stack) */
+    .slot-arena-wrapper, 
+    .game-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 16px !important;
+    }
+
+    /* Reels Box */
+    .reels-container, 
+    .slot-machine {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 15px 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    .reels-container .reel, 
+    .slot-symbol {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    /* Info Message Card */
+    .info-card, 
+    .welcome-box {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px !important;
+    }
+
+    /* 5. Global Operational Mechanics Controls (Full Screen Width) */
+    .controls {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .controls .btn-primary, 
+    #btn-action {
+        width: 100% !important;
+        padding: 14px !important;
+        font-size: 1.1rem !important;
+    }
+
+    .bet-adjusters {
+        display: flex !important;
+        width: 100% !important;
+        gap: 8px !important;
+    }
+
+    .controls .btn-secondary, 
+    #btn-decrease-bet, 
+    #btn-increase-bet {
+        flex: 1 !important;
+        width: 50% !important;
+        padding: 10px 4px !important;
+        font-size: 0.8rem !important;
+    }
+}
