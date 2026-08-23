@@ -5021,3 +5021,2085 @@ body {
         font-size: 2.2rem;
     }
 }
+
+/* ==========================================================================
+   MODERN CASINO COIN FLIP GAME STYLES
+   ========================================================================== */
+
+:root {
+    --coin-gold: #ffd700;
+    --coin-gold-dark: #b38f00;
+    --coin-cyan: #00f0ff;
+    --coin-cyan-dark: #008ba3;
+    --coin-card-bg: rgba(18, 22, 43, 0.95);
+    --coin-border: rgba(0, 240, 255, 0.2);
+}
+
+/* Main Container Card */
+.coin-flip-container {
+    background: var(--coin-card-bg);
+    border: 1px solid var(--coin-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* 3D Coin Stage Viewport */
+.coin-stage {
+    width: 140px;
+    height: 140px;
+    perspective: 1000px;
+    margin: 10px 0;
+}
+
+/* 3D Rotating Coin Element */
+.coin {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 3s cubic-bezier(0.15, 0.85, 0.35, 1.2);
+}
+
+/* Coin Faces (Heads & Tails) */
+.coin-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+}
+
+/* Heads Face (Gold Theme) */
+.coin-heads {
+    background: radial-gradient(circle, #ffe875 0%, var(--coin-gold) 60%, var(--coin-gold-dark) 100%);
+    color: #000000;
+    border: 4px solid #fff2a3;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6),
+                inset 0 0 10px rgba(255, 255, 255, 0.8);
+    transform: rotateY(0deg);
+}
+
+/* Tails Face (Cyan Theme) */
+.coin-tails {
+    background: radial-gradient(circle, #80f7ff 0%, var(--coin-cyan) 60%, var(--coin-cyan-dark) 100%);
+    color: #000000;
+    border: 4px solid #ccfbff;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6),
+                inset 0 0 10px rgba(255, 255, 255, 0.8);
+    transform: rotateY(180deg);
+}
+
+/* Flip Animations Trigger Classes */
+.coin.flip-heads {
+    transform: rotateY(1800deg); /* Spins 5 full rotations to Heads */
+}
+
+.coin.flip-tails {
+    transform: rotateY(1980deg); /* Spins 5.5 full rotations to Tails */
+}
+
+/* Side Selection Control Group */
+.coin-selection-group {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-select-side {
+    flex: 1;
+    padding: 12px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #a0a8c3;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-select-side:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/* Active Selection States */
+.btn-select-side.active-heads {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: var(--coin-gold);
+    color: var(--coin-gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn-select-side.active-tails {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--coin-cyan);
+    color: var(--coin-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .coin-flip-container {
+        padding: 16px;
+        max-width: 100%;
+        gap: 18px;
+    }
+
+    .coin-stage {
+        width: 110px;
+        height: 110px;
+    }
+
+    .coin-side {
+        font-size: 1.2rem;
+    }
+
+    .btn-select-side {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO CRASH GAME STYLES
+   ========================================================================== */
+
+:root {
+    --crash-bg: rgba(18, 22, 43, 0.95);
+    --crash-border: rgba(0, 240, 255, 0.2);
+    --multiplier-gold: #ffd700;
+    --multiplier-green: #00ff66;
+    --crash-red: #ff3366;
+    --cyan-glow: #00f0ff;
+}
+
+/* Main Container Box */
+.crash-game-container {
+    background: var(--crash-bg);
+    border: 1px solid var(--crash-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Crash Graph Canvas Screen */
+.crash-graph-viewport {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    background: #050711;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Grid Line Background Overlay */
+.crash-graph-viewport::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+    pointer-events: none;
+}
+
+/* Live Multiplier Display Overlay */
+.multiplier-display {
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    font-family: 'Rajdhani', 'JetBrains Mono', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--multiplier-green);
+    text-shadow: 0 0 20px rgba(0, 255, 102, 0.6);
+    line-height: 1;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* Crashed State Multiplier Override */
+.multiplier-display.crashed {
+    color: var(--crash-red);
+    text-shadow: 0 0 25px rgba(255, 51, 102, 0.8);
+    animation: shakeCrash 0.4s ease-in-out;
+}
+
+/* Sub-label for Crashed Notice */
+.crash-status-text {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--crash-red);
+    margin-top: 6px;
+}
+
+/* Canvas Graph Target */
+.crash-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+/* Cashout / Action Button Container */
+.crash-controls {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-cashout {
+    width: 100%;
+    padding: 14px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    color: #000000;
+    background: linear-gradient(135deg, #00ff66 0%, #00b347 100%);
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cashout:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 255, 102, 0.7);
+}
+
+.btn-cashout:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Keyframe for Crash Shake Impact */
+@keyframes shakeCrash {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-4px, 2px); }
+    40% { transform: translate(4px, -2px); }
+    60% { transform: translate(-3px, -1px); }
+    80% { transform: translate(3px, 1px); }
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .crash-game-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .crash-graph-viewport {
+        height: 200px;
+    }
+
+    .multiplier-display {
+        font-size: 2.5rem;
+    }
+
+    .btn-cashout {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO ROULETTE GAME STYLES
+   ========================================================================== */
+
+:root {
+    --roulette-bg: rgba(18, 22, 43, 0.95);
+    --roulette-border: rgba(0, 240, 255, 0.2);
+    --roulette-red: #e62e00;
+    --roulette-black: #1a1d2e;
+    --roulette-green: #00cc44;
+    --neon-gold: #ffd700;
+    --neon-cyan: #00f0ff;
+}
+
+/* Main Container Box */
+.roulette-container {
+    background: var(--roulette-bg);
+    border: 1px solid var(--roulette-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Roulette Wheel Stage */
+.roulette-wheel-stage {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Spinning Wheel Disc */
+.roulette-wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid #2a314d;
+    background: radial-gradient(circle, #0e1224 0%, #050711 100%);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.9),
+                inset 0 0 15px rgba(0, 240, 255, 0.1);
+    transition: transform 4s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* Wheel Top Pointer / Marker */
+.roulette-pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 18px solid var(--neon-gold);
+    filter: drop-shadow(0 0 8px var(--neon-gold));
+    z-index: 10;
+}
+
+/* Betting Board Grid */
+.roulette-bet-board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Outside Bets Row (Red, Black, Green/Zero, Even, Odd) */
+.roulette-outside-bets {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+.bet-tile {
+    padding: 12px 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+/* Color Tile Variations */
+.bet-tile.red {
+    background: rgba(230, 46, 0, 0.25);
+    border-color: var(--roulette-red);
+    color: #ff8566;
+}
+
+.bet-tile.black {
+    background: rgba(26, 29, 46, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #d1d5db;
+}
+
+.bet-tile.green {
+    background: rgba(0, 204, 68, 0.25);
+    border-color: var(--roulette-green);
+    color: #66ff99;
+}
+
+.bet-tile:hover, 
+.bet-tile.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    border-color: var(--neon-gold);
+    color: #ffffff;
+}
+
+/* Selected Active Highlight */
+.bet-tile.selected {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .roulette-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .roulette-wheel-stage {
+        width: 170px;
+        height: 170px;
+    }
+
+    .roulette-outside-bets {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .bet-tile {
+        padding: 10px 4px;
+        font-size: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO ROCK PAPER SCISSORS (RPS) STYLES
+   ========================================================================== */
+
+:root {
+    --rps-bg: rgba(18, 22, 43, 0.95);
+    --rps-border: rgba(0, 240, 255, 0.2);
+    --rock-color: #ff007f;
+    --paper-color: #00f0ff;
+    --scissors-color: #ffd700;
+    --win-green: #00ff66;
+    --lose-red: #ff3366;
+}
+
+/* Main Container Box */
+.rps-container {
+    background: var(--rps-bg);
+    border: 1px solid var(--rps-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Battle Arena Display */
+.rps-arena {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: #050711;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.rps-fighter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.rps-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(12, 15, 30, 0.8);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.rps-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+/* VS Badge Divider */
+.rps-vs {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    padding: 0 10px;
+}
+
+/* Choice Selection Cards */
+.rps-choices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.rps-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.rps-card .icon {
+    font-size: 2.2rem;
+}
+
+.rps-card .name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #cbd5e1;
+}
+
+/* Card Active Hover & Selection States */
+.rps-card.rock:hover, .rps-card.rock.selected {
+    border-color: var(--rock-color);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+    background: rgba(255, 0, 127, 0.1);
+}
+
+.rps-card.paper:hover, .rps-card.paper.selected {
+    border-color: var(--paper-color);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    background: rgba(0, 240, 255, 0.1);
+}
+
+.rps-card.scissors:hover, .rps-card.scissors.selected {
+    border-color: var(--scissors-color);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+/* Arena Result States */
+.rps-avatar.win {
+    border-color: var(--win-green);
+    box-shadow: 0 0 25px var(--win-green);
+}
+
+.rps-avatar.lose {
+    border-color: var(--lose-red);
+    box-shadow: 0 0 25px var(--lose-red);
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .rps-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .rps-arena {
+        padding: 12px;
+    }
+
+    .rps-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .rps-vs {
+        font-size: 1.1rem;
+    }
+
+    .rps-card {
+        padding: 12px 4px;
+    }
+
+    .rps-card .icon {
+        font-size: 1.7rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO MINES GAME STYLES
+   ========================================================================== */
+
+:root {
+    --mines-bg: rgba(18, 22, 43, 0.95);
+    --mines-border: rgba(0, 240, 255, 0.2);
+    --tile-bg: rgba(255, 255, 255, 0.04);
+    --tile-border: rgba(255, 255, 255, 0.1);
+    --gem-green: #00ff66;
+    --mine-red: #ff3366;
+    --neon-gold: #ffd700;
+}
+
+/* Main Container Box */
+.mines-container {
+    background: var(--mines-bg);
+    border: 1px solid var(--mines-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* 5x5 Mines Grid Board */
+.mines-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #050711;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+/* Individual Grid Tile */
+.mine-tile {
+    background: var(--tile-bg);
+    border: 1px solid var(--tile-border);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.mine-tile:hover:not(.revealed) {
+    background: rgba(0, 240, 255, 0.08);
+    border-color: rgba(0, 240, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 240, 255, 0.2);
+}
+
+.mine-tile:active:not(.revealed) {
+    transform: scale(0.95);
+}
+
+/* Revealed Gem Tile State */
+.mine-tile.revealed-gem {
+    background: rgba(0, 255, 102, 0.12);
+    border-color: var(--gem-green);
+    box-shadow: 0 0 18px rgba(0, 255, 102, 0.35),
+                inset 0 0 10px rgba(0, 255, 102, 0.2);
+    animation: revealPop 0.3s ease-out;
+    cursor: default;
+}
+
+/* Revealed Mine/Bomb Tile State */
+.mine-tile.revealed-mine {
+    background: rgba(255, 51, 102, 0.15);
+    border-color: var(--mine-red);
+    box-shadow: 0 0 22px rgba(255, 51, 102, 0.5),
+                inset 0 0 10px rgba(255, 51, 102, 0.3);
+    animation: revealExplode 0.35s ease-out;
+    cursor: default;
+}
+
+/* Unselected Tile Overlay on Game Over */
+.mine-tile.dimmed {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* Tile Animations */
+@keyframes revealPop {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes revealExplode {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .mines-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .mines-grid {
+        gap: 6px;
+        padding: 8px;
+        border-radius: 12px;
+    }
+
+    .mine-tile {
+        border-radius: 8px;
+        font-size: 1.3rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BLACKJACK GAME STYLES
+   ========================================================================== */
+
+:root {
+    --bj-bg: rgba(18, 22, 43, 0.95);
+    --bj-felt: radial-gradient(circle, #0d3822 0%, #051a0f 100%);
+    --bj-border: rgba(0, 240, 255, 0.2);
+    --bj-card-bg: #ffffff;
+    --neon-gold: #ffd700;
+    --neon-cyan: #00f0ff;
+    --win-green: #00ff66;
+    --lose-red: #ff3366;
+}
+
+/* Main Container Box */
+.blackjack-container {
+    background: var(--bj-bg);
+    border: 1px solid var(--bj-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Felt Gaming Table Viewport */
+.bj-table-felt {
+    width: 100%;
+    background: var(--bj-felt);
+    border: 2px solid rgba(0, 255, 102, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+/* Hand Section (Dealer & Player) */
+.bj-hand-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.bj-hand-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+/* Score Badge Display */
+.bj-score-badge {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--neon-gold);
+    color: var(--neon-gold);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+/* Cards Stack Layout */
+.bj-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -15px; /* Creates overlapping card stack effect */
+    min-height: 100px;
+}
+
+/* Individual Playing Card */
+.bj-card {
+    width: 65px;
+    height: 95px;
+    background: var(--bj-card-bg);
+    border-radius: 8px;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-left: -12px; /* Overlap offset */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+}
+
+.bj-card:first-child {
+    margin-left: 0;
+}
+
+.bj-card.red {
+    color: #e62e00;
+}
+
+.bj-card.black {
+    color: #0f172a;
+}
+
+.bj-card.hidden {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: transparent;
+}
+
+/* Blackjack Controls Group */
+.bj-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-bj-action {
+    padding: 12px 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: #f0f4f8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-bj-action.hit {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--win-green);
+    color: var(--win-green);
+}
+
+.btn-bj-action.stand {
+    background: rgba(255, 51, 102, 0.15);
+    border-color: var(--lose-red);
+    color: var(--lose-red);
+}
+
+.btn-bj-action.double {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: var(--neon-gold);
+    color: var(--neon-gold);
+}
+
+.btn-bj-action.split {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+.btn-bj-action:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .blackjack-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .bj-table-felt {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .bj-card {
+        width: 50px;
+        height: 75px;
+        font-size: 0.9rem;
+        padding: 4px;
+        margin-left: -10px;
+    }
+
+    .bj-controls {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .btn-bj-action {
+        padding: 10px 4px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BLACKJACK GAME STYLES
+   ========================================================================== */
+
+:root {
+    --bj-bg: rgba(18, 22, 43, 0.95);
+    --bj-felt: radial-gradient(circle, #0d3822 0%, #051a0f 100%);
+    --bj-border: rgba(0, 240, 255, 0.2);
+    --bj-card-bg: #ffffff;
+    --neon-gold: #ffd700;
+    --neon-cyan: #00f0ff;
+    --win-green: #00ff66;
+    --lose-red: #ff3366;
+}
+
+/* Main Container Box */
+.blackjack-container {
+    background: var(--bj-bg);
+    border: 1px solid var(--bj-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Felt Gaming Table Viewport */
+.bj-table-felt {
+    width: 100%;
+    background: var(--bj-felt);
+    border: 2px solid rgba(0, 255, 102, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+/* Hand Section (Dealer & Player) */
+.bj-hand-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.bj-hand-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+/* Score Badge Display */
+.bj-score-badge {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--neon-gold);
+    color: var(--neon-gold);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+/* Cards Stack Layout */
+.bj-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -15px; /* Creates overlapping card stack effect */
+    min-height: 100px;
+}
+
+/* Individual Playing Card */
+.bj-card {
+    width: 65px;
+    height: 95px;
+    background: var(--bj-card-bg);
+    border-radius: 8px;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-left: -12px; /* Overlap offset */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+}
+
+.bj-card:first-child {
+    margin-left: 0;
+}
+
+.bj-card.red {
+    color: #e62e00;
+}
+
+.bj-card.black {
+    color: #0f172a;
+}
+
+.bj-card.hidden {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: transparent;
+}
+
+/* Blackjack Controls Group */
+.bj-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-bj-action {
+    padding: 12px 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: #f0f4f8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-bj-action.hit {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--win-green);
+    color: var(--win-green);
+}
+
+.btn-bj-action.stand {
+    background: rgba(255, 51, 102, 0.15);
+    border-color: var(--lose-red);
+    color: var(--lose-red);
+}
+
+.btn-bj-action.double {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: var(--neon-gold);
+    color: var(--neon-gold);
+}
+
+.btn-bj-action.split {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+.btn-bj-action:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .blackjack-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .bj-table-felt {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .bj-card {
+        width: 50px;
+        height: 75px;
+        font-size: 0.9rem;
+        padding: 4px;
+        margin-left: -10px;
+    }
+
+    .bj-controls {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .btn-bj-action {
+        padding: 10px 4px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BACCARAT GAME STYLES
+   ========================================================================== */
+
+:root {
+    --bac-bg: rgba(18, 22, 43, 0.95);
+    --bac-felt: radial-gradient(circle, #0a1f38 0%, #040a14 100%);
+    --bac-border: rgba(0, 240, 255, 0.2);
+    --player-blue: #0088ff;
+    --banker-red: #ff3355;
+    --tie-green: #00ff66;
+    --neon-gold: #ffd700;
+}
+
+/* Main Container Box */
+.baccarat-container {
+    background: var(--bac-bg);
+    border: 1px solid var(--bac-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Baccarat Table Viewport */
+.bac-table-felt {
+    width: 100%;
+    background: var(--bac-felt);
+    border: 2px solid rgba(0, 136, 255, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Arena Split (Player vs Banker) */
+.bac-arena {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.bac-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.bac-side-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bac-side.player .bac-side-title { color: var(--player-blue); }
+.bac-side.banker .bac-side-title { color: var(--banker-red); }
+
+/* Score Badge */
+.bac-score {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--neon-gold);
+    border: 1px solid var(--neon-gold);
+}
+
+/* Card Containers */
+.bac-cards-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    min-height: 85px;
+}
+
+.bac-card {
+    width: 55px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.bac-card.red { color: #e62e00; }
+.bac-card.black { color: #0f172a; }
+
+/* Baccarat Betting Zones Grid */
+.bac-bet-zones {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.bac-bet-box {
+    padding: 14px 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bac-bet-box.player {
+    background: rgba(0, 136, 255, 0.15);
+    border-color: var(--player-blue);
+    color: var(--player-blue);
+}
+
+.bac-bet-box.tie {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--tie-green);
+    color: var(--tie-green);
+}
+
+.bac-bet-box.banker {
+    background: rgba(255, 51, 85, 0.15);
+    border-color: var(--banker-red);
+    color: var(--banker-red);
+}
+
+.bac-bet-box:hover,
+.bac-bet-box.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    border-color: var(--neon-gold);
+}
+
+.payout-rate {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .baccarat-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .bac-table-felt {
+        padding: 10px;
+        gap: 14px;
+    }
+
+    .bac-arena {
+        gap: 8px;
+    }
+
+    .bac-side {
+        padding: 8px;
+    }
+
+    .bac-card {
+        width: 45px;
+        height: 65px;
+        font-size: 0.85rem;
+    }
+
+    .bac-bet-zones {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .bac-bet-box {
+        padding: 10px;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BACCARAT GAME STYLES
+   ========================================================================== */
+
+:root {
+    --bac-bg: rgba(18, 22, 43, 0.95);
+    --bac-felt: radial-gradient(circle, #0a1f38 0%, #040a14 100%);
+    --bac-border: rgba(0, 240, 255, 0.2);
+    --player-blue: #0088ff;
+    --banker-red: #ff3355;
+    --tie-green: #00ff66;
+    --neon-gold: #ffd700;
+}
+
+/* Main Container Box */
+.baccarat-container {
+    background: var(--bac-bg);
+    border: 1px solid var(--bac-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Baccarat Table Viewport */
+.bac-table-felt {
+    width: 100%;
+    background: var(--bac-felt);
+    border: 2px solid rgba(0, 136, 255, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Arena Split (Player vs Banker) */
+.bac-arena {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.bac-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.bac-side-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bac-side.player .bac-side-title { color: var(--player-blue); }
+.bac-side.banker .bac-side-title { color: var(--banker-red); }
+
+/* Score Badge */
+.bac-score {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--neon-gold);
+    border: 1px solid var(--neon-gold);
+}
+
+/* Card Containers */
+.bac-cards-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    min-height: 85px;
+}
+
+.bac-card {
+    width: 55px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.bac-card.red { color: #e62e00; }
+.bac-card.black { color: #0f172a; }
+
+/* Baccarat Betting Zones Grid */
+.bac-bet-zones {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.bac-bet-box {
+    padding: 14px 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bac-bet-box.player {
+    background: rgba(0, 136, 255, 0.15);
+    border-color: var(--player-blue);
+    color: var(--player-blue);
+}
+
+.bac-bet-box.tie {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--tie-green);
+    color: var(--tie-green);
+}
+
+.bac-bet-box.banker {
+    background: rgba(255, 51, 85, 0.15);
+    border-color: var(--banker-red);
+    color: var(--banker-red);
+}
+
+.bac-bet-box:hover,
+.bac-bet-box.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    border-color: var(--neon-gold);
+}
+
+.payout-rate {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .baccarat-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .bac-table-felt {
+        padding: 10px;
+        gap: 14px;
+    }
+
+    .bac-arena {
+        gap: 8px;
+    }
+
+    .bac-side {
+        padding: 8px;
+    }
+
+    .bac-card {
+        width: 45px;
+        height: 65px;
+        font-size: 0.85rem;
+    }
+
+    .bac-bet-zones {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .bac-bet-box {
+        padding: 10px;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BACCARAT GAME STYLES
+   ========================================================================== */
+
+:root {
+    --bac-bg: rgba(18, 22, 43, 0.95);
+    --bac-felt: radial-gradient(circle, #0a1f38 0%, #040a14 100%);
+    --bac-border: rgba(0, 240, 255, 0.2);
+    --player-blue: #0088ff;
+    --banker-red: #ff3355;
+    --tie-green: #00ff66;
+    --neon-gold: #ffd700;
+}
+
+/* Main Container Box */
+.baccarat-container {
+    background: var(--bac-bg);
+    border: 1px solid var(--bac-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Baccarat Table Viewport */
+.bac-table-felt {
+    width: 100%;
+    background: var(--bac-felt);
+    border: 2px solid rgba(0, 136, 255, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Arena Split (Player vs Banker) */
+.bac-arena {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.bac-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.bac-side-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bac-side.player .bac-side-title { color: var(--player-blue); }
+.bac-side.banker .bac-side-title { color: var(--banker-red); }
+
+/* Score Badge */
+.bac-score {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--neon-gold);
+    border: 1px solid var(--neon-gold);
+}
+
+/* Card Containers */
+.bac-cards-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    min-height: 85px;
+}
+
+.bac-card {
+    width: 55px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.bac-card.red { color: #e62e00; }
+.bac-card.black { color: #0f172a; }
+
+/* Baccarat Betting Zones Grid */
+.bac-bet-zones {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.bac-bet-box {
+    padding: 14px 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bac-bet-box.player {
+    background: rgba(0, 136, 255, 0.15);
+    border-color: var(--player-blue);
+    color: var(--player-blue);
+}
+
+.bac-bet-box.tie {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--tie-green);
+    color: var(--tie-green);
+}
+
+.bac-bet-box.banker {
+    background: rgba(255, 51, 85, 0.15);
+    border-color: var(--banker-red);
+    color: var(--banker-red);
+}
+
+.bac-bet-box:hover,
+.bac-bet-box.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    border-color: var(--neon-gold);
+}
+
+.payout-rate {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .baccarat-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .bac-table-felt {
+        padding: 10px;
+        gap: 14px;
+    }
+
+    .bac-arena {
+        gap: 8px;
+    }
+
+    .bac-side {
+        padding: 8px;
+    }
+
+    .bac-card {
+        width: 45px;
+        height: 65px;
+        font-size: 0.85rem;
+    }
+
+    .bac-bet-zones {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .bac-bet-box {
+        padding: 10px;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BACCARAT GAME STYLES
+   ========================================================================== */
+
+:root {
+    --bac-bg: rgba(18, 22, 43, 0.95);
+    --bac-felt: radial-gradient(circle, #0a1f38 0%, #040a14 100%);
+    --bac-border: rgba(0, 240, 255, 0.2);
+    --player-blue: #0088ff;
+    --banker-red: #ff3355;
+    --tie-green: #00ff66;
+    --neon-gold: #ffd700;
+}
+
+/* Main Container Box */
+.baccarat-container {
+    background: var(--bac-bg);
+    border: 1px solid var(--bac-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Baccarat Table Viewport */
+.bac-table-felt {
+    width: 100%;
+    background: var(--bac-felt);
+    border: 2px solid rgba(0, 136, 255, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Arena Split (Player vs Banker) */
+.bac-arena {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.bac-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.bac-side-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bac-side.player .bac-side-title { color: var(--player-blue); }
+.bac-side.banker .bac-side-title { color: var(--banker-red); }
+
+/* Score Badge */
+.bac-score {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--neon-gold);
+    border: 1px solid var(--neon-gold);
+}
+
+/* Card Containers */
+.bac-cards-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    min-height: 85px;
+}
+
+.bac-card {
+    width: 55px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.bac-card.red { color: #e62e00; }
+.bac-card.black { color: #0f172a; }
+
+/* Baccarat Betting Zones Grid */
+.bac-bet-zones {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.bac-bet-box {
+    padding: 14px 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bac-bet-box.player {
+    background: rgba(0, 136, 255, 0.15);
+    border-color: var(--player-blue);
+    color: var(--player-blue);
+}
+
+.bac-bet-box.tie {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--tie-green);
+    color: var(--tie-green);
+}
+
+.bac-bet-box.banker {
+    background: rgba(255, 51, 85, 0.15);
+    border-color: var(--banker-red);
+    color: var(--banker-red);
+}
+
+.bac-bet-box:hover,
+.bac-bet-box.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    border-color: var(--neon-gold);
+}
+
+.payout-rate {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZATIONS
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .baccarat-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .bac-table-felt {
+        padding: 10px;
+        gap: 14px;
+    }
+
+    .bac-arena {
+        gap: 8px;
+    }
+
+    .bac-side {
+        padding: 8px;
+    }
+
+    .bac-card {
+        width: 45px;
+        height: 65px;
+        font-size: 0.85rem;
+    }
+
+    .bac-bet-zones {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .bac-bet-box {
+        padding: 10px;
+    }
+}
