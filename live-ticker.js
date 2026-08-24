@@ -4,7 +4,7 @@
  */
 (function() {
     const GAMES = ['Soccer Arena', 'Cyber Keno', 'Baccarat Arena', 'Space Fishing', 'Solar Roulette'];
-    const USERS = ['CipherX', 'Neo_99', 'Thara_Cyber', 'KenoMaster', 'Vortex_01', 'Astra_Dev', 'huokaingthara', 'nouvichaka', 'do', 'sokrachana', 'sokkhemera', 'dom', 'kimmuy', 'men', 'man', 'kuo', 'mek', 'b','test', 'thorn', 'sansopheata', 'chansamnang', 'huo','raem', 'sengviseynea', 'somsodavin', 'svaymetrey', 'chornrothanak', 'phaychanrothana', 'vanneat', 'vanneat', 'mengly', 'leyu', 'huy', 'sengchhat'];
+    const USERS = ['CipherX', 'Neo_99', 'Thara_Cyber', 'KenoMaster', 'Vortex_01', 'Astra_Dev', 'nita', 'Huokaing_Thara', 'Nou_vichaka', 'Do', 'Sok Rachana', 'Sok Khemera', 'Dom', 'Kimmuy', 'Men', 'Man', 'Kuo', 'Mek', 'B','Test', 'Thorn', 'San Sopheata', 'Chansamnang', 'Huo','Raem', 'Seng Viseynea', 'Som Sodavin', 'Svay Metrey', 'Chorn Rothanak', 'Phay Chanrothana', 'Vanneat', 'Mengly', 'Leyu', 'Huy', 'Seng Chhat'];
 
     document.addEventListener('DOMContentLoaded', () => {
         injectTickerHTML();
