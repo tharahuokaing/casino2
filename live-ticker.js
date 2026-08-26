@@ -4,7 +4,7 @@
  */
 (function() {
     const GAMES = ['Soccer Arena', 'Cyber Keno', 'Baccarat Arena', 'Space Fishing', 'Solar Roulette'];
-    const USERS = ['CipherX', 'Neo_99', 'Thara_Cyber', 'KenoMaster', 'Vortex_01', 'Astra_Dev', 'nita', 'Huokaing_Thara', 'Nou_vichaka', 'Do', 'Sok Rachana', 'Sok Khemera', 'Dom', 'Kimmuy', 'Men', 'Man', 'Kuo', 'Mek', 'B','Test', 'Thorn', 'San Sopheata', 'Chansamnang', 'Huo','Raem', 'Seng Viseynea', 'Som Sodavin', 'Svay Metrey', 'Chorn Rothanak', 'Phay Chanrothana', 'Vanneat', 'Mengly', 'Leyu', 'Huy', 'Seng Chhat'];
+    const USERS = ['CipherX', 'Neo_99', 'Thara_Cyber', 'KenoMaster', 'Vortex_01', 'Astra_Dev', 'nita', 'Huokaing_Thara', 'Nou_vichaka', 'Do', 'Sok Rachana', 'Sok Khemera', 'Dom', 'Kimmuy', 'Men', 'Man', 'Kuo', 'Mek', 'B','Test', 'Thorn', 'San Sopheata', 'Chansamnang', 'Huo','Raem', 'Seng Viseynea', 'Som Sodavin', 'Svay Metrey', 'Chorn Rothanak', 'Phay Chanrothana', 'Vanneat', 'Mengly', 'Ton Ni Mey', 'Ton Ni Rath', 'Tharoth', 'Heng', 'Thorn Vichet', 'Jerry', 'Jerry', 'Tom', 'Chum Chan Rothanak', 'Seng Chhat'];
 
     document.addEventListener('DOMContentLoaded', () => {
         injectTickerHTML();
