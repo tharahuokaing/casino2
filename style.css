@@ -7103,3 +7103,1516 @@ body {
         padding: 10px;
     }
 }
+
+/* ==========================================================================
+   MODERN CASINO DICE GAME STYLES
+   ========================================================================== */
+
+:root {
+    --dice-bg: rgba(18, 22, 43, 0.95);
+    --dice-border: rgba(0, 240, 255, 0.2);
+    --dice-track-bg: #050711;
+    --win-green: #00ff66;
+    --lose-red: #ff3366;
+    --neon-gold: #ffd700;
+    --neon-cyan: #00f0ff;
+}
+
+/* Main Container Box */
+.dice-container {
+    background: var(--dice-bg);
+    border: 1px solid var(--dice-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Result Roll Display (Central Neon Numbers) */
+.dice-result-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background: var(--dice-track-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9);
+    position: relative;
+    overflow: hidden;
+}
+
+.dice-rolled-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    letter-spacing: 2px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dice-rolled-number.win {
+    color: var(--win-green);
+    text-shadow: 0 0 30px rgba(0, 255, 102, 0.8);
+    transform: scale(1.1);
+}
+
+.dice-rolled-number.lose {
+    color: var(--lose-red);
+    text-shadow: 0 0 30px rgba(255, 51, 102, 0.8);
+    transform: scale(0.95);
+}
+
+/* Interactive Roll Slider Container */
+.dice-slider-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dice-slider-track {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    background: var(--lose-red);
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+/* Dynamic Win Range Fill */
+.dice-slider-win-range {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: var(--win-green);
+    box-shadow: 0 0 12px var(--win-green);
+}
+
+/* Custom Input Range Control */
+.dice-range-input {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    margin-top: -14px;
+    z-index: 5;
+    position: relative;
+}
+
+.dice-range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--neon-gold);
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 15px var(--neon-gold);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.dice-range-input::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Multiplier & Win Chance Metrics Grid */
+.dice-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.dice-stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dice-stat-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.dice-stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--neon-gold);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .dice-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 16px;
+    }
+
+    .dice-result-stage {
+        height: 90px;
+    }
+
+    .dice-rolled-number {
+        font-size: 2.8rem;
+    }
+
+    .dice-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .dice-stat-card {
+        padding: 8px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dice-stat-value {
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO WHEEL GAME STYLES
+   ========================================================================== */
+
+:root {
+    --wheel-bg: rgba(18, 22, 43, 0.95);
+    --wheel-border: rgba(0, 240, 255, 0.2);
+    --neon-gold: #ffd700;
+    --neon-cyan: #00f0ff;
+    --neon-purple: #b026ff;
+    --neon-pink: #ff007f;
+    --win-green: #00ff66;
+}
+
+/* Main Container Box */
+.wheel-container {
+    background: var(--wheel-bg);
+    border: 1px solid var(--wheel-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* Wheel Stage Viewport */
+.wheel-stage {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* Top Indicator Arrow / Needle */
+.wheel-pointer {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 22px solid var(--neon-gold);
+    filter: drop-shadow(0 0 10px var(--neon-gold));
+    z-index: 20;
+}
+
+/* Outer Glowing Frame Ring */
+.wheel-outer-ring {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 10px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, rgba(176, 38, 255, 0.2) 100%);
+    border: 4px solid var(--neon-cyan);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4),
+                inset 0 0 15px rgba(0, 240, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Spinning Disc Body */
+.wheel-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 4s cubic-bezier(0.15, 0.85, 0.35, 1.05);
+    background: conic-gradient(
+        #ff007f 0deg 45deg,
+        #b026ff 45deg 90deg,
+        #00f0ff 90deg 135deg,
+        #00ff66 135deg 180deg,
+        #ffd700 180deg 225deg,
+        #ff3366 225deg 270deg,
+        #0088ff 270deg 315deg,
+        #b026ff 315deg 360deg
+    );
+}
+
+/* Central Wheel Cap Hub */
+.wheel-center-hub {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a1d2e 0%, #050711 100%);
+    border: 3px solid var(--neon-gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--neon-gold);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* Risk Level Selection Bar */
+.wheel-risk-controls {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.btn-risk-selector {
+    flex: 1;
+    padding: 10px 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-risk-selector:hover,
+.btn-risk-selector.active {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.btn-risk-selector.active-high {
+    background: rgba(255, 0, 127, 0.15);
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.3);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .wheel-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .wheel-stage {
+        width: 210px;
+        height: 210px;
+    }
+
+    .wheel-center-hub {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .btn-risk-selector {
+        padding: 8px 2px;
+        font-size: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO PLINKO GAME STYLES
+   ========================================================================== */
+
+:root {
+    --plinko-bg: rgba(18, 22, 43, 0.95);
+    --plinko-border: rgba(0, 240, 255, 0.2);
+    --peg-color: #ffffff;
+    --peg-glow: rgba(255, 255, 255, 0.6);
+    --ball-color: #ffd700;
+    --neon-cyan: #00f0ff;
+    --neon-pink: #ff007f;
+    --win-green: #00ff66;
+}
+
+/* Main Container Box */
+.plinko-container {
+    background: var(--plinko-bg);
+    border: 1px solid var(--plinko-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Plinko Pyramid Stage Viewport */
+.plinko-stage {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background: #050711;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px 10px 10px 10px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Peg Matrix Grid Overlay */
+.plinko-peg-board {
+    width: 100%;
+    height: calc(100% - 45px);
+    position: relative;
+}
+
+/* Individual Glowing Peg Dots */
+.plinko-peg {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--peg-color);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--peg-glow);
+    transform: translate(-50%, -50%);
+}
+
+.plinko-peg.hit {
+    background: var(--neon-cyan);
+    box-shadow: 0 0 14px var(--neon-cyan);
+    transform: translate(-50%, -50%) scale(1.6);
+    transition: transform 0.1s ease;
+}
+
+/* Bouncing Ball */
+.plinko-ball {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--ball-color);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--ball-color);
+    z-index: 10;
+    transform: translate(-50%, -50%);
+}
+
+/* Bottom Multiplier Buckets Row */
+.plinko-buckets-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    height: 38px;
+}
+
+.plinko-bucket {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #000000;
+    text-shadow: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    user-select: none;
+}
+
+/* Multiplier Color Gradient Tiering */
+.plinko-bucket.low {
+    background: linear-gradient(180deg, #ffcc00 0%, #e6b800 100%);
+}
+
+.plinko-bucket.medium {
+    background: linear-gradient(180deg, #ff6600 0%, #cc5200 100%);
+    color: #ffffff;
+}
+
+.plinko-bucket.high {
+    background: linear-gradient(180deg, #ff0055 0%, #cc0044 100%);
+    color: #ffffff;
+}
+
+.plinko-bucket.active-land {
+    transform: translateY(3px) scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Risk & Pins Selector Controls */
+.plinko-settings-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.plinko-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.plinko-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.plinko-select {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+
+.plinko-select:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.25);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .plinko-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .plinko-stage {
+        height: 250px;
+        padding: 12px 6px 6px 6px;
+    }
+
+    .plinko-buckets-row {
+        gap: 2px;
+        height: 30px;
+    }
+
+    .plinko-bucket {
+        font-size: 0.65rem;
+        border-radius: 4px;
+    }
+
+    .plinko-settings-bar {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO FOOTBALL SIM GAME STYLES
+   ========================================================================== */
+
+:root {
+    --fb-bg: rgba(18, 22, 43, 0.95);
+    --fb-pitch: radial-gradient(circle, #0f3d1e 0%, #061c0d 100%);
+    --fb-border: rgba(0, 240, 255, 0.2);
+    --team-home: #0088ff;
+    --team-away: #ff3355;
+    --neon-gold: #ffd700;
+    --neon-cyan: #00f0ff;
+    --win-green: #00ff66;
+}
+
+/* Main Container Box */
+.football-sim-container {
+    background: var(--fb-bg);
+    border: 1px solid var(--fb-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Virtual Pitch Viewport */
+.fb-pitch-viewport {
+    width: 100%;
+    height: 220px;
+    background: var(--fb-pitch);
+    border: 2px solid rgba(0, 255, 102, 0.25);
+    border-radius: 16px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Field Markings Overlay */
+.fb-pitch-viewport::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.fb-pitch-viewport::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* Live Scoreboard Header */
+.fb-scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: rgba(5, 7, 17, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 16px;
+    z-index: 5;
+}
+
+.fb-team {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.fb-team.home { color: var(--team-home); }
+.fb-team.away { color: var(--team-away); }
+
+.fb-score-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 4px;
+}
+
+.fb-match-clock {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--win-green);
+    background: rgba(0, 255, 102, 0.15);
+    border: 1px solid var(--win-green);
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* Match Event Ticker Log */
+.fb-event-ticker {
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Match Betting Markets Grid */
+.fb-bet-markets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.fb-market-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.fb-market-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.fb-odds-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--neon-gold);
+}
+
+.fb-market-card:hover,
+.fb-market-card.selected {
+    transform: translateY(-2px);
+    background: rgba(0, 240, 255, 0.12);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.fb-market-card.selected .fb-odds-value {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .football-sim-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .fb-pitch-viewport {
+        height: 180px;
+        padding: 10px;
+    }
+
+    .fb-scoreboard {
+        padding: 6px 10px;
+    }
+
+    .fb-team {
+        font-size: 0.8rem;
+    }
+
+    .fb-score-display {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+
+    .fb-bet-markets {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .fb-market-card {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 14px;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO CYBER KENO GAME STYLES
+   ========================================================================== */
+
+:root {
+    --keno-bg: rgba(18, 22, 43, 0.95);
+    --keno-border: rgba(0, 240, 255, 0.25);
+    --keno-terminal-bg: #050711;
+    --neon-cyan: #00f0ff;
+    --neon-gold: #ffd700;
+    --neon-purple: #b026ff;
+    --win-green: #00ff66;
+    --lose-red: #ff3366;
+}
+
+/* Main Container Box */
+.cyber-keno-container {
+    background: var(--keno-bg);
+    border: 1px solid var(--keno-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* Keno Grid Board Housing (8x10 Layout for 80 Numbers) */
+.keno-grid-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    width: 100%;
+    background: var(--keno-terminal-bg);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+/* Individual Keno Number Tile */
+.keno-tile {
+    aspect-ratio: 1 / 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.keno-tile:hover:not(.drawn) {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: var(--neon-cyan);
+    color: #ffffff;
+}
+
+/* Player Selected Number State */
+.keno-tile.selected {
+    background: rgba(0, 240, 255, 0.2);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+/* Drawn Number (House Hit) */
+.keno-tile.drawn {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: var(--neon-gold);
+    color: var(--neon-gold);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+/* MATCH HIT! (Player Choice + Drawn Number) */
+.keno-tile.match-hit {
+    background: rgba(0, 255, 102, 0.25);
+    border-color: var(--win-green);
+    color: var(--win-green);
+    box-shadow: 0 0 18px rgba(0, 255, 102, 0.8),
+                inset 0 0 10px rgba(0, 255, 102, 0.4);
+    animation: kenoHitPulse 0.4s ease-out;
+}
+
+/* Keno Control Bar (Auto Pick & Clear) */
+.keno-action-bar {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-keno-action {
+    flex: 1;
+    padding: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-keno-action:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    color: #ffffff;
+}
+
+/* Match Keyframe Animation */
+@keyframes kenoHitPulse {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .cyber-keno-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .keno-grid-board {
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .keno-tile {
+        font-size: 0.65rem;
+        border-radius: 4px;
+    }
+
+    .btn-keno-action {
+        padding: 8px 4px;
+        font-size: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO CYBER KENO GAME STYLES
+   ========================================================================== */
+
+:root {
+    --keno-bg: rgba(18, 22, 43, 0.95);
+    --keno-border: rgba(0, 240, 255, 0.25);
+    --keno-terminal-bg: #050711;
+    --neon-cyan: #00f0ff;
+    --neon-gold: #ffd700;
+    --neon-purple: #b026ff;
+    --win-green: #00ff66;
+    --lose-red: #ff3366;
+}
+
+/* Main Container Box */
+.cyber-keno-container {
+    background: var(--keno-bg);
+    border: 1px solid var(--keno-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* Keno Grid Board Housing (8x10 Layout for 80 Numbers) */
+.keno-grid-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    width: 100%;
+    background: var(--keno-terminal-bg);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+/* Individual Keno Number Tile */
+.keno-tile {
+    aspect-ratio: 1 / 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.keno-tile:hover:not(.drawn) {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: var(--neon-cyan);
+    color: #ffffff;
+}
+
+/* Player Selected Number State */
+.keno-tile.selected {
+    background: rgba(0, 240, 255, 0.2);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+/* Drawn Number (House Hit) */
+.keno-tile.drawn {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: var(--neon-gold);
+    color: var(--neon-gold);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+/* MATCH HIT! (Player Choice + Drawn Number) */
+.keno-tile.match-hit {
+    background: rgba(0, 255, 102, 0.25);
+    border-color: var(--win-green);
+    color: var(--win-green);
+    box-shadow: 0 0 18px rgba(0, 255, 102, 0.8),
+                inset 0 0 10px rgba(0, 255, 102, 0.4);
+    animation: kenoHitPulse 0.4s ease-out;
+}
+
+/* Keno Control Bar (Auto Pick & Clear) */
+.keno-action-bar {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-keno-action {
+    flex: 1;
+    padding: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-keno-action:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    color: #ffffff;
+}
+
+/* Match Keyframe Animation */
+@keyframes kenoHitPulse {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .cyber-keno-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .keno-grid-board {
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .keno-tile {
+        font-size: 0.65rem;
+        border-radius: 4px;
+    }
+
+    .btn-keno-action {
+        padding: 8px 4px;
+        font-size: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO FISHING GAME STYLES
+   ========================================================================== */
+
+:root {
+    --fish-bg: rgba(10, 25, 47, 0.95);
+    --ocean-depth: radial-gradient(circle at center, #0a3a60 0%, #031326 100%);
+    --fish-border: rgba(0, 240, 255, 0.3);
+    --neon-cyan: #00f0ff;
+    --neon-gold: #ffd700;
+    --neon-green: #00ff66;
+    --coral-pink: #ff007f;
+}
+
+/* Main Container Box */
+.fishing-game-container {
+    background: var(--fish-bg);
+    border: 1px solid var(--fish-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 25px rgba(0, 240, 255, 0.1);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* Underwater Aquarium Stage Viewport */
+.fish-ocean-stage {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background: var(--ocean-depth);
+    border: 2px solid rgba(0, 240, 255, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Target Crosshair Marker */
+.fish-crosshair {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: 2px stroke var(--neon-cyan);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 15;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.fish-crosshair::before,
+.fish-crosshair::after {
+    content: '';
+    position: absolute;
+    background: var(--neon-cyan);
+}
+
+.fish-crosshair::before {
+    top: 50%; left: -6px; right: -6px; height: 2px; transform: translateY(-50%);
+}
+
+.fish-crosshair::after {
+    left: 50%; top: -6px; bottom: -6px; width: 2px; transform: translateX(-50%);
+}
+
+/* Fish Targets Base Style */
+.fish-target {
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+}
+
+.fish-target:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 14px var(--neon-gold));
+}
+
+/* Gun Turret Cannon Base */
+.turret-dock {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    background: radial-gradient(circle, #1a233a 0%, #080d1a 100%);
+    border: 2px solid var(--neon-gold);
+    border-bottom: none;
+    border-radius: 50px 50px 0 0;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.turret-barrel {
+    width: 14px;
+    height: 35px;
+    background: linear-gradient(90deg, #475569 0%, #94a3b8 50%, #475569 100%);
+    border-radius: 4px 4px 0 0;
+    transform-origin: bottom center;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+/* Cannon Control Bar */
+.cannon-controls {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.cannon-multiplier-btn {
+    padding: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.08);
+    color: var(--neon-gold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cannon-multiplier-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .fishing-game-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .fish-ocean-stage {
+        height: 240px;
+    }
+
+    .turret-dock {
+        width: 80px;
+        height: 40px;
+    }
+
+    .turret-barrel {
+        width: 10px;
+        height: 28px;
+    }
+
+    .cannon-controls {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+/* ==========================================================================
+   MODERN CASINO BACCARAT GAME STYLES
+   ========================================================================== */
+
+:root {
+    --baccarat-bg: rgba(18, 22, 43, 0.95);
+    --table-felt: radial-gradient(circle at center, #064e3b 0%, #022c22 100%);
+    --baccarat-border: rgba(0, 240, 255, 0.25);
+    --player-blue: #0088ff;
+    --banker-red: #ff3355;
+    --tie-green: #00ff66;
+    --neon-gold: #ffd700;
+}
+
+/* Main Container Box */
+.baccarat-container {
+    background: var(--baccarat-bg);
+    border: 1px solid var(--baccarat-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* Table Felt Viewport Stage */
+.baccarat-table-stage {
+    width: 100%;
+    background: var(--table-felt);
+    border: 2px solid rgba(0, 255, 102, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+/* Hands Showcase Grid (Player vs Banker) */
+.baccarat-hands-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.baccarat-hand-card {
+    background: rgba(5, 7, 17, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.baccarat-hand-card.player-side { border-top: 3px solid var(--player-blue); }
+.baccarat-hand-card.banker-side { border-top: 3px solid var(--banker-red); }
+
+.baccarat-hand-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.baccarat-side-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.player-side .baccarat-side-title { color: var(--player-blue); }
+.banker-side .baccarat-side-title { color: var(--banker-red); }
+
+.baccarat-score-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--neon-gold);
+    background: rgba(255, 215, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Card Slot Layout */
+.baccarat-cards-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    min-height: 80px;
+    align-items: center;
+}
+
+.baccarat-card-slot {
+    width: 50px;
+    height: 72px;
+    background: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    user-select: none;
+}
+
+/* Betting Chips Placement Zones */
+.baccarat-bet-zones {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.baccarat-zone {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 14px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.baccarat-zone-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.baccarat-zone-payout {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Zone Hover & Active Betting States */
+.baccarat-zone.player-zone:hover,
+.baccarat-zone.player-zone.active {
+    background: rgba(0, 136, 255, 0.15);
+    border-color: var(--player-blue);
+    border-style: solid;
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
+}
+.baccarat-zone.player-zone.active .baccarat-zone-title { color: var(--player-blue); }
+
+.baccarat-zone.banker-zone:hover,
+.baccarat-zone.banker-zone.active {
+    background: rgba(255, 51, 85, 0.15);
+    border-color: var(--banker-red);
+    border-style: solid;
+    box-shadow: 0 0 15px rgba(255, 51, 85, 0.4);
+}
+.baccarat-zone.banker-zone.active .baccarat-zone-title { color: var(--banker-red); }
+
+.baccarat-zone.tie-zone:hover,
+.baccarat-zone.tie-zone.active {
+    background: rgba(0, 255, 102, 0.15);
+    border-color: var(--tie-green);
+    border-style: solid;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+}
+.baccarat-zone.tie-zone.active .baccarat-zone-title { color: var(--tie-green); }
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+    .baccarat-container {
+        padding: 14px;
+        max-width: 100%;
+        gap: 14px;
+    }
+
+    .baccarat-table-stage {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .baccarat-card-slot {
+        width: 38px;
+        height: 56px;
+        font-size: 0.85rem;
+    }
+
+    .baccarat-bet-zones {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .baccarat-zone {
+        padding: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
