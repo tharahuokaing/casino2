@@ -4,7 +4,7 @@
  */
 (function() {
     const GAMES = ['Soccer Arena', 'Cyber Keno', 'Baccarat Arena', 'Space Fishing', 'Solar Roulette'];
-    const USERS = ['CipherX', 'Neo_99', 'Thara_Cyber', 'KenoMaster', 'Vortex_01', 'Astra_Dev', 'nita', 'Huokaing_Thara', 'Nou_vichaka', 'Do', 'Sok Rachana', 'Sok Khemera', 'Dom', 'Kimmuy', 'Men', 'Man', 'Kuo', 'Mek', 'B','Test', 'Thorn', 'San Sopheata', 'Chansamnang', 'Huo','Raem', 'Seng Viseynea', 'Som Sodavin', 'Svay Metrey', 'Chorn Rothanak', 'Phay Chanrothana', 'Vanneat', 'Mengly', 'Ton Ni Mey', 'Ton Ni Rath', 'Tharoth', 'Heng', 'Thorn Vichet', 'Jerry', 'Jerry', 'Tom', 'Chum Chan Rothanak', 'Seng Chhat'];
+    const USERS = ['Mr. Tola', 'Mr. Neo_99', 'Ms. Vichika', 'Mr. KenoMaster', 'Mr. Vortex_01', 'Mr. Astra_Dev', 'Ms. Nita', 'Mr. Huokaing_Thara', 'Mr. Nou_vichaka', 'Mr. Do', 'Ms. Sok Rachana', 'Mr. Sok Khemera', 'Mr. Dom', 'Ms. Kimmuy', 'Mr. Men', 'Mr. Man', 'Mr. Kuo', 'Mr. Mek', 'Mr. B','Test User', 'Mr. Thorn', 'Mrs. San Sopheata', 'Mr. Chansamnang', 'Mr. Huo','Mr. Raem', 'Ms. Seng Viseynea', 'Ms. Som Sodavin', 'Mrs. Svay Metrey', 'Mr. Chorn Rothanak', 'Mr. Phay Chanrothana', 'Mr. Vanneat', 'Mr. Mengly', 'Ms. Ton Ni Mey', 'Mr. Ton Ni Rath', 'Ms. Tharoth', 'Mr. Heng', 'Mr. Thorn Vichet', 'Mr. Jerry', 'Mr. Bo', 'Mr. Tom', 'Mr. Chum Chan Rothanak', 'Mr. Seng Chhat', 'Mrs. Dalin', 'Ms. Khouch', 'Mr. Tek Hy', 'Mr. Tray', 'Mr. Chea', 'Mr. Phann'];
 
     document.addEventListener('DOMContentLoaded', () => {
         injectTickerHTML();
